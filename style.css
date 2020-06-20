@@ -1,0 +1,128 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+/*     outline: auto; */
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(75, 74, 74);
+}
+header{
+    width: 100vw;
+    height: 50px;
+/*     outline: auto; */
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px rgb(190,180,174);
+    box-shadow: 0px 2px 5px 0px rgba(48,48,48,0.2);
+}
+.headerSection {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    margin: 0 5px;
+}
+#sandwich{
+    font-size: 40px;
+    cursor: pointer;
+}
+#logo{
+    height: 100%;
+}
+main{
+    width: 100%;
+    height: 100%;
+    overflow: hidden scroll;
+    background-color: rgb(231, 231, 231);
+
+}
+.card{
+    width: 100vw;
+    max-width: 500px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    margin: 5px auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 20px auto;
+}
+.card:hover{
+    background-color: rgb(209, 209, 209);
+}
+.cardTitle{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-weight: bolder;
+    padding: 1px 10px ;
+    color: black;
+}
+.cardText{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding-left: 5px;
+    
+}
+.cardImg{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+.menu{
+    width: 200px;
+    height: 100vh;
+    position: absolute;
+    top: 35px;
+    left: 0;/* -100vw; */
+    z-index: 2;
+    transition: 800ms;
+    background-color: white;
+    box-shadow: 2px 2px 5px 0px rgba(48,48,48,0.2);
+}
+.hideMenu{
+    left: -100vw;
+}
+.menuBoton{
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.menuBoton span{
+    display: flex;
+    justify-content: left;   
+    align-items: center;
+}
+.menuBoton span p{
+    margin-left: 5px;
+}
+
+#overlay {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(90, 90, 90,.2);
+    z-index: 1;
+    display: none;
+  }
+  .showOverlay {
+   display: block !important;
+}
+
+
