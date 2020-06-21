@@ -7,7 +7,6 @@ body{
     width: 100vw;
     height: 100vh;
     z-index: 0;
-/*     outline: auto; */
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
     color: rgb(75, 74, 74);
@@ -34,6 +33,10 @@ header{
 #sandwich{
     font-size: 40px;
     cursor: pointer;
+    transition: 800ms;
+}
+.rotate{
+    transform: rotate(-90deg);
 }
 #logo{
     height: 100%;
@@ -48,15 +51,19 @@ main{
 .card{
     width: 100vw;
     max-width: 500px;
+    min-width: 350px;
     height: 200px;
     background-color: rgb(255, 255, 255);
     margin: 5px auto;
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: 20px auto;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    cursor: pointer;
 }
 .card:hover{
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(223, 221, 221);
 }
 .cardTitle{
     grid-column-start: 1;
@@ -80,6 +87,9 @@ main{
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
+}
+.cardImg img{
+    height: 200px;
 }
 .menu{
     width: 200px;
@@ -117,12 +127,27 @@ main{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(90, 90, 90,.2);
+    background-color: rgba(90, 90, 90,.3);
     z-index: 1;
     display: none;
   }
+
   .showOverlay {
    display: block !important;
+}
+#imgDiv{
+    position: absolute;
+    width: 100vw;
+    height: 133.33vw;
+    background-image: url('http://lorempixel.com/150/200/');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top left;
+    top: 0;
+    z-index: 2;
+}
+.hide{
+    display: none;
 }
 
 
