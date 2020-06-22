@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SoySanjuanero</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="https://i.imgur.com/iAsv8NK.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="logoSoySanjuanero.jpg" type="image/x-icon">
         <!-- Google Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Google Fonts -->
@@ -20,7 +20,7 @@
                 <span class="location">Inicio</span>
             </div>
             <div class="headerSection">
-                <img id="logo" src="https://i.imgur.com/iAsv8NK.jpg" alt="LogoSoySanjuanero">
+                <img id="logo" src="logoSoySanjuanero.jpg" alt="LogoSoySanjuanero">
             </div>
         </header>
         <menu class="menu hideMenu">
@@ -41,7 +41,7 @@
             </div>
         </menu>
         <main id="main">
-<!--             <div class="card" onclick=hideShowCard()>
+<!--             <div class="card" onclick=hideShowCard(this.id)>
                 <div class="cardTitle">
                     <span>Titulo</span>
                 </div>
@@ -52,13 +52,22 @@
                     <img src="http://lorempixel.com/150/200/people/1" alt="">
                 </div>
             </div> -->
-
-            
-
         </main>
-        <div onclick="ShowHideMenu()" id ='overlay'></div>
-        <div id="imgDiv" class="hide"></div>
+        <div id ='overlay' onclick="ShowHideMenu()" ></div>
 
+        <div id="cardDetail" class="hide">
+            <div class="cardDetailDiv" id="cardDetailImg"></div>
+            <div class="cardDetailDiv" id="cardDetailLink"></div>
+            <div class="cardDetailDiv" id="cardDetailTitle"></div>
+            <div class="cardDetailDiv" id="cardDetailText"></div>
+        </div>
+
+        <div id="advertising">
+            <img  src="https://i.imgur.com/XG0aRtx.jpg" alt="advertising">
+            <img  src="https://i.imgur.com/Z9chNFg.jpg" alt="advertising">
+        </div>
+        
+        
         <script src="js.js"></script>
     </body>
 </html>

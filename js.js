@@ -18,8 +18,20 @@ function $(selector){
     return document.querySelector(selector)
 }
 //SHOW OR HIDE CARD DETAIL
-function hideShowCard(){
-    console.log('hideShowCard()')
+function hideShowCard(id){
+    const cardDetail=$('#cardDetail');
+    const cardDetailTitle=$('#cardDetailTitle')
+    const cardDetailText=$('#cardDetailText')
+    const cardTarget=$('#'+id);
+    const title=cardTarget.childNodes[0].textContent
+    const text=cardTarget.childNodes[1].textContent
+    cardDetailTitle.innerHTML=title
+    cardDetailText.innerHTML=text
+
+
+
+
+    cardDetail.classList.remove('hide')
 }
 //READ JSON
  function traerDatos(){
@@ -37,14 +49,15 @@ function hideShowCard(){
 
 //CREATE CARDS
 function createCards(itemJson){
+    var i=0;
     for(let item of itemJson){
-        let i=0;
         createOneCard(i,item.title,item.text,item.img,item.link)
         i++;
     }     
 }
 
 function createOneCard(i,title,text,img,link){
+    //Declarations and initializations
     const newCard=document.createElement('div');
     const cardTitle=document.createElement('div');
         const cardTitleSpan=document.createElement('span');
@@ -55,16 +68,16 @@ function createOneCard(i,title,text,img,link){
     const cardImg=document.createElement('div');
         const cardImgImg=document.createElement('img');
 
+    //set attributes to elements
     newCard.setAttribute('class','card');
-    newCard.setAttribute('onclick','hideShowCard()');
-    let idText='00000' + i;
-    idText=idText.substr(idText.length-2)
-    newCard.setAttribute('id','card'+idText);
+    newCard.setAttribute('onclick','hideShowCard(this.id)');
+    newCard.setAttribute('id','card'+i);
         cardTitle.setAttribute('class','cardTitle')
         cardText.setAttribute('class','cardText')
         cardImg.setAttribute('class','cardImg')
-            cardImgImg.setAttribute('src',img) //aca va el link de la imagen
+            cardImgImg.setAttribute('src',img) 
 
+    //set childs
     $('#main').appendChild(newCard);
     newCard.appendChild(cardTitle);
         cardTitle.appendChild(cardTitleSpan);
