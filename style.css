@@ -29,11 +29,10 @@ header{
     text-align: center;
     font-size: 30px;
     margin: 0 5px;
-
+    cursor: pointer;
 }
 #sandwich{
     font-size: 40px;
-    cursor: pointer;
     transition: 800ms;
 }
 .rotate{
@@ -131,11 +130,22 @@ main{
     justify-content: left;   
     align-items: center;
     text-decoration: none;
-
+    color:  rgb(75, 74, 74);
+}
+.menuBoton a img{
+    height: 30px;
+}
+.menuSocial{
+    margin-top: 30px;
+    text-align: right;
+    word-break: break-word;
+}
+.menuSocial a img{
+    height: 40px;
+    margin: 3px;
 }
 .menuBoton:hover{
     background-color: rgb(230, 228, 228);
-    color: black;
 }
 .menuBoton a p{
     margin-left: 5px;

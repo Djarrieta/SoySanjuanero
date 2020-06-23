@@ -117,5 +117,9 @@ function createOneCard(i,title,text,img,link){
 function ScrollToTop(){
     $('#main').scrollTop=0
 }
+//MOSTRAR DETALLES DE REDES SOCIALES
+function ShowMenuSocialDetail(cont){
+    $('#menuSocialDetail').innerHTML=cont.dataset.text
+}
 //USAGE
 traerDatos()
