@@ -50,21 +50,22 @@ main{
 }
 .card{
     width: 100vw;
-    max-width: 500px;
+    max-width: 700px;
     min-width: 350px;
     height: 200px;
     background-color: rgb(255, 255, 255);
-    margin: 5px auto;
+    margin: 10px auto;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 30px auto;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     cursor: pointer;
     overflow: hidden;
+    transition: 500ms;
 }
 .card:hover{
-    background-color: rgb(223, 221, 221);
+    box-shadow: 1px 1px 6px 4px rgba(48,48,48,0.2);
 }
 .cardTitle{
     grid-column-start: 1;
@@ -182,19 +183,28 @@ main{
     z-index: 2;
 }
 
-#advertising{
+.pieza{
     position: absolute;
     width: 190px;
     top: 70px;
-    right: 20px; 
     display: none;
     border-radius: 5px;
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     padding: 10px;
     background-color: white;
+    z-index: 5;
 }
-#advertising img{
+.pieza img{
     width: 100%;
+}
+#pieza1{
+    right: 20px; 
+}
+#pieza2{
+    right: 240px; 
+}
+.lastPieza{
+    display: none;
 }
 #cardDetail{
     display: flex;
@@ -244,8 +254,8 @@ main{
 .hide{
     display: none !important;
 }
-@media screen and (min-width: 960px){
-    #advertising{
+@media screen and (min-width: 1170px){
+    #pieza1{
         display: block;
     }
     .headerSection:first-child{
@@ -254,6 +264,27 @@ main{
     .menu{
         left: 0;
     }
+
+}
+@media screen and (min-width: 1650px){
+    #pieza2{
+        display:block;
+    }
+    .lastPieza{
+        display:block;
+    }
+    .card{
+        padding: 10px 0 0 30px;
+
+    }
+    .menu{
+        width: 220px;
+        padding: 0 40;
+    }
+    .menuSocial{
+        padding-right: 40px;
+    }
+
 }
 
 
