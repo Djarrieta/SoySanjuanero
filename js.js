@@ -55,6 +55,20 @@ function hideShowCard(id){
         cardDetail.classList.add('hide')
     }
 }
+//SHOW ABOUT WITH DETAIL CARD
+function showAbout(){
+    const cardDetail=$('#cardDetail');
+    const cardDetailTitle=$('#cardDetailTitle')
+    const cardDetailText=$('#cardDetailText')
+    const cardDetailTextAdd=$('#cardDetailTextAdd')
+    const cardDetailImg=$('#cardDetailImg')
+
+    cardDetailImg.src='https://i.imgur.com/iAsv8NK.jpg'
+    cardDetailTitle.innerHTML='SOBRE NOSOTROS'
+    cardDetailText.innerHTML='Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque enim quasi voluptatum nihil. Nostrum voluptatum corrupti reiciendis repellat quibusdam ex amet aliquid, ratione natus praesentium.'
+    cardDetailTextAdd.innerHTML='Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque enim quasi voluptatum nihil. Nostrum voluptatum corrupti reiciendis repellat quibusdam ex amet aliquid, ratione natus praesentium.'
+    cardDetail.classList.remove('hide')   
+}
 
 //CREATE CARDS
 function createCards(itemJson){
@@ -99,5 +113,9 @@ function createOneCard(i,title,text,img,link){
     newCard.appendChild(cardImg);
         cardImg.appendChild(cardImgImg);
 }
-
+//SCROLL TO TOP ON MAIN
+function ScrollToTop(){
+    $('#main').scrollTop=0
+}
+//USAGE
 traerDatos()

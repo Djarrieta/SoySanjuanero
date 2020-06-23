@@ -124,6 +124,7 @@ main{
     cursor: pointer;
     border-radius: 20px;
     padding: 0 5px;
+    margin: 0 5px;
 }
 .menuBoton a{
     display: flex;
