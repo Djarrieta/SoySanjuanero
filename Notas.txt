@@ -1,6 +1,3 @@
-Ocultar del todo Overlay en pantallas grandes
-Poner Banner a la derecha en pantallas grandes
-Crear div completo para mostrar detalles
-Radio
-Tienda
-Intentar que todo quede en la misma pagina
+En imgur se pueden guardar las fotos de 600x600; Use arrieta.dario@hotmail.com
+
+

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SoySanjuanero</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="logoSoySanjuanero.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="logoSoySanjuanero.png" type="image/x-icon">
         <!-- Google Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Google Fonts -->
@@ -20,24 +20,24 @@
                 <span class="location">Inicio</span>
             </div>
             <div class="headerSection">
-                <img id="logo" src="logoSoySanjuanero.jpg" alt="LogoSoySanjuanero">
+                <img id="logo" src="logoSoySanjuanero.png" alt="LogoSoySanjuanero">
             </div>
         </header>
         <menu class="menu hideMenu">
             <div class="menuBoton">
-                <span><i class="material-icons">home</i><p>Inicio</p> </span>
+                <a><i class="material-icons">home</i><p>Inicio</p> </a>
             </div>
             <div class="menuBoton">
-                <span><i class="material-icons">store</i><p>Tienda</p> </span>
+                <a><i class="material-icons">store</i><p>Tienda</p> </a>
             </div>
             <div class="menuBoton">
-                <span><i class="material-icons">radio</i><p>Radio Online</p> </span>
+                <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
             </div>
             <div class="menuBoton">
-                <span><i class="material-icons">info</i><p>SoySanjuanero</p> </span>
+                <a><i class="material-icons">info</i><p>SoySanjuanero</p> </a>
             </div>
             <div class="menuBoton">
-                <span><i class="material-icons">contact_phone</i><p>Contacto</p> </span>
+                <a><i class="material-icons">contact_phone</i><p>Contacto</p> </a>
             </div>
         </menu>
         <main id="main">
@@ -49,18 +49,24 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque enim quasi voluptatum nihil. Nostrum voluptatum corrupti reiciendis repellat quibusdam ex amet aliquid, ratione natus praesentium </p>
                 </div>
                 <div class="cardImg">
-                    <img src="http://lorempixel.com/150/200/people/1" alt="">
+                    <img src="http://lorempixel.com/600/600/people/1" alt="">
                 </div>
             </div> -->
         </main>
         <div id ='overlay' onclick="ShowHideMenu()" ></div>
 
         <div id="cardDetail" class="hide">
-            <div class="cardDetailDiv" id="cardDetailImg"></div>
-            <div class="cardDetailDiv" id="cardDetailLink"></div>
-            <div class="cardDetailDiv" id="cardDetailTitle"></div>
-            <div class="cardDetailDiv" id="cardDetailText"></div>
-        </div>
+            <i   class="material-icons cardDetailClose" onclick="hideShowCard(this.id)">close</i>
+            <div id="containerDetail">
+                <img class="cardDetailDiv" id="cardDetailImg" src="http://lorempixel.com/400/400" alt=""></img>
+                <div class="cardDetailDiv" id="cardDetailTitle"></div>
+                <div class="cardDetailDiv" id="cardDetailText"></div>
+                <div class="cardDetailDiv" id="cardDetailTextAdd"></div>
+                <div class="cardDetailDiv" id="cardDetailLink"></div>
+                <div class="cardDetailDiv" id="cardDetailSpace"><br><br><br><br></div>
+            </div>
+            <!-- <i   class="material-icons cardDetailClose" onclick="hideShowCard(this.id)">close</i> -->
+        </div>  
 
         <div id="advertising">
             <img  src="https://i.imgur.com/XG0aRtx.jpg" alt="advertising">
@@ -71,3 +77,4 @@
         <script src="js.js"></script>
     </body>
 </html>
+

@@ -1,3 +1,17 @@
+var datos
+//READ JSON
+function traerDatos(){
+    var xhttp=new XMLHttpRequest();
+    xhttp.open("GET","historias.json",true);
+    xhttp.send();
+    
+    xhttp.onreadystatechange=function (){
+        if(this.readyState==4 && this.status==200){
+            datos=JSON.parse(this.responseText) 
+            createCards(datos)
+        }
+    }
+}
 //SHOW OR HIDE LATERAL MENU
 function ShowHideMenu(){
     const menu=$('.menu')
@@ -22,28 +36,23 @@ function hideShowCard(id){
     const cardDetail=$('#cardDetail');
     const cardDetailTitle=$('#cardDetailTitle')
     const cardDetailText=$('#cardDetailText')
-    const cardTarget=$('#'+id);
-    const title=cardTarget.childNodes[0].textContent
-    const text=cardTarget.childNodes[1].textContent
-    cardDetailTitle.innerHTML=title
-    cardDetailText.innerHTML=text
+    const cardDetailTextAdd=$('#cardDetailTextAdd')
+    const cardDetailImg=$('#cardDetailImg')
 
+    if(cardDetail.classList.contains('hide')){
+        const cardImg=datos[parseInt(id.substring(id.length-3,id.length))].img
+        const cardTitle=datos[parseInt(id.substring(id.length-3,id.length))].title
+        const cardText=datos[parseInt(id.substring(id.length-3,id.length))].text
+        const cardTextAdd=datos[parseInt(id.substring(id.length-3,id.length))].textAdd
+        const cardLink=datos[parseInt(id.substring(id.length-3,id.length))].link
 
-
-
-    cardDetail.classList.remove('hide')
-}
-//READ JSON
- function traerDatos(){
-    var xhttp=new XMLHttpRequest();
-    xhttp.open("GET","historias.json",true);
-    xhttp.send();
-    
-    xhttp.onreadystatechange=function (){
-        if(this.readyState==4 && this.status==200){
-            let datos=JSON.parse(this.responseText) 
-            createCards(datos)
-        }
+        cardDetailImg.src=cardImg
+        cardDetailTitle.innerHTML=cardTitle
+        cardDetailText.innerHTML=cardText
+        cardDetailTextAdd.innerHTML=cardTextAdd
+        cardDetail.classList.remove('hide')
+    }else{
+        cardDetail.classList.add('hide')
     }
 }
 
@@ -68,10 +77,12 @@ function createOneCard(i,title,text,img,link){
     const cardImg=document.createElement('div');
         const cardImgImg=document.createElement('img');
 
+    let id='000'+i
+    id='card'+ id.substring(id.length-3,id.length)
     //set attributes to elements
     newCard.setAttribute('class','card');
     newCard.setAttribute('onclick','hideShowCard(this.id)');
-    newCard.setAttribute('id','card'+i);
+    newCard.setAttribute('id',id);
         cardTitle.setAttribute('class','cardTitle')
         cardText.setAttribute('class','cardText')
         cardImg.setAttribute('class','cardImg')
