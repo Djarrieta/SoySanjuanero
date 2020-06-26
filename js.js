@@ -1,4 +1,8 @@
 var datos
+//SELECTOR 
+function $(selector){
+    return document.querySelector(selector)
+}
 //READ JSON
 function traerDatos(){
     var xhttp=new XMLHttpRequest();
@@ -12,6 +16,104 @@ function traerDatos(){
         }
     }
 }
+//CREATE CARDS
+function createCards(itemJson){
+    var i=0;
+    for(let item of itemJson){
+        if(item.img.length>0){
+            createOneCard(item,i)
+            i++;
+        }
+    }    
+}
+//CREATE SINGLE CARD
+function createOneCard(item,i){
+    //card
+    const newCard=document.createElement('div');
+    let id='000'+i
+    id='card'+ id.substring(id.length-3,id.length)
+    newCard.setAttribute('class','card');
+    newCard.setAttribute('id',id);
+    $('#main').appendChild(newCard);
+        //cardContainerImg
+        const cardContainerImg=document.createElement('div')
+        cardContainerImg.setAttribute('class','cardContainerImg')
+        newCard.appendChild(cardContainerImg);
+            //cardImgElement img 
+            let cardImgElement
+            for(let img of item.img){
+                cardImgElement=document.createElement('img')
+                cardImgElement.setAttribute('class','cardImgElement')
+                cardImgElement.setAttribute('src',img)
+                cardContainerImg.appendChild(cardImgElement)
+            }
+        //cardContainerImgNav
+        if(item.img.length>1){
+            const cardContainerImgNav=document.createElement('div')
+            cardContainerImgNav.setAttribute('class','cardContainerImgNav')
+            newCard.appendChild(cardContainerImgNav);
+                //cardContainerImgNav button prev
+                cardImgElement=document.createElement('img')
+                cardImgElement.setAttribute('src','./icons/prev_24px.png')
+                cardContainerImgNav.appendChild(cardImgElement)
+                //cardContainerImgNav button next
+                cardImgElement=document.createElement('img')
+                cardImgElement.setAttribute('src','./icons/right_button_24px.png')
+                cardContainerImgNav.appendChild(cardImgElement)
+        }
+        //cardContainerSocial
+        const cardContainerSocial=document.createElement('div')
+        cardContainerSocial.setAttribute('class','cardContainerSocial')
+        newCard.appendChild(cardContainerSocial);
+            //cardSocial
+            createSocialElement(item.socialWhatsapp,'./icons/whatsapp_64px.png',cardContainerSocial)
+            createSocialElement(item.socialFacebook,'./icons/facebook_circled_64px.png',cardContainerSocial)
+            createSocialElement(item.socialInstagram,'./icons/instagram_old_64px.png',cardContainerSocial)
+            createSocialElement(item.socialWeb,'./icons/website_64px.png',cardContainerSocial)
+            createSocialElement(item.socialEmail,'./icons/email_64px.png',cardContainerSocial)
+            createSocialElement(item.socialTel,'./icons/cell_phone_64px.png',cardContainerSocial)
+            //quantity selection
+            if(item.compra && item.compra.length>0){
+                const quantitySelection=document.createElement('select')
+                quantitySelection.setAttribute('name','Selecciona')
+                quantitySelection.setAttribute('id','cant'+id)
+                cardContainerSocial.appendChild(quantitySelection)
+                    //quantity selection value
+                    for(let j=1;j<item.compra.length+1;j++){
+                        const quantitySelectionValue=document.createElement('option')
+                        quantitySelectionValue.setAttribute('value',j)
+                        quantitySelectionValue.innerHTML=j
+                        quantitySelection.appendChild(quantitySelectionValue)
+                    }
+                //shop
+                createSocialElement(item.compra[0],'./icons/add_shopping_cart_64px.png',cardContainerSocial)
+            }
+
+        //cardText
+        if(item.text){
+            const cardText=document.createElement('div')
+            cardText.setAttribute('class','cardText')
+            cardText.innerHTML=item.text
+            newCard.appendChild(cardText);
+        }
+
+}
+//CREATE SOCIAL ELEMENT
+function createSocialElement(SocialElement,icon,cardContainerSocial){
+    if(SocialElement && SocialElement!=''){
+        //cardSocial
+        const cardSocial=document.createElement('a')
+        cardSocial.setAttribute('class','cardSocial')
+        cardSocial.setAttribute('target','blank()')
+        cardSocial.setAttribute('href',SocialElement)
+        cardContainerSocial.appendChild(cardSocial)
+            //cardSocial img
+            const cardSocialImg=document.createElement('img')
+            cardSocialImg.setAttribute('src',icon)
+            cardSocial.appendChild(cardSocialImg)
+    }
+}
+
 //SHOW OR HIDE LATERAL MENU
 function ShowHideMenu(){
     const menu=$('.menu')
@@ -27,35 +129,8 @@ function ShowHideMenu(){
         sandwich.classList.remove('rotate')
     }
 }
-//SELECTOR 
-function $(selector){
-    return document.querySelector(selector)
-}
-//SHOW OR HIDE CARD DETAIL
-function hideShowCard(id){
-    const cardDetail=$('#cardDetail');
-    const cardDetailTitle=$('#cardDetailTitle')
-    const cardDetailText=$('#cardDetailText')
-    const cardDetailTextAdd=$('#cardDetailTextAdd')
-    const cardDetailImg=$('#cardDetailImg')
 
-    if(cardDetail.classList.contains('hide')){
-        const cardImg=datos[parseInt(id.substring(id.length-3,id.length))].img
-        const cardTitle=datos[parseInt(id.substring(id.length-3,id.length))].title
-        const cardText=datos[parseInt(id.substring(id.length-3,id.length))].text
-        const cardTextAdd=datos[parseInt(id.substring(id.length-3,id.length))].textAdd
-        const cardLink=datos[parseInt(id.substring(id.length-3,id.length))].link
-
-        cardDetailImg.src=cardImg
-        cardDetailTitle.innerHTML=cardTitle
-        cardDetailText.innerHTML=cardText
-        cardDetailTextAdd.innerHTML=cardTextAdd
-        cardDetail.classList.remove('hide')
-    }else{
-        cardDetail.classList.add('hide')
-    }
-}
-//SHOW ABOUT WITH DETAIL CARD
+//SHOW ABOUT
 function showSoySanjuanero(){
     const cardDetail=$('#cardDetail');
     const cardDetailTitle=$('#cardDetailTitle')
@@ -84,50 +159,6 @@ function showSanJuanNepo(){
     cardDetail.classList.remove('hide')   
 }
 
-//CREATE CARDS
-function createCards(itemJson){
-    var i=0;
-    for(let item of itemJson){
-        createOneCard(i,item.title,item.text,item.img,item.link)
-        i++;
-    }    
-    console.log(i) 
-}
-
-function createOneCard(i,title,text,img,link){
-    //Declarations and initializations
-    const newCard=document.createElement('div');
-    const cardTitle=document.createElement('div');
-        const cardTitleSpan=document.createElement('span');
-            const CardTitleSpanText=document.createTextNode(title)
-    const cardText=document.createElement('div');
-        const cardTextP=document.createElement('p');
-            const CardTextPText=document.createTextNode(text)
-    const cardImg=document.createElement('div');
-        const cardImgImg=document.createElement('img');
-
-    let id='000'+i
-    id='card'+ id.substring(id.length-3,id.length)
-    //set attributes to elements
-    newCard.setAttribute('class','card');
-    newCard.setAttribute('onclick','hideShowCard(this.id)');
-    newCard.setAttribute('id',id);
-        cardTitle.setAttribute('class','cardTitle')
-        cardText.setAttribute('class','cardText')
-        cardImg.setAttribute('class','cardImg')
-            cardImgImg.setAttribute('src',img) 
-
-    //set childs
-    $('#main').appendChild(newCard);
-    newCard.appendChild(cardTitle);
-        cardTitle.appendChild(cardTitleSpan);
-            cardTitleSpan.appendChild(CardTitleSpanText);
-    newCard.appendChild(cardText);
-        cardText.appendChild(cardTextP);
-        cardTextP.appendChild(CardTextPText);
-    newCard.appendChild(cardImg);
-        cardImg.appendChild(cardImgImg);
-}
 //SCROLL TO TOP ON MAIN
 function ScrollToTop(){
     $('#main').scrollTop=0
@@ -138,4 +169,4 @@ function ShowMenuSocialDetail(cont){
 }
 //USAGE
 traerDatos()
-$('body').scrollTop=1000
+

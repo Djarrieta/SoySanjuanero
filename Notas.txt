@@ -1,3 +1,25 @@
-En imgur se pueden guardar las fotos de 600x600; Use arrieta.dario@hotmail.com
+En facebook se pueden guardar las fotos de 600x600; Use arrieta.dario@hotmail.com
+
+Lo que voy a hacer es crear tarjetas con alto variable para que se puedan subir imagenes diferentes.
+El documento JSON debe tener:
+foto: como vector
+whatsapp
+facebook
+instagram
+telefono
+correo
+mercadopago como vector
+
+De esta manera se logra tener varias fotos en horizontal, links a redes que aparecen si hay y el boton de mercado pago que es permite escoger la cantidad de unidades.
+
+Las fotos tendran texto y todo lo que necesitan
+primero tengo que entender bien mercadopago
+luego me pongo a programar las nuevas tarjetas y el nuevo JSON
+
+Hay que crear paginas de compra exitosa y de que hubo un error en la compra
+
+
+
+
 
 
