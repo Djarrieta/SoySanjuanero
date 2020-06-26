@@ -17,86 +17,47 @@
                 <i onclick="ShowHideMenu()" id="sandwich" class="material-icons">widgets</i>
             </div>
             <div class="headerSection">
-                <span onclick="ScrollToTop()" class="location">Inicio</span>
+                <span onclick="scrollToTop()" class="location">Inicio</span>
             </div>
             <div class="headerSection">
-                <img id="logo" src="logoSoySanjuanero.png" alt="LogoSoySanjuanero">
+                <a href="#"><img id="logo" src="logoSoySanjuanero.png" alt="LogoSoySanjuanero"></a>
             </div>
         </header>
         <menu class="menu hideMenu">
-            <div class="menuBoton">
+<!--             <div class="menuBoton">
                 <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
-            </div>
-            <div class="menuBoton">
-                <a onclick="showAbout()"><i class="material-icons">contact_mail</i><p>Contacto</p> </a>
-            </div>
+            </div> -->
             <div class="menuBoton">
                 <a onclick="showSoySanjuanero()"><img src="logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
             </div>
             <div class="menuBoton">
                 <a onclick="showSanJuanNepo()"><img src="https://i.imgur.com/vAGXP1z.png" alt=""><p>San Juan Nepo.</p> </a>
             </div>
+            <div class="menuBoton">
+                <a onclick="showAbout()"><img src="/icons/online_support_64px.png" alt=""><p>Contacto</p> </a>
+            </div>
             <div class="menuSocial">
-                <a data-text="(+57) 300 871 82 17" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://wa.me/3008718271"><img src="./icons/whatsapp_64px.png" alt=""></a>
-                <a data-text="https://www.facebook.com/ yosoysanjuanero/" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://www.facebook.com/ yosoysanjuanero/"><img src="./icons/facebook_circled_64px.png" alt=""></a>
-                <a data-text="https://www.instagram.com/ soy.sanjuanero/" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://www.instagram.com/ soy.sanjuanero/"><img src="./icons/instagram_old_64px.png" alt=""></a>
+                <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://wa.me/573105478093"><img src="./icons/whatsapp_64px.png" alt=""></a>
+                <a data-text="https://www.facebook.com/ yosoysanjuanero/" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://www.facebook.com/yosoysanjuanero/"><img src="./icons/facebook_circled_64px.png" alt=""></a>
+                <a data-text="https://www.instagram.com/ soy.sanjuanero/" onclick="ShowMenuSocialDetail(this)"  target  ="blank()" href="https://www.instagram.com/soy.sanjuanero/"><img src="./icons/instagram_old_64px.png" alt=""></a>
                 <a data-text="info@soysanjuanero.store" onclick="ShowMenuSocialDetail(this)"  href="mailto:info@soysanjuanero.store"><img src="./icons/email_64px.png" alt=""></a>
-                <a data-text="(+57) 300 871 82 17" onclick="ShowMenuSocialDetail(this)"   href="tel:+573008718217"><img src="./icons/cell_phone_64px.png" alt=""></a>
+                <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"   href="tel:+573105478093"><img src="./icons/cell_phone_64px.png" alt=""></a>
             </div>
             <div id="menuSocialDetail">
-
+                
             </div>
         </menu>
         
         <main id="main">
-            <!-- <div class="card">
-                <div class="cardContainerImg">
-                    <img class="cardImgElement" src="https://i.imgur.com/ZlCQ12T.jpg" alt="">
-                    <img class="cardImgElement" src="https://i.imgur.com/ZlCQ12T.jpg" alt="">
-                </div>
-                <div class="cardContainerImgNav">
-                    <img src="./icons/prev_24px.png" alt="prev">
-                    <img src="./icons/right_button_24px.png" alt="next">
-                </div>
-                <div class="cardContainerSocial">
-                    <a class="cardSocial" target="blank()" href="https://wa.me/3008718271"><img src="./icons/whatsapp_64px.png" alt=""></a>  
-
-                    <a class="cardSocial" target="blank()" href="https://www.facebook.com/yosoysanjuanero/"><img src="./icons/facebook_circled_64px.png" alt=""></a>
-
-                    <a class="cardSocial" target="blank()" href="https://www.instagram.com/soy.sanjuanero/"><img src="./icons/instagram_old_64px.png" alt=""></a>
-
-                    <a class="cardSocial" target="blank()" href="https://dja.red"><img src="./icons/website_64px.png" alt=""></a>
-
-                    <a class="cardSocial" target="blank()" href="mailto:info@soysanjuanero.store"><img src="./icons/email_64px.png" alt=""></a>
-
-                    <a class="cardSocial" target="blank()" href=tel:+573008718217><img src="./icons/cell_phone_64px.png" alt=""></a>
-
-                    <select name="selecciona" id="cardCant">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-
-                    <a class="cardSocial" target="blank()" href=tel:+573008718217><img src="./icons/add_shopping_cart_64px.png" alt=""></a>
-                </div>
-                <div class="cardText">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, ut quibusdam? Sit accusantium aliquam quis aliquid odit tempore, dolores, facilis eum laboriosam debitis id rem sequi, molestias possimus maxime fugiat.
-                </div>
-            </div> -->
+            <!-- cards -->
         </main>
         <div id ='overlay' onclick="ShowHideMenu()" ></div>
 
-        <div id="cardDetail" class="hide">
-            <i   class="material-icons cardDetailClose" onclick="hideShowCard(this.id)">close</i>
+        <div id="aboutDetail" class="hide">
+            <i   class="material-icons aboutDetailClose" onclick="hideAbout()">close</i>
             <div id="containerDetail">
-                <img class="cardDetailDiv" id="cardDetailImg" src="" alt=""></img>
-                <div class="cardDetailDiv" id="cardDetailTitle"></div>
-                <div class="cardDetailDiv" id="cardDetailText"></div>
-                <div class="cardDetailDiv" id="cardDetailTextAdd"></div>
-                <div class="cardDetailDiv" id="cardDetailLink"></div>
-                <div class="cardDetailDiv" id="cardDetailSpace"><br><br><br><br></div>
+                <!-- SoySanjuanero/San Juan Nepo -->
             </div>
-            <!-- <i   class="material-icons cardDetailClose" onclick="hideShowCard(this.id)">close</i> -->
         </div>  
 
         <div id="pieza1" class="pieza">

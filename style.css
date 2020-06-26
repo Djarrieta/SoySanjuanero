@@ -38,6 +38,9 @@ header{
 .rotate{
     transform: rotate(-90deg);
 }
+.headerSection a{
+    height: inherit;
+}
 #logo{
     height: 100%;
     font-size: 5px;
@@ -93,7 +96,9 @@ main{
     height: 25px;
     justify-content: center;
     margin: 5px 0;
-    
+}
+.cardContainerSocialList{
+    margin-left: 20px;
 }
 .cardSocial{
     height: inherit;
@@ -119,7 +124,7 @@ main{
 }
 
 .menu{
-    width: 170px;
+    width: 270px;
     height: 100vh;
     position: absolute;
     top: 35px;
@@ -128,19 +133,31 @@ main{
     transition: 800ms;
     background-color: white;
     box-shadow: 2px 2px 5px 0px rgba(48,48,48,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
 .hideMenu{
     left: -100vw;
 }
 .menuBoton{
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 170px;
+    height: 50px;
     cursor: pointer;
     border-radius: 20px;
     padding: 0 5px;
-    margin: 0 5px;
+    margin: 5px auto ;
+    padding: 0 0 0 10px;
+    border-bottom: rgba(48,48,48,0.2) solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    transition: 500ms;
+}
+.menuBoton:hover{
+    background-color: rgb(245, 245, 245);
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
 }
 .menuBoton a{
     display: flex;
@@ -153,6 +170,7 @@ main{
     height: 30px;
 }
 .menuSocial{
+    width: 170px;
     margin-top: 50px;
     text-align: center;
     word-break: break-word;
@@ -161,15 +179,14 @@ main{
     height: 40px;
     margin: 3px;
 }
+
 #menuSocialDetail{
     text-align: center;
     overflow-wrap: break-word;
     margin-top: 20px;
     font-size: 10px;
 }
-.menuBoton:hover{
-    background-color: rgb(230, 228, 228);
-}
+
 .menuBoton a p{
     margin-left: 5px;
 }
@@ -223,7 +240,7 @@ main{
 .lastPieza{
     display: none;
 }
-#cardDetail{
+#aboutDetail{
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -233,41 +250,39 @@ main{
     background-color: rgba(36, 36, 36, 0.85);
     z-index: 5;
 }
-.cardDetailClose{
-    width: 100%;
+.aboutDetailClose{
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
     height: 30px;
     color: white;
     cursor: pointer;
     text-align: right;
+
 }
 #containerDetail{
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
     background-color: white;
     overflow: hidden scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.cardDetailDiv{
-    width: 100vw;
-    max-width: 700px;
-    min-width: 350px;
-    background-color: white;
-    color: black;
+.detailImg{
+    width: 100%;
 }
-#cardDetailTitle{
-    font-weight: bolder;
-    text-transform: uppercase;
-    width: 95%;
-    padding-top: 10px;
+.detailTitle{
+    font-weight: 900;
+    font-size: 30px;
 }
-#cardDetailText{
-    width: 95%;
-    padding-top: 10px;
+.detailText{
+    width: 90%;
+    margin:10px auto 50px auto;
+
 }
-#cardDetailTextAdd{
-    width: 95%;
-    padding-top: 10px;
-}
+
 .hide{
     display: none !important;
 }
