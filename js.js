@@ -41,11 +41,15 @@ function createOneCard(item,i){
         newCard.appendChild(cardContainerImg);
             //cardImgElement img 
             let cardImgElement
+            let j=0
             for(let img of item.img){
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('class','cardImgElement')
                 cardImgElement.setAttribute('src',img)
+                cardImgElement.setAttribute('id','img '+j+' '+id)
+                cardImgElement.setAttribute('onclick','nextCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
                 cardContainerImg.appendChild(cardImgElement)
+                j++
             }
         //cardContainerImgNav
         if(item.img.length>1){
@@ -55,10 +59,14 @@ function createOneCard(item,i){
                 //cardContainerImgNav button prev
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('src','./icons/prev_24px.png')
+                cardImgElement.setAttribute('id','prev'+id)
+                cardImgElement.setAttribute('onclick','prevCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
                 cardContainerImgNav.appendChild(cardImgElement)
                 //cardContainerImgNav button next
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('src','./icons/right_button_24px.png')
+                cardImgElement.setAttribute('id','next'+id)
+                cardImgElement.setAttribute('onclick','nextCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
                 cardContainerImgNav.appendChild(cardImgElement)
         }
         //cardContainerSocial
@@ -88,7 +96,6 @@ function createOneCard(item,i){
                 //shop
                 createSocialElement(item.compra[0],'./icons/add_shopping_cart_64px.png',cardContainerSocial)
             }
-
         //cardText
         if(item.text){
             const cardText=document.createElement('div')
@@ -96,7 +103,6 @@ function createOneCard(item,i){
             cardText.innerHTML=item.text
             newCard.appendChild(cardText);
         }
-
 }
 //CREATE SOCIAL ELEMENT
 function createSocialElement(SocialElement,icon,cardContainerSocial){
@@ -114,6 +120,39 @@ function createSocialElement(SocialElement,icon,cardContainerSocial){
     }
 }
 
+//NEXT IMG
+function nextCardImgElement(card){
+
+    if(datos[parseInt(card.substring(card.length-3,card.length))].img.length==1) {return}
+    const c=$('#'+card + ' .cardContainerImg')
+    if(c.style.marginLeft==''){
+        c.style.marginLeft="-100vw"
+    }else{
+        const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
+        const leftMax=(datos[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-100
+        if(leftMax==leftIni){
+            c.style.marginLeft='0vw'
+        }else{
+            const leftFin=leftIni-100
+            c.style.marginLeft=leftFin+'vw'
+        }
+    }
+}
+//PREV IMG
+function prevCardImgElement(card){
+    const c=$('#'+card + ' .cardContainerImg')
+    const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
+    const leftMax=(datos[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-100
+    let leftFin;
+
+    if(c.style.marginLeft=='' ||c.style.marginLeft=='0vw'){
+        leftFin=leftMax+'vw'
+        c.style.marginLeft=leftFin
+    }else{
+        leftFin=100+parseInt(leftIni) 
+        c.style.marginLeft=leftFin+'vw'
+    }
+}
 //SHOW OR HIDE LATERAL MENU
 function ShowHideMenu(){
     const menu=$('.menu')
@@ -157,11 +196,6 @@ function showSanJuanNepo(){
     cardDetailText.innerHTML='Yo soy donde es la tierra del mico Colorado, donde la inteligencia es peste y es riega como la verdolaga. '
     cardDetailTextAdd.innerHTML='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit id laborum voluptas commodi, aperiam quidem temporibus natus consequatur libero quia veniam fuga, praesentium autem sequi rem facere reprehenderit, deleniti quisquam.     Perspiciatis, unde dolorum? Ut nihil fugit repellat sint nostrum eveniet perferendis perspiciatis quia quam corporis saepe, commodi harum consequuntur ex tempora omnis nobis magnam aspernatur officia modi voluptatibus illum sapiente.    Voluptatum quibusdam fugit debitis, laboriosam rem cupiditate nesciunt possimus delectus molestiae porro aliquam officiis quisquam quas tempora obcaecati veritatis nam corrupti iure perferendis ab reiciendis, soluta non! Cum, corporis impedit!    Labore sint illum iusto magni asperiores eos tempora. Pariatur impedit dolores et quisquam ad esse molestiae accusantium perferendis officiis reprehenderit optio, cum reiciendis est maxime labore? Incidunt quaerat quo facilis?    Nesciunt beatae dolores dolorem necessitatibus, cupiditate voluptates doloribus corporis rerum earum voluptatibus impedit doloremque veritatis, asperiores dolor exercitationem sequi blanditiis nisi dignissimos molestias quo vel eligendi incidunt consequatur! Voluptatem, velit.'
     cardDetail.classList.remove('hide')   
-}
-
-//SCROLL TO TOP ON MAIN
-function ScrollToTop(){
-    $('#main').scrollTop=0
 }
 //MOSTRAR DETALLES DE REDES SOCIALES
 function ShowMenuSocialDetail(cont){
