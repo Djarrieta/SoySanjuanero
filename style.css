@@ -38,13 +38,29 @@ header{
 .rotate{
     transform: rotate(-90deg);
 }
-.headerSection a{
+
+.headerSection span{
     height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.headerSection span img{
+    height: 50%;
 }
 #logo{
     height: 100%;
     font-size: 5px;
 }
+#menuBotonCarrito{
+    /* background-color: rgb(224, 224, 224); */
+}
+#menuBotonCarrito {
+    height: 40px;
+    width: 40px;
+}
+
 main{
     width: 100%;
     height: 100%;
@@ -190,6 +206,29 @@ main{
 .menuBoton a p{
     margin-left: 5px;
 }
+#menuFilter{
+    margin-top: 50px;
+}
+.menuFilterSearch{
+    box-shadow: 1px 1px 2px 1px rgba(138, 137, 137, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.menuFilterSearch:hover{
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    border: solid gray 1px;
+}
+.menuFilterSearch input{
+    border: none;
+    height: 1.5em;
+}
+
+.menuFilterSearch input:focus{
+    border: none;
+    outline: none;
+}
 
 #overlay {
     position: absolute;
@@ -226,7 +265,7 @@ main{
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     padding: 10px;
     background-color: white;
-    z-index: 5;
+    z-index: 4;
 }
 .pieza img{
     width: 100%;
@@ -282,6 +321,57 @@ main{
     margin:10px auto 50px auto;
 
 }
+#carrito{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 5;
+    background-color: rgba(90, 90, 90,.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carritoContainer{
+    background-color: white;
+    width: 100vw;
+    min-height: 90vh;
+    max-width: 500px;
+    min-width: 350px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+}
+.carritoTitle{
+    text-align: center;
+    font-size: 30px;
+    margin: 5px 0;
+}
+.carritoTable{
+    width: 100%;
+    margin:30px 0;
+}
+.carritoTable td, th, tr {
+    text-align: center;
+}
+.carritoTable th{
+    margin-top: 5px;
+}
+.carritoImg{
+    margin-top: 30px;
+    width: 100%;
+}
+.carritoIcons{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    
+}
+.carritoClear{
+    height: 1.5em;
+}
+
 
 .hide{
     display: none !important;
@@ -289,6 +379,9 @@ main{
 @media screen and (min-width: 1170px){
     #pieza1{
         display: block;
+    }
+    .headerSection{
+        margin: 0 40px;
     }
     .headerSection:first-child{
         display: none;

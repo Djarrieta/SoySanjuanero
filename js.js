@@ -1,4 +1,4 @@
-var datos
+var DATOS
 //SELECTOR 
 function $(selector){
     return document.querySelector(selector)
@@ -11,8 +11,8 @@ function traerDatos(){
     
     xhttp.onreadystatechange=function (){
         if(this.readyState==4 && this.status==200){
-            datos=JSON.parse(this.responseText) 
-            createCards(datos)
+            DATOS=JSON.parse(this.responseText) 
+            createCards(DATOS)
         }
     }
 }
@@ -81,21 +81,28 @@ function createOneCard(item,i){
             createSocialElement(item.socialEmail,'./icons/email_64px.png',cardContainerSocial)
             createSocialElement(item.socialTel,'./icons/cell_phone_64px.png',cardContainerSocial)
             //quantity selection
-            if(item.compra && item.compra.length>0){
+            if(item.tipo=='producto'){
                 const quantitySelection=document.createElement('select')
                 quantitySelection.setAttribute('name','Selecciona')
                 quantitySelection.setAttribute('class','cardContainerSocialList')
                 quantitySelection.setAttribute('id','cant'+id)
                 cardContainerSocial.appendChild(quantitySelection)
                     //quantity selection value
-                    for(let j=1;j<item.compra.length+1;j++){
+                    for(let j=1;j<=5;j++){
                         const quantitySelectionValue=document.createElement('option')
                         quantitySelectionValue.setAttribute('value',j)
                         quantitySelectionValue.innerHTML=j
                         quantitySelection.appendChild(quantitySelectionValue)
                     }
-                //shop
-                createSocialElement(item.compra[0],'./icons/add_shopping_cart_64px.png',cardContainerSocial)
+                //crea icono de compra
+                const cardSocial=document.createElement('div')
+                cardSocial.setAttribute('class','cardSocial')
+                cardSocial.setAttribute('onclick','agregarAlCarrito()')
+                cardContainerSocial.appendChild(cardSocial)
+                    //cardSocial img
+                    const cardSocialImg=document.createElement('img')
+                    cardSocialImg.setAttribute('src','./icons/add_shopping_cart_64px.png')
+                    cardSocial.appendChild(cardSocialImg)
             }
         //cardText
         if(item.text){
@@ -124,14 +131,14 @@ function createSocialElement(SocialElement,icon,cardContainerSocial){
 //NEXT IMG
 function nextCardImgElement(card){
     
-    if(datos[parseInt(card.substring(card.length-3,card.length))].img.length==1) {return}
+    if(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length==1) {return}
     const c=$('#'+card + ' .cardContainerImg')
     const w=parseInt($('#'+card).offsetWidth) 
     if(c.style.marginLeft==''){
         c.style.marginLeft="-"+w+"px"
     }else{
         const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-        const leftMax=(datos[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
+        const leftMax=(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
         if(leftMax==leftIni){   
             c.style.marginLeft='0px'
         }else{
@@ -145,7 +152,7 @@ function prevCardImgElement(card){
     const c=$('#'+card + ' .cardContainerImg')
     const w=parseInt($('#'+card).offsetWidth)
     const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-    const leftMax=(datos[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
+    const leftMax=(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
     let leftFin;
 
     if(c.style.marginLeft=='' ||c.style.marginLeft=='0px'){
@@ -169,6 +176,34 @@ function ShowHideMenu(){
         menu.classList.add('hideMenu') 
         overlay.classList.remove('showOverlay')
         sandwich.classList.remove('rotate')
+    }
+}
+// SEARCH HISTORIES
+function seleccionarTodoInput(t){
+    t.select()
+}
+function buscarHistoria(){
+    let i=0
+    const c=document.querySelectorAll('.card')
+    const menuFilterInput=$('#menuFilterInput')
+
+    c.forEach(x=>x.classList.remove('hide'))
+
+    if(menuFilterInput.value.length>2){
+        DATOS.forEach(item=>{
+            if(item.text){
+                if(!item.text.includes(menuFilterInput.value)){
+                    let id='00000'+i
+                    id='#card'+id.substr(id.length-3,3)
+                    $(id).classList.add('hide')
+                }
+            }else{
+                let id='00000'+i
+                id='#card'+id.substr(id.length-3,3)
+                $(id).classList.add('hide')
+            }
+            i++
+        })
     }
 }
 
@@ -237,7 +272,20 @@ function ShowMenuSocialDetail(cont){
 function scrollToTop(){
     $('#main').scrollTop= 0
 }
-
+//agregarAlCarrito
+function agregarAlCarrito(){
+    $('#menuBotonCarrito').style.backgroundColor= '#e0e0e0';
+    $('#menuBotonCarrito img').src="./icons/buying_64px.png"
+}
+//SHOW CARRITO
+function showCarrito(){
+    $("#carrito").classList.remove('hide')
+}
+//WOMPY BUTTON
+function wompyButton(){
+    $('.waybox-button').innerHTML='Pago Seguro'
+}
 //USAGE
 traerDatos()
+wompyButton()
 
