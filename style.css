@@ -142,6 +142,7 @@ main{
 .menu{
     width: 270px;
     height: 100vh;
+    min-height: 500px;
     position: absolute;
     top: 35px;
     left: 0;/* -100vw; */
