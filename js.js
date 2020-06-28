@@ -192,7 +192,9 @@ function buscarHistoria(){
     if(menuFilterInput.value.length>2){
         DATOS.forEach(item=>{
             if(item.text){
-                if(!item.text.includes(menuFilterInput.value)){
+                const t=item.text.toUpperCase()
+                const m=menuFilterInput.value.toUpperCase()
+                if(!t.includes(m)){
                     let id='00000'+i
                     id='#card'+id.substr(id.length-3,3)
                     $(id).classList.add('hide')
