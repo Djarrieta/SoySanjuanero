@@ -5,11 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SoySanjuanero</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="logoSoySanjuanero.png" type="image/x-icon">
+        <link rel="shortcut icon" href="./icons/logoSoySanjuanero.png" type="image/x-icon">
         <!-- Google Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
+        <!-- wompi -->
+        <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
     </head>
     <body>
         <header>
@@ -17,7 +19,7 @@
                 <i onclick="ShowHideMenu()" id="sandwich" class="material-icons">widgets</i>
             </div>
             <div class="headerSection">
-                <span onclick="scrollToTop()"><img id="logo" src="logoSoySanjuanero.png" alt="LogoSoySanjuanero"></span>
+                <span onclick="scrollToTop()"><img id="logo" src="./icons/logoSoySanjuanero.png" alt="LogoSoySanjuanero"></span>
             </div>
             <div class="headerSection">
                 <span id="menuBotonCarrito" onclick="showCarrito()"><img  src="./icons/shopping_cart_64px.png" alt="LogoSoySanjuanero"></span>
@@ -28,7 +30,7 @@
                 <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
             </div> -->
             <div class="menuBoton">
-                <a onclick="showSoySanjuanero()"><img src="logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
+                <a onclick="showSoySanjuanero()"><img src="./icons/logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
             </div>
             <div class="menuBoton" >
                 <a onclick="showSanJuanNepo()"><img src="https://i.imgur.com/vAGXP1z.png" alt=""><p>San Juan Nepo.</p> </a>
@@ -63,60 +65,18 @@
             </div>
         </div> 
         <div id="carrito" class="hide">
-            <div class="carritoContainer">
-                <div class="carritoIcons">
-                    <img class="carritoClear" src="./icons/clear_shopping_cart_64px.png" alt="">
-                    <i class="carritoClose material-icons">close</i>
-                </div>
-                <div class="carritoTitle">
-                    Carro de compras
-                </div>
-                <table class="carritoTable">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Cant</th>
-                        <th>Precio</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>producto1</td>
-                        <td>1</td>
-                        <td>$10.000</td>
-                        <td>$10.000</td>
-                    </tr>
-                    <tr>
-                        <td>producto2</td>
-                        <td>1</td>
-                        <td>$10.000</td>
-                        <td>$10.000</td>
-                    </tr>
-                    <tr>
-                        <td>producto3</td>
-                        <td>1</td>
-                        <td>$10.000</td>
-                        <td>$10.000</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>$300.000</th>
-                    </tr>
-                </table>
-                <!-- BOTON DE PAGOS WOMPI 
-                Id con fecha unica ydddsssss -->
-                <form>
+            <div class='carritoContainer'>
+<!--                 <form>
                     <script
-                    src="https://checkout.wompi.co/widget.js"
-                    data-render="button"
-                    data-public-key="pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh"
-                    data-currency="COP"
-                    data-amount-in-cents="1000000"
-                    data-reference="20-179-86400"
-                    >
+                      src="https://checkout.wompi.co/widget.js"
+                      data-render="button"
+                      data-public-key="pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh"
+                      data-currency="COP"
+                      data-amount-in-cents="4950000"
+                      data-reference="20-179-86400"
+                      >
                     </script>
-                </form>
-                <img class="carritoImg" src="./icons/Line.png" alt="">
+                  </form> -->
             </div>
         </div> 
 

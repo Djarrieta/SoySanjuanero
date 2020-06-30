@@ -1,4 +1,7 @@
 var DATOS
+var CARRITO=[]
+var checkout
+
 //SELECTOR 
 function $(selector){
     return document.querySelector(selector)
@@ -81,7 +84,7 @@ function createOneCard(item,i){
             createSocialElement(item.socialEmail,'./icons/email_64px.png',cardContainerSocial)
             createSocialElement(item.socialTel,'./icons/cell_phone_64px.png',cardContainerSocial)
             //quantity selection
-            if(item.tipo=='producto'){
+            if(item.store){
                 const quantitySelection=document.createElement('select')
                 quantitySelection.setAttribute('name','Selecciona')
                 quantitySelection.setAttribute('class','cardContainerSocialList')
@@ -97,7 +100,8 @@ function createOneCard(item,i){
                 //crea icono de compra
                 const cardSocial=document.createElement('div')
                 cardSocial.setAttribute('class','cardSocial')
-                cardSocial.setAttribute('onclick','agregarAlCarrito()')
+                cardSocial.setAttribute('onclick','agregarAlCarrito(this)')
+                cardSocial.setAttribute('id','add'+id)
                 cardContainerSocial.appendChild(cardSocial)
                     //cardSocial img
                     const cardSocialImg=document.createElement('img')
@@ -191,6 +195,11 @@ function buscarHistoria(){
 
     if(menuFilterInput.value.length>2){
         DATOS.forEach(item=>{
+            if(!item.text && !item.hiddenText){
+                let id='00000'+i
+                id='#card'+id.substr(id.length-3,3)
+                $(id).classList.add('hide');
+            }
             if(item.text){
                 const t=item.text.toUpperCase()
                 const m=menuFilterInput.value.toUpperCase()
@@ -199,11 +208,20 @@ function buscarHistoria(){
                     id='#card'+id.substr(id.length-3,3)
                     $(id).classList.add('hide')
                 }
-            }else{
-                let id='00000'+i
-                id='#card'+id.substr(id.length-3,3)
-                $(id).classList.add('hide')
             }
+            if(item.hiddenText){
+                const ht=item.hiddenText.toUpperCase()
+                const m=menuFilterInput.value.toUpperCase()
+                if(!ht.includes(m)){
+                    let id='00000'+i
+                    id='#card'+id.substr(id.length-3,3)
+                    $(id).classList.add('hide')
+                }else{
+                    let id='00000'+i
+                    id='#card'+id.substr(id.length-3,3)
+                    $(id).classList.remove('hide')
+                }
+            };
             i++
         })
     }
@@ -275,19 +293,85 @@ function scrollToTop(){
     $('#main').scrollTop= 0
 }
 //agregarAlCarrito
-function agregarAlCarrito(){
+function agregarAlCarrito(obj){
     $('#menuBotonCarrito').style.backgroundColor= '#e0e0e0';
     $('#menuBotonCarrito img').src="./icons/buying_64px.png"
+    const numCard=obj.id.substring(obj.id.length-3,obj.id.length)
+    const cant=parseInt($('#cantcard'+numCard).value) 
+    const name=DATOS[parseInt(numCard)].name
+    const price=DATOS[parseInt(numCard)].price
+    
+    CARRITO.push([name,cant,price, cant*price])
+}
+//VACIAR CARRITO
+function vaciarCarrito(){
+    CARRITO=[]
 }
 //SHOW CARRITO
 function showCarrito(){
-    $("#carrito").classList.remove('hide')
+    const carrito=$("#carrito")
+    carrito.classList.remove('hide')
+
+    const carritoContainer=$('.carritoContainer')
+
+    carritoContainer.innerHTML+="<div class='carritoIcons'><img class='carritoClear' onclick='abrirPagos()' src='./icons/clear_shopping_cart_64px.png' alt=''><i class='carritoClose material-icons'>close</i></div><div class='carritoTitle'>Carro de compras</div><img class='carritoImg' src='./icons/Line.png' alt=''><table class='carritoTable'><tr><th>Producto</th><th>Cant</th>    <th>Precio</th><th>Total</th></tr></table>"
+    
+    const carritoTable=$('.carritoTable')
+    CARRITO.forEach(x=>{
+        const carritoTableTr=document.createElement('tr')
+        carritoTable.appendChild(carritoTableTr)
+        //Nombre
+        const carritoTableTdName=document.createElement('td')
+        carritoTableTdName.innerHTML=x[0]
+        carritoTableTr.appendChild(carritoTableTdName)
+        //Cantidad
+        const carritoTableTdCant=document.createElement('td')
+        carritoTableTdCant.innerHTML=x[1]
+        carritoTableTr.appendChild(carritoTableTdCant)
+        //Precio
+        const carritoTableTdPrice=document.createElement('td')
+        if(x[2]){
+            carritoTableTdPrice.innerHTML='$'+(x[2]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }else{
+            carritoTableTdPrice.innerHTML='$'+(0).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+        carritoTableTr.appendChild(carritoTableTdPrice)
+        //Total
+        const carritoTableTdTotal=document.createElement('td')
+        if(x[3]){
+            carritoTableTdTotal.innerHTML='$'+(x[3]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }else{
+            carritoTableTdTotal.innerHTML='$'+(0).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+        carritoTableTr.appendChild(carritoTableTdTotal)
+    })
+
+    const t=CARRITO.map(x=>x[3])
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const totalEnCentavos=t.reduce(reducer)*100
+
+    carritoContainer.innerHTML+="<span>" + '$'+(totalEnCentavos/100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</span><br><input type='button' onclick='abrirPagos()'>"
+
+    checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: totalEnCentavos,
+        reference: 'Articulos Soy Sanjuanero',
+        publicKey: 'pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh',
+      })
 }
 //WOMPY BUTTON
-function wompyButton(){
-    $('.waybox-button').innerHTML='Pago Seguro'
+function abrirPagos(){
+    checkout.open(function ( result ) {
+        var transaction = result.transaction
+        console.log('Transaction ID: ', transaction.id)
+        console.log('Transaction object: ', transaction)
+      })
 }
+
+
 //USAGE
 traerDatos()
-wompyButton()
+//wompyButton()
+
+
 
