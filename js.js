@@ -84,7 +84,7 @@ function createOneCard(item,i){
             createSocialElement(item.socialEmail,'./icons/email_64px.png',cardContainerSocial)
             createSocialElement(item.socialTel,'./icons/cell_phone_64px.png',cardContainerSocial)
             //quantity selection
-            if(item.store){
+            if(item.nameStore){
                 const quantitySelection=document.createElement('select')
                 quantitySelection.setAttribute('name','Selecciona')
                 quantitySelection.setAttribute('class','cardContainerSocialList')
