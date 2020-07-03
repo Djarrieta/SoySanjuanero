@@ -1,34 +1,79 @@
-var DATOS
-var CARRITO=[]
-var checkout
+new Vue({
+    el:'#app',
+    data(){
+        return{
+            shoppingCartIcon:"https://i.imgur.com/wYzc7p1.png",
+            shoppingCartAlt:"ShoppingCartEmpty",
+            stories:DATOS,
+            overlayAboutValue:false,
+            aboutObj:"",
+            aboutImg:"",
+            aboutTitle:"",
+            aboutText:""
+        }
+    },
+    methods:{
+        showHideAbout(aboutObj){
+            this.overlayAboutValue=!this.overlayAboutValue
+            if(aboutObj==="SoySanjuanero"){
+                this.aboutTitle="SOY SANJUANERO"
+                this.aboutImg="https://i.imgur.com/iAsv8NK.jpg"
+                this.aboutText=`San Juan Nepomuceno es un municipio ubicado en la parte norte del departamento de Bolívar.  Rico en cultura, gastronomía e historia. 
+                
+                Éste municipio  además pertenece a la región de Los Montes De María, es reconocido por el Santuario de Flora y Fauna Los Colorados.  #SoySanjuanero inicia sus labores en el año 2.017, cuando un grupo de amigos locales identifican que dentro de cada  ámbito cultural presente en este municipio, siempre existe una historia que contar, por lo tanto, se conforma un grupo de trabajo colectivo que se da a la tarea de investigar,  documentar y difundir a través de escritos, imágenes y videos las vivencias que resaltan lo que es ser sanjuanero.  
+                
+                #SoySanjuanero no tiene color político, su trabajo es netamente independiente, fuera de cualquier tipo de  intervención pública o privada. Sin embargo, su raíz  principal se sostiene gracias al valor que cada uno de ustedes como sociedad nos brinda para seguir avanzando en este hermoso proyecto.`
+
+            } else{
+                this.aboutTitle="SAN JUAN NEPOMUCENO"
+                this.aboutImg="https://i.imgur.com/62c5vfr.jpg"
+                this.aboutText =`San Juan Nepomuceno es la tierra donde se puya bastante ñame y yuca harinosa con suero atollabuey, queso finquero y machucao de ají chivato. Aquí te embarrutas el bigote de merengue y dulce de leche saboreando una galleta maria luisa y además somos la tierra donde suena la abarca tres puntá del campesino y rebuzna el burro avisando que llegó el bastimento.  
+                
+                Somos la tierra donde la cultura y la inteligencia es peste y se riega como la verdolaga en playón, estamos repletos de gente servicial, ponedera de sebo y con berraquera pa echá pa lante cualquier situación.  Fue fundado durante la época de la Colonia, el  10 de agosto  de  1776 , por Antonio de la Torre y Miranda, cuando llegó al valle de los Carretos trayendo consigo las primeras familias provenientes de Pileta (hoy Corozal) y de San Benito de Abad; estas familias estuvieron constituidas por 120 personas. El 11 de mayo de 1779 se protocolizaron los límites y las actas de posesión de los ejidos y distritos de San Juan y San Cayetano ante el escribano del Carmen, fue declarado municipio en el año de 1870. Luego se organiza la población convirtiéndose en un centro de mercadeo regional.  Según los restos arqueológicos encontramos en la región que este sitio estuvo habitado durante épocas muy remotas por grupos indígenas de la cultura denominada Malibues que pertenecían a la gran familia Caribe, estos nos dejaron como legado cultural el uso del bejuco Malibú, utilizaron la construcción de casas y corrales. 
+                
+                Vivían en una etapa conocida en la arqueología americana Colombiana como Paleóindio Arcaico, cuyas principales características son: recolección de frutas y raíces, fabricación de una cerámica rústica con grabaciones zoomorfas. Estos restos señalan los primeros asentamientos indígenas de Colombia y se localizan en la costa norte del país, remontándose a una antigüedad de 400 a 1000 años a. C. En la época federal colombiana perteneció a la Provincia del Carmen en el Estado Soberano de Bolívar.`
+            }
+            
+        }
+    }
+})
+
 
 //SELECTOR 
 function $(selector){
     return document.querySelector(selector)
 }
-//READ JSON
-function traerDatos(){
-    var xhttp=new XMLHttpRequest();
-    xhttp.open("GET","historias.json",true);
-    xhttp.send();
-    
-    xhttp.onreadystatechange=function (){
-        if(this.readyState==4 && this.status==200){
-            DATOS=JSON.parse(this.responseText) 
-            createCards(DATOS)
-        }
+//SCROLL TO TOP
+function scrollToTop(){
+    $('#main').scrollTop= 0
+}
+//SHOW OR HIDE LATERAL MENU
+function ShowHideMenu(){
+    const menu=$('.menu')
+    const overlay=$('#overlayMenu')
+    const sandwich=$('#sandwich')
+    if(menu.classList.contains('hideMenu')){
+        menu.classList.remove('hideMenu')
+        overlay.classList.add('showoverlayMenu')
+        sandwich.classList.add('rotate')
+    }else{
+        menu.classList.add('hideMenu') 
+        overlay.classList.remove('showoverlayMenu')
+        sandwich.classList.remove('rotate')
     }
 }
-//CREATE CARDS
-function createCards(itemJson){
-    var i=0;
-    for(let item of itemJson){
-        if(item.img.length>0){
-            createOneCard(item,i)
-            i++;
-        }
-    }    
+
+//MOSTRAR DETALLES DE REDES SOCIALES
+function ShowMenuSocialDetail(cont){
+    $('#menuSocialDetail').innerHTML=cont.dataset.text
 }
+
+
+/* var CARRITO=[]
+var checkout
+
+
+
 //CREATE SINGLE CARD
 function createOneCard(item,i){
     //card
@@ -167,21 +212,7 @@ function prevCardImgElement(card){
         c.style.marginLeft=leftFin+'px'
     }
 }
-//SHOW OR HIDE LATERAL MENU
-function ShowHideMenu(){
-    const menu=$('.menu')
-    const overlay=$('#overlay')
-    const sandwich=$('#sandwich')
-    if(menu.classList.contains('hideMenu')){
-        menu.classList.remove('hideMenu')
-        overlay.classList.add('showOverlay')
-        sandwich.classList.add('rotate')
-    }else{
-        menu.classList.add('hideMenu') 
-        overlay.classList.remove('showOverlay')
-        sandwich.classList.remove('rotate')
-    }
-}
+
 // SEARCH HISTORIES
 function seleccionarTodoInput(t){
     t.select()
@@ -288,10 +319,7 @@ function showSanJuanNepo(){
 function ShowMenuSocialDetail(cont){
     $('#menuSocialDetail').innerHTML=cont.dataset.text
 }
-//SCROLL TO TOP
-function scrollToTop(){
-    $('#main').scrollTop= 0
-}
+
 //agregarAlCarrito
 function agregarAlCarrito(obj){
     $('#menuBotonCarrito').style.backgroundColor= '#e0e0e0';
@@ -372,6 +400,6 @@ function abrirPagos(){
 //USAGE
 traerDatos()
 //wompyButton()
-
+ */
 
 

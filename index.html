@@ -14,93 +14,148 @@
         <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
     </head>
     <body>
-        <header>
-            <div class="headerSection">
-                <i onclick="ShowHideMenu()" id="sandwich" class="material-icons">widgets</i>
+        <div id="app">
+            <header>
+                <div class="headerSection">
+                    <i 
+                        onclick="ShowHideMenu()" 
+                        id="sandwich" 
+                        class="material-icons"
+                    >widgets</i>
+                </div>
+                <div class="headerSection">
+                    <span>
+                        <img 
+                            onclick="scrollToTop()" 
+                            id="logo" 
+                            src="./icons/logoSoySanjuanero.png" 
+                            alt="LogoSoySanjuanero"
+                        >
+                    </span>
+                </div>
+                <div class="headerSection">
+                    <span id="menuBotonCarrito">
+                        <img  
+                            v-bind:src="shoppingCartIcon" 
+                            v-bind:alt="shoppingCartAlt">
+                    </span>
+                </div>
+            </header>
+             
+            <main id="main" >
+                <!-- cards -->
+                <div v-for="story in stories" class="card">
+                    <div class="cardContainerImg">
+                        <img v-for="img in story.img" class="cardImgElement" v-bind:src="img" alt="">
+                        <div class="cardContainerImgNav">
+                            
+                        </div>
+                    </div>
+                    <div class="cardContainerSocial">
+
+                    </div>
+                    <div class="cardText" v-if="story.text">
+                        {{ story.text }}
+                    </div>
+                </div>
+            </main>
+
+            <div id ='overlayMenu' onclick="ShowHideMenu()">
             </div>
-            <div class="headerSection">
-                <span onclick="scrollToTop()"><img id="logo" src="./icons/logoSoySanjuanero.png" alt="LogoSoySanjuanero"></span>
+            <menu class="menu hideMenu">
+    <!--             <div class="menuBoton">
+                    <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
+                </div> -->
+                <div class="menuBoton">
+                    <a @click="showHideAbout('SoySanjuanero')"><img src="./icons/logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
+                </div>
+                <div class="menuBoton" >
+                    <a  @click="showHideAbout('SanJuanNepo')"><img src="https://i.imgur.com/vAGXP1z.png" alt=""><p>San Juan Nepo.</p> </a>
+                </div>
+                <div class="menuBoton">
+                    <a onclick="showAbout()"><img src="/icons/online_support_64px.png" alt=""><p>Contacto</p> </a>
+                </div>
+                <div class="menuSocial">
+                    <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://wa.me/573105478093"><img src="./icons/whatsapp_64px.png" alt=""></a>
+                    <a data-text="https://www.facebook.com/ yosoysanjuanero/" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://www.facebook.com/yosoysanjuanero/"><img src="./icons/facebook_circled_64px.png" alt=""></a>
+                    <a data-text="https://www.instagram.com/ soy.sanjuanero/" onclick="ShowMenuSocialDetail(this)"  target  ="blank()" href="https://www.instagram.com/soy.sanjuanero/"><img src="./icons/instagram_old_64px.png" alt=""></a>
+                    <a data-text="info@soysanjuanero.store" onclick="ShowMenuSocialDetail(this)"  href="mailto:info@soysanjuanero.store"><img src="./icons/email_64px.png" alt=""></a>
+                    <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"   href="tel:+573105478093"><img src="./icons/cell_phone_64px.png" alt=""></a>
+                </div>
+                <div id="menuSocialDetail">
+    
+                </div>
+    <!--             <div id="menuFilter">
+                    <span class="menuFilterSearch"><i class="material-icons">search</i><input type="text" name="filtro" id="menuFilterInput" onchange="buscarHistoria()" onfocus="seleccionarTodoInput(this)" placeholder="Buscar..."></span>
+                </div> -->
+            </menu>
+            <div id="OverlayAbout" v-if="overlayAboutValue">
+                <div class="aboutContainer">
+                    <div class="aboutIcons">
+                        <i @click="showHideAbout" class="material-icons">keyboard_backspace</i>
+                    </div>
+                    <img v-bind:src="aboutImg" alt="" class="aboutImg">
+                    <span class="aboutTitle">
+                        {{ aboutTitle }}
+                    </span>
+                    <p class="aboutText">
+                        {{ aboutText }}
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </div>
             </div>
-            <div class="headerSection">
-                <span id="menuBotonCarrito" onclick="showCarrito()"><img  src="./icons/shopping_cart_64px.png" alt="LogoSoySanjuanero"></span>
-            </div>
-        </header>
-        <menu class="menu hideMenu">
-<!--             <div class="menuBoton">
-                <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
+
+            
+<!--             <div id="overlayDetail">
+
             </div> -->
-            <div class="menuBoton">
-                <a onclick="showSoySanjuanero()"><img src="./icons/logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
+    
+<!--             <div id="aboutDetail" class="hide">
+                <i   class="material-icons aboutDetailClose" onclick="hideAbout()">close</i>
+                <div id="containerDetail">
+                    SoySanjuanero/San Juan Nepo
+                </div>
+            </div>  -->
+<!--             <div id="carrito" class="hide">
+                <div class='carritoContainer'>
+                    <form>
+                        <script
+                          src="https://checkout.wompi.co/widget.js"
+                          data-render="button"
+                          data-public-key="pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh"
+                          data-currency="COP"
+                          data-amount-in-cents="4950000"
+                          data-reference="20-179-86400"
+                          >
+                        </script>
+                      </form>
+                </div>
+            </div> --> 
+    
+            <div id="pieza1" class="pieza">
+    
+                <img  src="" alt="pieza">
+    
+                <img  src="https://i.imgur.com/56DOmgl.jpg" alt="pieza">
+    
+                <img class="lastPieza" src="" alt="pieza">
             </div>
-            <div class="menuBoton" >
-                <a onclick="showSanJuanNepo()"><img src="https://i.imgur.com/vAGXP1z.png" alt=""><p>San Juan Nepo.</p> </a>
+            <div id="pieza2" class="pieza">
+                <img  src="" alt="pieza">
+    
+                <img  src="" alt="pieza">
+    
+                <img class="lastPieza" src="" alt="pieza">
             </div>
-            <div class="menuBoton">
-                <a onclick="showAbout()"><img src="/icons/online_support_64px.png" alt=""><p>Contacto</p> </a>
-            </div>
-            <div class="menuSocial">
-                <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://wa.me/573105478093"><img src="./icons/whatsapp_64px.png" alt=""></a>
-                <a data-text="https://www.facebook.com/ yosoysanjuanero/" onclick="ShowMenuSocialDetail(this)"  target="blank()" href="https://www.facebook.com/yosoysanjuanero/"><img src="./icons/facebook_circled_64px.png" alt=""></a>
-                <a data-text="https://www.instagram.com/ soy.sanjuanero/" onclick="ShowMenuSocialDetail(this)"  target  ="blank()" href="https://www.instagram.com/soy.sanjuanero/"><img src="./icons/instagram_old_64px.png" alt=""></a>
-                <a data-text="info@soysanjuanero.store" onclick="ShowMenuSocialDetail(this)"  href="mailto:info@soysanjuanero.store"><img src="./icons/email_64px.png" alt=""></a>
-                <a data-text="(+57) 310 547 80 93" onclick="ShowMenuSocialDetail(this)"   href="tel:+573105478093"><img src="./icons/cell_phone_64px.png" alt=""></a>
-            </div>
-            <div id="menuSocialDetail">
-
-            </div>
-<!--             <div id="menuFilter">
-                <span class="menuFilterSearch"><i class="material-icons">search</i><input type="text" name="filtro" id="menuFilterInput" onchange="buscarHistoria()" onfocus="seleccionarTodoInput(this)" placeholder="Buscar..."></span>
-            </div> -->
-        </menu>
-         
-        <main id="main">
-            <form class="card" target="_self" method="POST" id="mG61Hd">
-                <input type="text" name="YPqjbf">
-                <input type="text" name="YPqjbf">
-                <input type="Submit" value="Submit">
-            </form>
-            <!-- cards -->
-        </main>
-        <div id ='overlay' onclick="ShowHideMenu()" ></div>
-
-        <div id="aboutDetail" class="hide">
-            <i   class="material-icons aboutDetailClose" onclick="hideAbout()">close</i>
-            <div id="containerDetail">
-                <!-- SoySanjuanero/San Juan Nepo -->
-            </div>
-        </div> 
-        <div id="carrito" class="hide">
-            <div class='carritoContainer'>
-<!--                 <form>
-                    <script
-                      src="https://checkout.wompi.co/widget.js"
-                      data-render="button"
-                      data-public-key="pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh"
-                      data-currency="COP"
-                      data-amount-in-cents="4950000"
-                      data-reference="20-179-86400"
-                      >
-                    </script>
-                  </form> -->
-            </div>
-        </div> 
-
-        <div id="pieza1" class="pieza">
-
-            <img  src="https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/s960x960/101473886_1119970741720247_4024786133362671616_o.jpg?_nc_cat=111&_nc_sid=2d5d41&_nc_eui2=AeE3UY5FuGO8Y4OyKzxm-K-RIQw6myvDC8ohDDqbK8MLyu_WnHK9kRwm3FkZnNYiy1k&_nc_ohc=x6a8ZmWguYUAX9qacGH&_nc_ht=scontent.fctg1-1.fna&_nc_tp=7&oh=370605bffc4d85f5a1a2738bd28a4186&oe=5F192A2A" alt="pieza">
-
-            <img  src="https://i.imgur.com/56DOmgl.jpg" alt="pieza">
-
-            <img class="lastPieza" src="https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/s960x960/82453135_1119114691805852_4671525912271912960_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeGwjhmfKtiyLs_VzQaQT4kIKGlI0DcJ7u4oaUjQNwnu7rOhLJXUKatC1dHRmOh4B_M&_nc_ohc=FvEf5_5TAtEAX8v8Y9o&_nc_ht=scontent.fctg1-1.fna&_nc_tp=7&oh=964893df403ee73d9962ad8e3a21f868&oe=5F19415C" alt="pieza">
         </div>
-        <div id="pieza2" class="pieza">
-            <img  src="https://scontent.fctg1-2.fna.fbcdn.net/v/l/t1.0-9/s960x960/101421337_1120816801635641_2835130945999208448_o.jpg?_nc_cat=109&_nc_sid=2d5d41&_nc_eui2=AeFUft4cZKDWufC297ePrbEd6FLlbXPI4_3oUuVtc8jj_Whs_arD-FkwIDG7TNw042E&_nc_ohc=5AsLstR7Wl4AX-9I2BV&_nc_ht=scontent.fctg1-2.fna&_nc_tp=7&oh=3f87643cb8bb2d059a7d6b12f9b48806&oe=5F1781BC" alt="pieza">
-
-            <img  src="https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/p960x960/104545188_1135596680157653_3389598500915374435_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeH3cB-acrFC3ER353PTJpVrrHRGLenPBjysdEYt6c8GPFwnfJkjdFlJMF4qJ0mcmX4&_nc_ohc=QM6H2krinPAAX_ihE94&_nc_ht=scontent.fctg1-1.fna&_nc_tp=6&oh=6a8b0636fed4f8492e7d43a9333e4da2&oe=5F18E21A" alt="pieza">
-
-            <img class="lastPieza" src="https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/s960x960/101721294_1121698681547453_5069905676826836992_o.jpg?_nc_cat=101&_nc_sid=110474&_nc_eui2=AeFuPj89MXAdo920iS6HBfXpvrdj-VJwu6i-t2P5UnC7qAqZ03ZDqUK093ycqFC-gsM&_nc_ohc=DftvBcpRtVgAX-JU5kX&_nc_ht=scontent.fctg1-1.fna&_nc_tp=7&oh=ca7815d225a47565043e8f55dbd8748b&oe=5F188168" alt="pieza">
-        </div>
-       
+        <!-- VueJs -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <!-- historias -->
+        <script src="historias.js"></script>
         <script src="js.js"></script>
     </body>
 </html>
