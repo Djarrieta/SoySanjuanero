@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoySanjuanero</title>        
+    <link rel="shortcut icon" href="./icons/logoSoySanjuanero.png" type="image/x-icon">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebase/init.js"></script>
+</head>
+<body>
+    <div class="container">
+        <input id="pieza1" type="text" placeholder="Link de una pieza publicitaria">
+        <input id="pieza2" type="text" placeholder="Link de una pieza publicitaria">
+        <input id="pieza3" type="text" placeholder="Link de una pieza publicitaria">
+        <input id="pieza4" type="text" placeholder="Link de una pieza publicitaria">
+        <input id="pieza5" type="text" placeholder="Link de una pieza publicitaria">
+        <input id="pieza6" type="text" placeholder="Link de una pieza publicitaria">
+        <input type="button" value="Modificar Piezas" onclick="enviarDatos()">
+    </div>
+    <script src="../scripts/config.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pieza{
+    position: absolute;
+    width: 190px;
+    top: 70px;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    padding: 10px;
+    background-color: white;
+    z-index: 4;
+}
+.pieza img{
+    width: 100%;
+}
+#pieza1{
+    right: 20px; 
+}
+#pieza2{
+    right: 240px; 
+}
+</style>
