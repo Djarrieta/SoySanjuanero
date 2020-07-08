@@ -7,18 +7,22 @@ const DATOS=
         "socialWhatsapp":"https://wa.me/573043521051", 
         "socialTel":"tel:3105478093", 
         "nameStore":"MUG PERSONALIZADO", 
-        "price":15000}
+        "price":15000
+    }
     ,{
     
         "img":[ "https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/101956045_1123204094730245_8804150117681874639_n.jpg?_nc_cat=106&_nc_sid=110474&_nc_eui2=AeHXHVpUSe9bIgiJYB6WBSLQYHB_g1Brbl1gcH-DUGtuXUU7W1XsP5f9uaXv6CQvwm4&_nc_ohc=zA69SKYWWi0AX_22FD7&_nc_ht=scontent.fbaq5-1.fna&oh=1e46da4988c3e90d8af27cb281d56564&oe=5F1E2ACC"], 
         "socialWhatsapp":"https://wa.me/573204621236", 
         "socialTel":"tel:3204621236", 
         "nameStore":"Bandeja de deditos X 10 UND", 
-        "price":5000}
+        "price":5000,
+        "hiddenText":"desayuno deditos"
+    }
     ,{
     
         "img":[ "https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/104805406_1137171716666816_4697815293711127246_o.jpg?_nc_cat=107&_nc_sid=2d5d41&_nc_eui2=AeGzLVRr0fXPE_iMnZgRQTHFRGidn26am_JEaJ2fbpqb8iELaxWWtcPpsVVjpUWL0Xc&_nc_ohc=0Mob77vBtcYAX-9ylrK&_nc_ht=scontent.fbaq5-1.fna&oh=461123bf99c6ad17a7791c823027c1a3&oe=5F1D425B"], 
-        "text":"Hoy en #JuevesDeRecuerdos te traemos a la mente #ElTioTom lo m�s IN de San Juan en la �poca dorada.#EnamorateDeSanJuanNepo ???? Antonio del R�o?? El Nepo#RetratosDeMiPueblo."}
+        "text":"Hoy en #JuevesDeRecuerdos te traemos a la mente #ElTioTom lo m�s IN de San Juan en la �poca dorada.#EnamorateDeSanJuanNepo ???? Antonio del R�o?? El Nepo#RetratosDeMiPueblo."
+    }
     ,{
         
         "img":[ "https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/p960x960/104708265_1137836979933623_5054937006675971959_o.jpg?_nc_cat=106&_nc_sid=2d5d41&_nc_eui2=AeHBAXK7qN63MASkImg0dksNdMd9HvUwHY90x30e9TAdj969CEua8aMHVmbraC5jlp0&_nc_ohc=CAe6RCcpE1sAX-Er13H&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=6&oh=166c1035127fa3e51d4a1d325fd874c7&oe=5F1CBDE7"], 
@@ -35,19 +39,20 @@ const DATOS=
     }
     ,{
     
-        "img":[ "https://i.imgur.com/a8xrsoY.jpg"]}
+        "img":[ "https://i.imgur.com/a8xrsoY.jpg"]
+    }
     ,{
     
         "img":[ "https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/p960x960/104545188_1135596680157653_3389598500915374435_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeH3cB-acrFC3ER353PTJpVrrHRGLenPBjysdEYt6c8GPFwnfJkjdFlJMF4qJ0mcmX4&_nc_ohc=QM6H2krinPAAX-2kT3R&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=6&oh=60a85a6e759d570dd066b50c11a81178&oe=5F1CD69A"], 
-        "hiddenText":"segundo idioma ingles ingl�s aprende", 
+        "hiddenText":"segundo idioma ingles inglés aprende", 
         "socialWhatsapp":"https://wa.me/573043552586", 
         "nameStore":"CURSO DE INGLES", 
         "price":150000  
     }
     ,{
     
-        "img":[ "https://i.imgur.com/I0gIIS7.jpg"]}
-    ,{
+        "img":[ "https://i.imgur.com/I0gIIS7.jpg"],
+        "hiddenText":"galleta maria luisa "
     }
 
 ]

@@ -262,10 +262,10 @@ main{
 #OverlayAbout {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(90, 90, 90,.3);
+    background-color: rgba(90, 90, 90,.8);
     z-index: 3;
     align-items: center;
     overflow-y: scroll;
@@ -279,10 +279,19 @@ main{
     margin: 0 auto;
     flex-direction: column;
     text-align: center;
+    padding-bottom: 50px;
 
 }
 .aboutIcons{
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
     text-align: left;
+    cursor: pointer;
+    color: white;
+    height: 30px;
+
+
 }
 .aboutImg{
     width: 100%;

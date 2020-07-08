@@ -44,12 +44,33 @@
              
             <main id="main" >
                 <!-- cards -->
-                <div v-for="story in stories" class="card">
+                <div 
+                        v-for="(story,counter) in stories" 
+                        class="card" 
+                        v-bind:id="'card'+calculateId(counter)"
+                    >
                     <div class="cardContainerImg">
-                        <img v-for="img in story.img" class="cardImgElement" v-bind:src="img" alt="">
-                        <div class="cardContainerImgNav">
-                            
-                        </div>
+                        <img 
+                            v-for="img in story.img" 
+                            class="cardImgElement" 
+                            v-bind:src="img" 
+                            alt=""
+                        >
+                    </div>
+                    <div class="cardContainerImgNav">
+                        <img  
+                            v-if="imgNavValue"
+                            v-bind:id="'imgPrev'+calculateId(counter)"
+                            src="./icons/prev_24px.png" 
+                            alt="Img Previa" 
+                            onclick="prevCardImgElement(this.id)" 
+                        >
+                        <img 
+                            v-if="imgNavValue"
+                            src="./icons/right_button_24px.png" 
+                            alt="Img Siguiente" 
+                            onclick="nextCardImgElement(this.id.substring(this.id.length-7,this.id.length))"
+                        >
                     </div>
                     <div class="cardContainerSocial">
 
@@ -62,6 +83,7 @@
 
             <div id ='overlayMenu' onclick="ShowHideMenu()">
             </div>
+
             <menu class="menu hideMenu">
     <!--             <div class="menuBoton">
                     <a><i class="material-icons">radio</i><p>Radio Online</p> </a>
@@ -85,27 +107,43 @@
                 <div id="menuSocialDetail">
     
                 </div>
-    <!--             <div id="menuFilter">
-                    <span class="menuFilterSearch"><i class="material-icons">search</i><input type="text" name="filtro" id="menuFilterInput" onchange="buscarHistoria()" onfocus="seleccionarTodoInput(this)" placeholder="Buscar..."></span>
-                </div> -->
+                <div id="menuFilter">
+                    <span class="menuFilterSearch">
+                        <i class="material-icons">search</i>
+                        <input 
+                            type="text" 
+                            name="filtro" 
+                            id="menuFilterInput"  
+                            onfocus="seleccionarTodoInput(this)" 
+                            placeholder="Buscar..."
+                            @change="methodFilter"
+                            v-model="filterValue">
+                    </span>
+                </div>
             </menu>
-            <div id="OverlayAbout" v-if="overlayAboutValue">
+
+            <div id="OverlayAbout" v-if="overlayAboutValue" @click="showHideAbout('close')">
+                <div class="aboutIcons" >
+                    <i class="material-icons">keyboard_backspace</i>
+                </div>
                 <div class="aboutContainer">
-                    <div class="aboutIcons">
-                        <i @click="showHideAbout" class="material-icons">keyboard_backspace</i>
-                    </div>
+
                     <img v-bind:src="aboutImg" alt="" class="aboutImg">
                     <span class="aboutTitle">
                         {{ aboutTitle }}
                     </span>
                     <p class="aboutText">
                         {{ aboutText }}
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                     </p>
+                </div>
+            </div>
+
+            <div id="overlayShoppingCart">
+                <div class="aboutIcons" >
+                    <i class="material-icons">keyboard_backspace</i>
+                </div>
+                <div class="aboutContainer">
+
                 </div>
             </div>
 
@@ -135,28 +173,27 @@
                       </form>
                 </div>
             </div> --> 
-    
             <div id="pieza1" class="pieza">
-    
-                <img  src="" alt="pieza">
-    
-                <img  src="https://i.imgur.com/56DOmgl.jpg" alt="pieza">
-    
-                <img class="lastPieza" src="" alt="pieza">
+                <img  v-bind:src="piezasImg[0]" alt="pieza">
+                <img  v-bind:src="piezasImg[1]" alt="pieza">
+                <img class="lastPieza"  v-bind:src="piezasImg[2]" alt="pieza">
             </div>
             <div id="pieza2" class="pieza">
-                <img  src="" alt="pieza">
-    
-                <img  src="" alt="pieza">
-    
-                <img class="lastPieza" src="" alt="pieza">
+                <img  v-bind:src="piezasImg[3]" alt="pieza">
+                <img  v-bind:src="piezasImg[4]" alt="pieza">
+                <img  class="lastPieza" v-bind:src="piezasImg[5]" alt="pieza">
             </div>
         </div>
+        <!-- FireBase -->
+<!--         <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+        <script src="post.js"></script> -->
         <!-- VueJs -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
         <!-- historias -->
+        <script src="piezas.js"></script>
         <script src="historias.js"></script>
-        <script src="js.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>
 
