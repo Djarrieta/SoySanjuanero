@@ -35,7 +35,7 @@
                     placeholder="Buscar...">
             </span>
             <img 
-                src="./icons/workspace_64px.png" 
+                src="./icons/customer_64px.png" 
                 alt="Carrito">
         </header>
 
@@ -99,36 +99,59 @@
         </div> 
 
         <!-- SHOPPING MALL -->
-        <div id="shoppingMall" class="aboutDetail hide"  onclick="closeShoppingMall()">
+        <div id="shoppingMall" class="aboutDetail hide">
             <i   class="material-icons aboutDetailClose" onclick="closeShoppingMall()">close</i>
             <div class='containerDetail'>
                 <div class="datosMall">
-                    <span><input type="text" placeholder="Nombre"></span>
-                    <span><input type="text" placeholder="Telefono"></span>
-                    <span><select name="Selecciona" ></select></span>
+                    <span>DATOS DE COMPRA</span>
+                    <span class="campoMall">
+                        <img src="./icons/customer_64px.png">
+                        <input type="text" placeholder="Nombre">
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/cell_phone_64px.png">
+                        <input type="number" placeholder="Telefono">
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/today_64px.png">
+                        <input type="number" placeholder="Año de Nacimiento">
+                    </span>
+                    <span class="campoMall" style="pointer-events: none;">
+                        <img src="./icons/user_location_64px.png">
+                        <select name="Departamento" id="selectRegion" onchange="loadCitys()"></select>
+                    </span>
+                    <span class="campoMall" style="pointer-events: none;">
+                        <img src="./icons/user_location_64px.png">
+                        <select name="Ciudad" id="selectCity"> </select>
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/user_location_64px.png">
+                        <input type="text" placeholder="Cl00 #00-00 int/casa 00, barrio, frente a...">
+                    </span>
                 </div>
-                <div class="resumenMall">
-                    <span class="resumenMallCant"></span>
-                    <span class="resumenMallName"></span>
-                    <span class="resumenMallPrice"></span>
-                    <span class="resumenMallShipping"></span>
-                    <span class="resumenMallTotal"></span>
+                <div class="datosMall">
+                    <span class="datosMall" id="resumenMallTitle">RESUMEN DE COMPRA</span>
+                    <span class="campoMall" id="resumenMallCant"></span>
+                    <span class="campoMall" id="resumenMallName"></span>
+                    <span class="campoMall" id="resumenMallPrice"></span>
+                    <span class="campoMall" id="resumenMallShipping"></span>
+                    <span class="campoMall" id="resumenMallTotal"></span>
                 </div>
-                <div class="actionMall">
+                <div class="datosMall datosMallPagos" >
+                    <div  class="botonPagos">
+                        <span 
+                            id="shoppingMallWompi"
+                            onclick="payWithWompi()">
+                                <img src="./icons/credit_control_64px.png">Pagar con tarjeta</span>
+                    </div>
+                    <div  class="botonPagos">
+                        <span 
+                            id="shoppingMallContraentrega"
+                            onclick="payWithCash()">
+                            <img src="./icons/cash_64px.png"> Pagar al recibir el producto</span>
+                    </div>
+                </div>
 
-                </div>
-
-<!--                 <form>
-                    <script
-                      src="https://checkout.wompi.co/widget.js"
-                      data-render="button"
-                      data-public-key="pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh"
-                      data-currency="COP"
-                      data-amount-in-cents="4950000"
-                      data-reference="20-179-86400"
-                      >
-                    </script>
-                  </form> -->
             </div>
         </div> 
 

@@ -307,67 +307,67 @@ function showSanJuanNepo(){
 }
 
 //SHOW SHOPPING MALL
-function openShoppingMall(){
+function openShoppingMall(obj){
+    //Lo pone visible
     $('#shoppingMall').classList.remove('hide')
-
-    /* 
-    const carrito=$("#carrito")
-    carrito.classList.remove('hide')
-
-    const carritoContainer=$('.carritoContainer')
-
-    carritoContainer.innerHTML+="<div class='carritoIcons'><img class='carritoClear' onclick='abrirPagos()' src='./icons/clear_shopping_cart_64px.png' alt=''><i class='carritoClose material-icons'>close</i></div><div class='carritoTitle'>Carro de compras</div><img class='carritoImg' src='./icons/Line.png' alt=''><table class='carritoTable'><tr><th>Producto</th><th>Cant</th>    <th>Precio</th><th>Total</th></tr></table>"
-    
-    const carritoTable=$('.carritoTable')
-    CARRITO.forEach(x=>{
-        const carritoTableTr=document.createElement('tr')
-        carritoTable.appendChild(carritoTableTr)
-        //Nombre
-        const carritoTableTdName=document.createElement('td')
-        carritoTableTdName.innerHTML=x[0]
-        carritoTableTr.appendChild(carritoTableTdName)
-        //Cantidad
-        const carritoTableTdCant=document.createElement('td')
-        carritoTableTdCant.innerHTML=x[1]
-        carritoTableTr.appendChild(carritoTableTdCant)
-        //Precio
-        const carritoTableTdPrice=document.createElement('td')
-        if(x[2]){
-            carritoTableTdPrice.innerHTML='$'+(x[2]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }else{
-            carritoTableTdPrice.innerHTML='$'+(0).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
-        carritoTableTr.appendChild(carritoTableTdPrice)
-        //Total
-        const carritoTableTdTotal=document.createElement('td')
-        if(x[3]){
-            carritoTableTdTotal.innerHTML='$'+(x[3]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }else{
-            carritoTableTdTotal.innerHTML='$'+(0).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
-        carritoTableTr.appendChild(carritoTableTdTotal)
+    //lista cuidades y departamentos
+    $('#selectRegion').innerHTML=''
+    const region =listarCiudades()
+    region.forEach(c=>{
+        const newRegion=document.createElement('option');
+        newRegion.setAttribute('value',c.departamento);
+        newRegion.innerText=c.departamento
+        $('#selectRegion').appendChild(newRegion)
     })
+    //ciudad y departamento por defecto
+    $('#selectRegion').value='Bolívar'
+    loadCitys()
+    $('#selectCity').value='San Juan Nepomuceno'
+    //resumen de compra
+    const id=obj.id.split('-')[1]
+    const cant=$('#cant-'+id).value
+    const story=STORIES.filter(x=>id===x[0])[0][1]
+    const total=cant*parseInt(story.price) + parseInt(story.shippingCostTown)
 
-    const t=CARRITO.map(x=>x[3])
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const totalEnCentavos=t.reduce(reducer)*100
-
-    carritoContainer.innerHTML+="<span>" + '$'+(totalEnCentavos/100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</span><br><input type='button' onclick='abrirPagos()'>"
-
-    checkout = new WidgetCheckout({
-        currency: 'COP',
-        amountInCents: totalEnCentavos,
-        reference: 'Articulos Soy Sanjuanero',
-        publicKey: 'pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh',
-      }) */
+    $('#resumenMallCant').innerHTML='Cant(un):__ <strong>' + cant +'</strong>'
+    $('#resumenMallName').innerHTML='Nombre:___ <strong>' + story.nameStore +'</strong>'
+    $('#resumenMallPrice').innerHTML='Precio:_____ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.price)) +'</strong>'
+    $('#resumenMallShipping').innerHTML='Envio:______ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.shippingCostTown)) +'</strong>'
+    $('#resumenMallTotal').innerHTML='Total:______ <strong>' + formatCurrency("es-CO", "COP", 2, total)   +'</strong>'
 }
+function loadCitys(){
+    $('#selectCity').innerHTML=''
+    const ciudad =listarCiudades()
+    let listaCiudades=ciudad.filter(x=>x.departamento===$("#selectRegion").value)
+    listaCiudades=listaCiudades[0].ciudades
+    listaCiudades.forEach(c=>{
+        const newCity=document.createElement('option');
+        newCity.setAttribute('value',c);
+        newCity.innerText=c
+        $('#selectCity').appendChild(newCity)
+    }) 
+}
+function formatCurrency (locales, currency, fractionDigits, number) {
+    var formatted = new Intl.NumberFormat(locales, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: fractionDigits
+    }).format(number);
+    return formatted;
+  }
 function closeShoppingMall(){
     $('#shoppingMall').classList.add('hide')
-    console.log('se cierra el mall')
 }
 
 //WOMPY BUTTON
-function abrirPagos(){
+function payWithWompi(){
+    var checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: 200000,
+        reference: 'hola',
+        publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
+      })
+
     checkout.open(function ( result ) {
         var transaction = result.transaction
         console.log('Transaction ID: ', transaction.id)
