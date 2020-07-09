@@ -28,6 +28,7 @@ header{
 header img{
     height: 90%;
     margin: 0 5px;
+    cursor: pointer;
 }
 header img:nth-child(3){
     height: 60%;
@@ -51,6 +52,30 @@ header span input{
 header span input:hover, header span input:focus{
     outline: none;
     border: none;
+}
+
+#menuFilter{
+    margin-top: 50px;
+}
+.menuFilterSearch{
+    box-shadow: 1px 1px 2px 1px rgba(138, 137, 137, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.menuFilterSearch:hover{
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    border: solid gray 1px;
+}
+.menuFilterSearch input{
+    border: none;
+    height: 1.5em;
+}
+
+.menuFilterSearch input:focus{
+    border: none;
+    outline: none;
 }
 
 /* CARDS */
@@ -95,6 +120,7 @@ main{
     justify-content: center;
     margin: -50px 0 25px 0;
     z-index: 1;
+    cursor: pointer;
 }
 .cardContainerImgNav img {
     margin: 0 5px;
@@ -107,6 +133,7 @@ main{
     height: 25px;
     justify-content: center;
     margin: 5px 0;
+    cursor: pointer;
 }
 .cardContainerSocialList{
     margin-left: 20px;
@@ -213,31 +240,8 @@ main{
 .menuBoton a p{
     margin-left: 5px;
 }
-#menuFilter{
-    margin-top: 50px;
-}
-.menuFilterSearch{
-    box-shadow: 1px 1px 2px 1px rgba(138, 137, 137, 0.2);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-.menuFilterSearch:hover{
-    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
-    border: solid gray 1px;
-}
-.menuFilterSearch input{
-    border: none;
-    height: 1.5em;
-}
 
-.menuFilterSearch input:focus{
-    border: none;
-    outline: none;
-}
-
-#overlay {
+#menuOverlay {
     position: absolute;
     top: 60px;
     left: 0;
@@ -248,21 +252,11 @@ main{
     display: none;
   }
 
-  .showOverlay {
+.showOverlay {
    display: block !important;
 }
-#imgDiv{
-    position: absolute;
-    width: 100vw;
-    height: 133.33vw;
-    background-image: url('http://lorempixel.com/150/200/');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top left;
-    top: 0;
-    z-index: 2;
-}
 
+/* PIEZAS */
 .pieza{
     position: absolute;
     width: 190px;
@@ -286,7 +280,9 @@ main{
 .lastPieza{
     display: none;
 }
-#aboutDetail{
+
+/* ABOUT */
+.aboutDetail{
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -306,7 +302,7 @@ main{
     text-align: right;
 
 }
-#containerDetail{
+.containerDetail{
     width: 100vw;
     max-width: 700px;
     min-width: 350px;
@@ -328,68 +324,17 @@ main{
     margin:10px auto 50px auto;
 
 }
-#carrito{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 5;
-    background-color: rgba(90, 90, 90,.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.carritoContainer{
-    background-color: white;
-    width: 100vw;
-    min-height: 90vh;
-    max-width: 500px;
-    min-width: 350px;
-    margin: 0 auto;
-    border-radius: 10px;
-    text-align: center;
-}
-.carritoTitle{
-    text-align: center;
-    font-size: 30px;
-    margin: 5px 0;
-}
-.carritoTable{
-    width: 100%;
-    margin:30px 0;
-}
-.carritoTable td, th, tr {
-    text-align: center;
-}
-.carritoTable th{
-    margin-top: 5px;
-}
-.carritoImg{
-    margin-top: 30px;
-    width: 100%;
-}
-.carritoIcons{
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px auto;
-    
-}
-.carritoClear{
-    height: 1.5em;
-}
-td{
-    font-size: 12px;
-}
-
 .hide{
     display: none !important;
 }
-
-.carritoContainer form{
-    height: 100px;
+/* SHOPPING MALL */
+#shoppingMall .containerDetail div{
+    background-color: white;
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
+    
 }
-
 
 @media screen and (min-width: 1170px){
     #pieza1{

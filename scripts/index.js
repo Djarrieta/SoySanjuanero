@@ -54,6 +54,7 @@ function createOneCard(story,id){
             createSocialElement('WhatsApp',story.socialWhatsapp,cardContainerSocial)
             createSocialElement('Facebook',story.socialFacebook,cardContainerSocial)
             createSocialElement('Instagram',story.socialInstagram,cardContainerSocial)
+            createSocialElement('YouTube',story.socialYoutube,cardContainerSocial)
             createSocialElement('WebSite',story.socialWeb,cardContainerSocial)
             createSocialElement('Email',story.socialEmail,cardContainerSocial)
             createSocialElement('Phone',story.socialTel,cardContainerSocial)
@@ -90,6 +91,7 @@ function createOneCard(story,id){
             newCard.appendChild(cardText);
         }
 }
+
 //CREATE SOCIAL ELEMENT
 function createSocialElement(type,SocialElement,cardContainerSocial){
     const id =cardContainerSocial.id.split('-')[1]
@@ -109,6 +111,10 @@ function createSocialElement(type,SocialElement,cardContainerSocial){
             case 'Instagram':
                 icon='./icons/instagram_old_64px.png';
                 addText=''
+                break;
+            case 'YouTube':
+                icon='./icons/youtube_64px.png';
+                addText='';
                 break;
             case 'WebSite':
                 icon='./icons/website_64px.png';
@@ -136,7 +142,6 @@ function createSocialElement(type,SocialElement,cardContainerSocial){
     }
 }
 
-
 //NEXT IMG
 function nextCardImgElement(obj){
     const id=obj.id.split('-')[1]
@@ -160,6 +165,7 @@ function nextCardImgElement(obj){
         } 
     }
 }
+
 //PREV IMG
 function prevCardImgElement(obj){
     const id=obj.id.split('-')[1]
@@ -178,10 +184,11 @@ function prevCardImgElement(obj){
         c.style.marginLeft=leftFin+'px'
     }
 }
+
 //SHOW OR HIDE LATERAL MENU
 function showHideMenu(){
     const menu=$('.menu')
-    const overlay=$('#overlay')
+    const overlay=$('#menuOverlay')
     const sandwich=$('#sandwich')
     if(menu.classList.contains('hideMenu')){
         menu.classList.remove('hideMenu')
@@ -191,10 +198,13 @@ function showHideMenu(){
         overlay.classList.remove('showOverlay')
     }
 }
-// SEARCH HISTORIES
-function seleccionarTodoInput(t){
-    t.select()
+
+//MOSTRAR DETALLES DE REDES SOCIALES
+function ShowMenuSocialDetail(cont){
+    $('#menuSocialDetail').innerHTML=cont.dataset.text
 }
+
+// SEARCH HISTORIES
 function buscarHistoria(){
     let i=0
     const c=document.querySelectorAll('.card')
@@ -235,18 +245,21 @@ function buscarHistoria(){
         })
     }
 }
+function seleccionarTodoInput(t){
+    t.select()
+}
 
 //SHOW ABOUT
 function hideAbout(){
-    $('#aboutDetail').classList.add('hide')
-    $('#containerDetail').innerHTML=''
+    $('.aboutDetail').classList.add('hide')
+    $('.containerDetail').innerHTML=''
 }
 function showSoySanjuanero(){
     //About Detail
     const aboutDetail=$('#aboutDetail')
     aboutDetail.classList.remove('hide')
     //Container
-    const containerDetail=$('#containerDetail');
+    const containerDetail=$('.containerDetail');
     //Image
     const detailImg=document.createElement('img');
     detailImg.setAttribute('class','detailImg')
@@ -269,7 +282,7 @@ function showSanJuanNepo(){
     const aboutDetail=$('#aboutDetail')
     aboutDetail.classList.remove('hide')
     //Container
-    const containerDetail=$('#containerDetail');
+    const containerDetail=$('.containerDetail');
     //Image
     const detailImg=document.createElement('img');
     detailImg.setAttribute('class','detailImg')
@@ -293,31 +306,11 @@ function showSanJuanNepo(){
     containerDetail.appendChild(detailMap);
 }
 
-//MOSTRAR DETALLES DE REDES SOCIALES
-function ShowMenuSocialDetail(cont){
-    $('#menuSocialDetail').innerHTML=cont.dataset.text
-}
-//SCROLL TO TOP
-function scrollToTop(){
-    $('#main').scrollTop= 0
-}
-//agregarAlCarrito
-function agregarAlCarrito(obj){
-    $('#menuBotonCarrito').style.backgroundColor= '#e0e0e0';
-    $('#menuBotonCarrito img').src="./icons/buying_64px.png"
-    const numCard=obj.id.substring(obj.id.length-3,obj.id.length)
-    const cant=parseInt($('#cantcard'+numCard).value) 
-    const name=DATOS[parseInt(numCard)].name
-    const price=DATOS[parseInt(numCard)].price
-    
-    CARRITO.push([name,cant,price, cant*price])
-}
-//VACIAR CARRITO
-function vaciarCarrito(){
-    CARRITO=[]
-}
-//SHOW CARRITO
-function showCarrito(){
+//SHOW SHOPPING MALL
+function openShoppingMall(){
+    $('#shoppingMall').classList.remove('hide')
+
+    /* 
     const carrito=$("#carrito")
     carrito.classList.remove('hide')
 
@@ -366,8 +359,13 @@ function showCarrito(){
         amountInCents: totalEnCentavos,
         reference: 'Articulos Soy Sanjuanero',
         publicKey: 'pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh',
-      })
+      }) */
 }
+function closeShoppingMall(){
+    $('#shoppingMall').classList.add('hide')
+    console.log('se cierra el mall')
+}
+
 //WOMPY BUTTON
 function abrirPagos(){
     checkout.open(function ( result ) {
@@ -375,5 +373,10 @@ function abrirPagos(){
         console.log('Transaction ID: ', transaction.id)
         console.log('Transaction object: ', transaction)
       })
+}
+
+//SCROLL MAIN TO TOP
+function scrollToTop(){
+    $('#main').scrollTop= 0
 }
 

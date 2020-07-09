@@ -84,23 +84,40 @@
 
             </div>
         </menu>
+        <div id ='menuOverlay' onclick="showHideMenu()" ></div>
 
          <!-- HISTORIAS -->
         <main id="main">
         </main>
-        <div id ='overlay' onclick="showHideMenu()" ></div>
 
         <!-- ABOUT -->
-        <div id="aboutDetail" class="hide">
+        <div id="aboutDetail" class="aboutDetail hide" onclick="hideAbout()">
             <i   class="material-icons aboutDetailClose" onclick="hideAbout()">close</i>
-            <div id="containerDetail">
+            <div class="containerDetail">
                 <!-- SoySanjuanero/San Juan Nepo -->
             </div>
         </div> 
 
-        <!-- CARRITO -->
-        <div id="carrito" class="hide">
-            <div class='carritoContainer'>
+        <!-- SHOPPING MALL -->
+        <div id="shoppingMall" class="aboutDetail hide"  onclick="closeShoppingMall()">
+            <i   class="material-icons aboutDetailClose" onclick="closeShoppingMall()">close</i>
+            <div class='containerDetail'>
+                <div class="datosMall">
+                    <span><input type="text" placeholder="Nombre"></span>
+                    <span><input type="text" placeholder="Telefono"></span>
+                    <span><select name="Selecciona" ></select></span>
+                </div>
+                <div class="resumenMall">
+                    <span class="resumenMallCant"></span>
+                    <span class="resumenMallName"></span>
+                    <span class="resumenMallPrice"></span>
+                    <span class="resumenMallShipping"></span>
+                    <span class="resumenMallTotal"></span>
+                </div>
+                <div class="actionMall">
+
+                </div>
+
 <!--                 <form>
                     <script
                       src="https://checkout.wompi.co/widget.js"
