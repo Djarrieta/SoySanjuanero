@@ -1,107 +1,81 @@
-var DATOS
-var CARRITO=[]
-var checkout
-
 //SELECTOR 
 function $(selector){
     return document.querySelector(selector)
 }
-//READ JSON
-function traerDatos(){
-    var xhttp=new XMLHttpRequest();
-    xhttp.open("GET","historias.json",true);
-    xhttp.send();
-    
-    xhttp.onreadystatechange=function (){
-        if(this.readyState==4 && this.status==200){
-            DATOS=JSON.parse(this.responseText) 
-            createCards(DATOS)
-        }
-    }
-}
-//CREATE CARDS
-function createCards(itemJson){
-    var i=0;
-    for(let item of itemJson){
-        if(item.img.length>0){
-            createOneCard(item,i)
-            i++;
-        }
-    }    
-}
+
 //CREATE SINGLE CARD
-function createOneCard(item,i){
+function createOneCard(story,id){
     //card
     const newCard=document.createElement('div');
-    let id='000'+i
-    id='card'+ id.substring(id.length-3,id.length)
     newCard.setAttribute('class','card');
     newCard.setAttribute('id',id);
     $('#main').appendChild(newCard);
         //cardContainerImg
         const cardContainerImg=document.createElement('div')
         cardContainerImg.setAttribute('class','cardContainerImg')
+        cardContainerImg.setAttribute('id','cardContainerImg-' + id)
         newCard.appendChild(cardContainerImg);
             //cardImgElement img 
             let cardImgElement
             let j=0
-            for(let img of item.img){
+            for(let img of story.img){
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('class','cardImgElement')
                 cardImgElement.setAttribute('src',img)
-                cardImgElement.setAttribute('id','img '+j+' '+id)
-                cardImgElement.setAttribute('onclick','nextCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
+                cardImgElement.setAttribute('id','img-'+ id)
+                cardImgElement.setAttribute('onclick','nextCardImgElement(this)')
                 cardContainerImg.appendChild(cardImgElement)
                 j++
             }
         //cardContainerImgNav
-        if(item.img.length>1){
+        if(story.img.length>1){
             const cardContainerImgNav=document.createElement('div')
             cardContainerImgNav.setAttribute('class','cardContainerImgNav')
             newCard.appendChild(cardContainerImgNav);
                 //cardContainerImgNav button prev
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('src','./icons/prev_24px.png')
-                cardImgElement.setAttribute('id','prev'+id)
-                cardImgElement.setAttribute('onclick','prevCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
+                cardImgElement.setAttribute('id','prev-'+id)
+                cardImgElement.setAttribute('onclick','prevCardImgElement(this)')
                 cardContainerImgNav.appendChild(cardImgElement)
                 //cardContainerImgNav button next
                 cardImgElement=document.createElement('img')
                 cardImgElement.setAttribute('src','./icons/right_button_24px.png')
-                cardImgElement.setAttribute('id','next'+id)
-                cardImgElement.setAttribute('onclick','nextCardImgElement(this.id.substring(this.id.length-7,this.id.length))')
+                cardImgElement.setAttribute('id','next-'+id)
+                cardImgElement.setAttribute('onclick','nextCardImgElement(this)')
                 cardContainerImgNav.appendChild(cardImgElement)
         }
         //cardContainerSocial
         const cardContainerSocial=document.createElement('div')
         cardContainerSocial.setAttribute('class','cardContainerSocial')
+        cardContainerSocial.setAttribute('id','cardContainerSocial-'+id)
         newCard.appendChild(cardContainerSocial);
             //cardSocial
-            createSocialElement(item.socialWhatsapp,'./icons/whatsapp_64px.png',cardContainerSocial)
-            createSocialElement(item.socialFacebook,'./icons/facebook_circled_64px.png',cardContainerSocial)
-            createSocialElement(item.socialInstagram,'./icons/instagram_old_64px.png',cardContainerSocial)
-            createSocialElement(item.socialWeb,'./icons/website_64px.png',cardContainerSocial)
-            createSocialElement(item.socialEmail,'./icons/email_64px.png',cardContainerSocial)
-            createSocialElement(item.socialTel,'./icons/cell_phone_64px.png',cardContainerSocial)
+            createSocialElement('WhatsApp',story.socialWhatsapp,cardContainerSocial)
+            createSocialElement('Facebook',story.socialFacebook,cardContainerSocial)
+            createSocialElement('Instagram',story.socialInstagram,cardContainerSocial)
+            createSocialElement('WebSite',story.socialWeb,cardContainerSocial)
+            createSocialElement('Email',story.socialEmail,cardContainerSocial)
+            createSocialElement('Phone',story.socialTel,cardContainerSocial)
             //quantity selection
-            if(item.nameStore){
+            if(story.nameStore){
                 const quantitySelection=document.createElement('select')
                 quantitySelection.setAttribute('name','Selecciona')
                 quantitySelection.setAttribute('class','cardContainerSocialList')
-                quantitySelection.setAttribute('id','cant'+id)
+                quantitySelection.setAttribute('id','cant-'+id)
                 cardContainerSocial.appendChild(quantitySelection)
                     //quantity selection value
                     for(let j=1;j<=5;j++){
                         const quantitySelectionValue=document.createElement('option')
-                        quantitySelectionValue.setAttribute('value',j)
+                        quantitySelectionValue.setAttribute('value-',j)
                         quantitySelectionValue.innerHTML=j
                         quantitySelection.appendChild(quantitySelectionValue)
                     }
                 //crea icono de compra
                 const cardSocial=document.createElement('div')
                 cardSocial.setAttribute('class','cardSocial')
-                cardSocial.setAttribute('onclick','agregarAlCarrito(this)')
-                cardSocial.setAttribute('id','add'+id)
+                cardSocial.setAttribute('onclick','openShoppingMall(this)')
+                cardSocial.setAttribute('id','add-'+id)
                 cardContainerSocial.appendChild(cardSocial)
                     //cardSocial img
                     const cardSocialImg=document.createElement('img')
@@ -109,21 +83,51 @@ function createOneCard(item,i){
                     cardSocial.appendChild(cardSocialImg)
             }
         //cardText
-        if(item.text){
+        if(story.text){
             const cardText=document.createElement('div')
             cardText.setAttribute('class','cardText')
-            cardText.innerHTML=item.text
+            cardText.innerHTML=story.text
             newCard.appendChild(cardText);
         }
 }
 //CREATE SOCIAL ELEMENT
-function createSocialElement(SocialElement,icon,cardContainerSocial){
+function createSocialElement(type,SocialElement,cardContainerSocial){
+    const id =cardContainerSocial.id.split('-')[1]
     if(SocialElement && SocialElement!=''){
         //cardSocial
+        let icon=''
+        let addText=''
+        switch(type){
+            case 'WhatsApp':
+                icon='./icons/whatsapp_64px.png';
+                addText='https://wa.me/57'
+                break;
+            case 'Facebook':
+                icon='./icons/facebook_circled_64px.png';
+                addText=''
+                break;
+            case 'Instagram':
+                icon='./icons/instagram_old_64px.png';
+                addText=''
+                break;
+            case 'WebSite':
+                icon='./icons/website_64px.png';
+                addText=''
+                break;
+            case 'Email':
+                icon='./icons/email_64px.png';
+                addText='mailto:'
+                break;
+            case 'Phone':
+                icon='./icons/cell_phone_64px.png';
+                addText='tel:'
+                break;
+        }
         const cardSocial=document.createElement('a')
         cardSocial.setAttribute('class','cardSocial')
+        cardSocial.setAttribute('onclick',"sumarClick('"+ id +"','" + type + "')")
         cardSocial.setAttribute('target','blank()')
-        cardSocial.setAttribute('href',SocialElement)
+        cardSocial.setAttribute('href',addText+SocialElement)
         cardContainerSocial.appendChild(cardSocial)
             //cardSocial img
             const cardSocialImg=document.createElement('img')
@@ -132,33 +136,40 @@ function createSocialElement(SocialElement,icon,cardContainerSocial){
     }
 }
 
+
 //NEXT IMG
-function nextCardImgElement(card){
+function nextCardImgElement(obj){
+    const id=obj.id.split('-')[1]
+    const story=STORIES.filter(x=>x[0]===id)
+    const imgCant=story[0][1].img.length
     
-    if(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length==1) {return}
-    const c=$('#'+card + ' .cardContainerImg')
-    const w=parseInt($('#'+card).offsetWidth) 
-    if(c.style.marginLeft==''){
-        c.style.marginLeft="-"+w+"px"
-    }else{
-        const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-        const leftMax=(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
-        if(leftMax==leftIni){   
-            c.style.marginLeft='0px'
+    if(imgCant>1) {
+        const c= $('#cardContainerImg-' + id)
+        const w=parseInt($('#'+ id).offsetWidth) 
+        if(c.style.marginLeft==''){
+            c.style.marginLeft="-"+w+"px"
         }else{
-            const leftFin=leftIni-w
-            c.style.marginLeft=leftFin+'px'
-        }
+            const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
+            const leftMax=(imgCant-1)*-w
+            if(leftMax==leftIni){   
+                c.style.marginLeft='0px'
+            }else{
+                const leftFin=leftIni-w
+                c.style.marginLeft=leftFin+'px'
+            }
+        } 
     }
 }
 //PREV IMG
-function prevCardImgElement(card){
-    const c=$('#'+card + ' .cardContainerImg')
-    const w=parseInt($('#'+card).offsetWidth)
+function prevCardImgElement(obj){
+    const id=obj.id.split('-')[1]
+    const c= $('#cardContainerImg-' + id)
+    const w=parseInt($('#'+ id).offsetWidth)
+    const story=STORIES.filter(x=>x[0]===id)
+    const imgCant=story[0][1].img.length
     const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-    const leftMax=(DATOS[parseInt(card.substring(card.length-3,card.length))].img.length-1)*-w
+    const leftMax=(imgCant-1)*-w
     let leftFin;
-
     if(c.style.marginLeft=='' ||c.style.marginLeft=='0px'){
         leftFin=leftMax+'px'
         c.style.marginLeft=leftFin
@@ -168,18 +179,16 @@ function prevCardImgElement(card){
     }
 }
 //SHOW OR HIDE LATERAL MENU
-function ShowHideMenu(){
+function showHideMenu(){
     const menu=$('.menu')
     const overlay=$('#overlay')
     const sandwich=$('#sandwich')
     if(menu.classList.contains('hideMenu')){
         menu.classList.remove('hideMenu')
         overlay.classList.add('showOverlay')
-        sandwich.classList.add('rotate')
     }else{
         menu.classList.add('hideMenu') 
         overlay.classList.remove('showOverlay')
-        sandwich.classList.remove('rotate')
     }
 }
 // SEARCH HISTORIES
@@ -367,11 +376,4 @@ function abrirPagos(){
         console.log('Transaction object: ', transaction)
       })
 }
-
-
-//USAGE
-traerDatos()
-//wompyButton()
-
-
 
