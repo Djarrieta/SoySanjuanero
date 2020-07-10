@@ -307,6 +307,7 @@ function showSanJuanNepo(){
 }
 
 //SHOW SHOPPING MALL
+let paymentData={}
 function openShoppingMall(obj){
     //Lo pone visible
     $('#shoppingMall').classList.remove('hide')
@@ -334,6 +335,13 @@ function openShoppingMall(obj){
     $('#resumenMallPrice').innerHTML='Precio:_____ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.price)) +'</strong>'
     $('#resumenMallShipping').innerHTML='Envio:______ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.shippingCostTown)) +'</strong>'
     $('#resumenMallTotal').innerHTML='Total:______ <strong>' + formatCurrency("es-CO", "COP", 2, total)   +'</strong>'
+    paymentData={
+        cant:cant,
+        nameArt:story.nameStore,
+        price:story.price,
+        shippingCost:story.shippingCostTown,
+        total:total
+    }
 }
 function loadCitys(){
     $('#selectCity').innerHTML=''
@@ -358,21 +366,61 @@ function formatCurrency (locales, currency, fractionDigits, number) {
 function closeShoppingMall(){
     $('#shoppingMall').classList.add('hide')
 }
+//CASH BUTTON
+async function payWithCash(){
+    if(verifyInputs()){
+        await reportPayWithCash({
+            cant:paymentData.cant,
+            nameArt:paymentData.nameArt,
+            price:paymentData.price,
+            shippingCost:paymentData.shippingCost,
+            total:paymentData.total,
+            costumerName:$('#shoppingMallName').value,
+            costumerNumber:$('#shoppingMallNumber').value,
+            costumerYear:$('#shoppingMallBirthYear').value,
+            costumerRegion:$('#selectRegion').value,
+            costumerCity:$('#selectCity').value,
+            costumerAddress:$('#shoppingMallAddress').value,
+            date:firebase.firestore.FieldValue.serverTimestamp()
+        })
+    }
+}
 
 //WOMPY BUTTON
-function payWithWompi(){
-    var checkout = new WidgetCheckout({
-        currency: 'COP',
-        amountInCents: 200000,
-        reference: 'hola',
-        publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
-      })
+async function payWithWompi(){
+    if(!NEWID){await reportSellsWithoutConfirmation(paymentData)}
 
-    checkout.open(function ( result ) {
-        var transaction = result.transaction
-        console.log('Transaction ID: ', transaction.id)
-        console.log('Transaction object: ', transaction)
-      })
+    if(verifyInputs()){
+        var checkout = new WidgetCheckout({
+            currency: 'COP',
+            amountInCents: paymentData.total*100,
+            reference: NEWID,
+            publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
+            redirectUrl:'https://soysanjuanero.online/pages/confirmacion.html'
+        })
+        checkout.open(function ( result ) {
+            var transaction = result.transaction
+
+
+            console.log('Transaction ID: ', transaction.id)
+            console.log('Transaction object: ', transaction)
+        })
+        NEWID=false
+    } 
+}
+
+function verifyInputs(){
+    let ok=true
+    const inputs=document.querySelectorAll('.campoMallInput')
+    inputs.forEach(input=>{
+        if(!input.value){ 
+            input.style.border = "1px solid #FF0000"
+            ok=false
+        }else{
+            input.style.border = "1px solid #c3c3c3"
+        }
+    })
+    return ok
 }
 
 //SCROLL MAIN TO TOP

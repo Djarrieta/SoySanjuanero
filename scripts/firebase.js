@@ -19,6 +19,7 @@ var db = firebase.firestore();
 
 //READ DATA
 let STORIES=[]
+let NEWID=false
 function readData(){
     STORIES=[]
     this.db.collection('stories').onSnapshot(query=>{
@@ -49,6 +50,27 @@ function sumarClick(id,type){
         id:id,
         type:type
       })
+}
+//REPORT PAY WITH CASH
+async function reportPayWithCash(paymentData){
+    await this.db
+      .collection('sells')
+      .add(paymentData)
+      .then(ref=>{
+          alert('acabas de realizar un pago. Ya nos ponemos en contacto contigo ' + toString(paymentData))
+      });
+}
+//REPORT SELLS WITHOUT CONFIRMATION
+async function reportSellsWithoutConfirmation(paymentData){
+    await this.db
+      .collection('sells')
+      .add(paymentData)
+      .then(ref=>{
+        NEWID=ref.id
+      });
+}
+async function reportSellsFull(){
+
 }
 //USAGE
 readData()
