@@ -335,12 +335,15 @@ function openShoppingMall(obj){
     $('#resumenMallPrice').innerHTML='Precio:_____ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.price)) +'</strong>'
     $('#resumenMallShipping').innerHTML='Envio:______ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.shippingCostTown)) +'</strong>'
     $('#resumenMallTotal').innerHTML='Total:______ <strong>' + formatCurrency("es-CO", "COP", 2, total)   +'</strong>'
+    $('#socialWhatsapp').innerHTML=story.socialWhatsapp
+    
     paymentData={
         cant:cant,
         nameArt:story.nameStore,
         price:story.price,
         shippingCost:story.shippingCostTown,
-        total:total
+        total:total,
+        providerWhatsapp:story.socialWhatsapp
     }
 }
 function loadCitys(){
@@ -369,7 +372,7 @@ function closeShoppingMall(){
 //CASH BUTTON
 async function payWithCash(){
     if(verifyInputs()){
-        await reportPayWithCash({
+        await reportPay({
             cant:paymentData.cant,
             nameArt:paymentData.nameArt,
             price:paymentData.price,
@@ -381,14 +384,52 @@ async function payWithCash(){
             costumerRegion:$('#selectRegion').value,
             costumerCity:$('#selectCity').value,
             costumerAddress:$('#shoppingMallAddress').value,
-            date:firebase.firestore.FieldValue.serverTimestamp()
+            date:firebase.firestore.FieldValue.serverTimestamp(),
+            paymentMethod:'cash',
+            providerWhatsapp:paymentData.providerWhatsapp
         })
+        closeShoppingMall()
     }
 }
 
 //WOMPY BUTTON
-async function payWithWompi(){
-    if(!NEWID){await reportSellsWithoutConfirmation(paymentData)}
+function payWithWompi(){
+    if(verifyInputs()){
+        let now=Date.now()
+        var checkout = new WidgetCheckout({
+            currency: 'COP',
+            amountInCents: paymentData.total*100,
+            reference:'Ref'+now,
+            publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
+            redirectUrl:'https://soysanjuanero.online/'
+        })
+        checkout.open(function ( result ) {
+            var transaction = result.transaction
+            reportPay({
+                cant:paymentData.cant,
+                nameArt:paymentData.nameArt,
+                price:paymentData.price,
+                shippingCost:paymentData.shippingCost,
+                total:paymentData.total,
+                costumerName:$('#shoppingMallName').value,
+                costumerNumber:$('#shoppingMallNumber').value,
+                costumerYear:$('#shoppingMallBirthYear').value,
+                costumerRegion:$('#selectRegion').value,
+                costumerCity:$('#selectCity').value,
+                costumerAddress:$('#shoppingMallAddress').value,
+                date:firebase.firestore.FieldValue.serverTimestamp(),
+                paymentMethod:'card',
+                providerWhatsapp:paymentData.providerWhatsapp,
+                TransactionID:transaction.id,
+                TransactionObject:transaction
+            })
+            closeShoppingMall()
+        })
+    }
+
+
+
+/*     if(!NEWID){await reportSellsWithoutConfirmation(paymentData)}
 
     if(verifyInputs()){
         var checkout = new WidgetCheckout({
@@ -406,9 +447,14 @@ async function payWithWompi(){
             console.log('Transaction object: ', transaction)
         })
         NEWID=false
-    } 
+    }  */
 }
 
+//CONTACT COSTUMER - PROVIDER
+function cerrarConfirmacion(){
+    $('#shopConfirmation').classList.add('hide')
+}
+//VERIFY INPUT DATA
 function verifyInputs(){
     let ok=true
     const inputs=document.querySelectorAll('.campoMallInput')

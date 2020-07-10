@@ -383,6 +383,18 @@ main{
     opacity: 0.5; /* ESTO HAY QUE ELIMINARLO CUANDO SE HABILITE EL COBRO NACIONAL */
 }
 
+#shopConfirmation{
+    position: absolute;
+    width: 100vw;
+    height: 150px;
+    top: calc(100vh - 150px);
+    left: 0;
+    background-color: red;
+    color: white;
+    z-index: 5;
+    text-align: center;
+    text-decoration: none;
+}
 
 @media screen and (min-width: 1170px){
     #pieza1{
