@@ -32,6 +32,7 @@
                     name="filtro"
                     id="filterInput"
                     onfocus="seleccionarTodoInput(this)" 
+                    onchange="buscarHistoria()"
                     placeholder="Buscar...">
             </span>
             <img 
@@ -155,9 +156,9 @@
 
             </div>
         </div> 
-        <a target='blank()' id="shopConfirmation" class="hide" onclick="cerrarConfirmacion()">
+        <div target='blank()' id="shopConfirmation" class="hide" onclick="cerrarConfirmacion()">
             <p></p>
-        </a>
+        </div>
 
         <!-- PIEZAS -->
         <div id="pieza1" class="pieza">

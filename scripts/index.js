@@ -8,7 +8,7 @@ function createOneCard(story,id){
     //card
     const newCard=document.createElement('div');
     newCard.setAttribute('class','card');
-    newCard.setAttribute('id',id);
+    newCard.setAttribute('id','card-'+id);
     $('#main').appendChild(newCard);
         //cardContainerImg
         const cardContainerImg=document.createElement('div')
@@ -150,7 +150,7 @@ function nextCardImgElement(obj){
     
     if(imgCant>1) {
         const c= $('#cardContainerImg-' + id)
-        const w=parseInt($('#'+ id).offsetWidth) 
+        const w=parseInt($('#card-'+ id).offsetWidth) 
         if(c.style.marginLeft==''){
             c.style.marginLeft="-"+w+"px"
         }else{
@@ -170,7 +170,7 @@ function nextCardImgElement(obj){
 function prevCardImgElement(obj){
     const id=obj.id.split('-')[1]
     const c= $('#cardContainerImg-' + id)
-    const w=parseInt($('#'+ id).offsetWidth)
+    const w=parseInt($('#card-'+ id).offsetWidth)
     const story=STORIES.filter(x=>x[0]===id)
     const imgCant=story[0][1].img.length
     const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
@@ -206,42 +206,32 @@ function ShowMenuSocialDetail(cont){
 
 // SEARCH HISTORIES
 function buscarHistoria(){
-    let i=0
     const c=document.querySelectorAll('.card')
-    const menuFilterInput=$('#menuFilterInput')
+    const menuFilterInput=$('#filterInput')
 
     c.forEach(x=>x.classList.remove('hide'))
 
     if(menuFilterInput.value.length>2){
-        DATOS.forEach(item=>{
-            if(!item.text && !item.hiddenText){
-                let id='00000'+i
-                id='#card'+id.substr(id.length-3,3)
-                $(id).classList.add('hide');
+        STORIES.forEach(item=>{
+            if(!item[1].text && !item[1].hiddenText){
+                $('#card-'+item[0]).classList.add('hide');
             }
-            if(item.text){
-                const t=item.text.toUpperCase()
+            if(item[1].text){
+                const t=item[1].text.toUpperCase()
                 const m=menuFilterInput.value.toUpperCase()
                 if(!t.includes(m)){
-                    let id='00000'+i
-                    id='#card'+id.substr(id.length-3,3)
-                    $(id).classList.add('hide')
+                    $('#card-'+item[0]).classList.add('hide')
                 }
             }
-            if(item.hiddenText){
-                const ht=item.hiddenText.toUpperCase()
+            if(item[1].hiddenText){
+                const ht=item[1].hiddenText.toUpperCase()
                 const m=menuFilterInput.value.toUpperCase()
                 if(!ht.includes(m)){
-                    let id='00000'+i
-                    id='#card'+id.substr(id.length-3,3)
-                    $(id).classList.add('hide')
+                    $('#card-'+item[0]).classList.add('hide')
                 }else{
-                    let id='00000'+i
-                    id='#card'+id.substr(id.length-3,3)
-                    $(id).classList.remove('hide')
+                    $('#card-'+item[0]).classList.remove('hide')
                 }
             };
-            i++
         })
     }
 }
@@ -369,6 +359,7 @@ function formatCurrency (locales, currency, fractionDigits, number) {
 function closeShoppingMall(){
     $('#shoppingMall').classList.add('hide')
 }
+
 //CASH BUTTON
 async function payWithCash(){
     if(verifyInputs()){
@@ -401,10 +392,11 @@ function payWithWompi(){
             amountInCents: paymentData.total*100,
             reference:'Ref'+now,
             publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
-            redirectUrl:'https://soysanjuanero.online/'
+            redirectUrl:'https://soysanjuanero.online/pages/pago.html'
         })
         checkout.open(function ( result ) {
             var transaction = result.transaction
+            console.log('ok')
             reportPay({
                 cant:paymentData.cant,
                 nameArt:paymentData.nameArt,
@@ -426,28 +418,6 @@ function payWithWompi(){
             closeShoppingMall()
         })
     }
-
-
-
-/*     if(!NEWID){await reportSellsWithoutConfirmation(paymentData)}
-
-    if(verifyInputs()){
-        var checkout = new WidgetCheckout({
-            currency: 'COP',
-            amountInCents: paymentData.total*100,
-            reference: NEWID,
-            publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
-            redirectUrl:'https://soysanjuanero.online/pages/confirmacion.html'
-        })
-        checkout.open(function ( result ) {
-            var transaction = result.transaction
-
-
-            console.log('Transaction ID: ', transaction.id)
-            console.log('Transaction object: ', transaction)
-        })
-        NEWID=false
-    }  */
 }
 
 //CONTACT COSTUMER - PROVIDER
