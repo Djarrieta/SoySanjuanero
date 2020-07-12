@@ -99,10 +99,12 @@ function createSocialElement(type,SocialElement,cardContainerSocial){
         //cardSocial
         let icon=''
         let addText=''
+        let endText=''
         switch(type){
             case 'WhatsApp':
                 icon='./icons/whatsapp_64px.png';
                 addText='https://wa.me/57'
+                endText='?text=Hola!%20Vi%20tu%20anuncio%20en%20SoySanjuanero%20y%20me%20gustaría%20saber%20más%20de%20tus%20servicios!'
                 break;
             case 'Facebook':
                 icon='./icons/facebook_circled_64px.png';
@@ -133,7 +135,7 @@ function createSocialElement(type,SocialElement,cardContainerSocial){
         cardSocial.setAttribute('class','cardSocial')
         cardSocial.setAttribute('onclick',"sumarClick('"+ id +"','" + type + "')")
         cardSocial.setAttribute('target','blank()')
-        cardSocial.setAttribute('href',addText+SocialElement)
+        cardSocial.setAttribute('href',addText+SocialElement+endText)
         cardContainerSocial.appendChild(cardSocial)
             //cardSocial img
             const cardSocialImg=document.createElement('img')
@@ -387,41 +389,41 @@ async function payWithCash(){
 function payWithWompi(){
     if(verifyInputs()){
         let now=Date.now()
+        //mando aca la informacion a la base de datos
+        reportPay({
+            cant:paymentData.cant,
+            nameArt:paymentData.nameArt,
+            price:paymentData.price,
+            shippingCost:paymentData.shippingCost,
+            total:paymentData.total,
+            costumerName:$('#shoppingMallName').value,
+            costumerNumber:$('#shoppingMallNumber').value,
+            costumerYear:$('#shoppingMallBirthYear').value,
+            costumerRegion:$('#selectRegion').value,
+            costumerCity:$('#selectCity').value,
+            costumerAddress:$('#shoppingMallAddress').value,
+            date:firebase.firestore.FieldValue.serverTimestamp(),
+            paymentMethod:'card',
+            providerWhatsapp:paymentData.providerWhatsapp
+        })
         var checkout = new WidgetCheckout({
             currency: 'COP',
             amountInCents: paymentData.total*100,
             reference:'Ref'+now,
             publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
-            redirectUrl:'https://soysanjuanero.online/pages/pago.html'
+            redirectUrl:'http://127.0.0.1:5501/pages/pago.html'
         })
         checkout.open(function ( result ) {
-            var transaction = result.transaction
-            console.log('ok')
-            reportPay({
-                cant:paymentData.cant,
-                nameArt:paymentData.nameArt,
-                price:paymentData.price,
-                shippingCost:paymentData.shippingCost,
-                total:paymentData.total,
-                costumerName:$('#shoppingMallName').value,
-                costumerNumber:$('#shoppingMallNumber').value,
-                costumerYear:$('#shoppingMallBirthYear').value,
-                costumerRegion:$('#selectRegion').value,
-                costumerCity:$('#selectCity').value,
-                costumerAddress:$('#shoppingMallAddress').value,
-                date:firebase.firestore.FieldValue.serverTimestamp(),
-                paymentMethod:'card',
-                providerWhatsapp:paymentData.providerWhatsapp,
-                TransactionID:transaction.id,
-                TransactionObject:transaction
-            })
-            closeShoppingMall()
+           var transaction=result.transaction
+/*            fetch('https://production.wompi.co/v1/transactions/'+transaction.id)
+           .then(response=>console.log('para el id'+transaction.id+' hubo una respuesta de '+response)) */
         })
     }
 }
 
 //CONTACT COSTUMER - PROVIDER
-function cerrarConfirmacion(){
+function cerrarConfirmacion(obj){
+    window.open(obj.dataText)
     $('#shopConfirmation').classList.add('hide')
 }
 //VERIFY INPUT DATA
@@ -442,5 +444,18 @@ function verifyInputs(){
 //SCROLL MAIN TO TOP
 function scrollToTop(){
     $('#main').scrollTop= 0
+}
+//MUSIC
+function playStopMusic(){
+    const icon=$('#headerPlayPauseMusic').src
+    if(icon.includes('musical_notes_64px.png')){
+        $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
+        $('#player').play()
+    }else if(icon.includes('pause_64px.png')){
+        $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
+        $('#player').pause()
+    }
+
+    
 }
 

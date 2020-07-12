@@ -60,10 +60,9 @@ async function reportPay(paymentData){
         $('#shopConfirmation p').innerText='Señor(a) '+ paymentData.costumerName +' Acabas de realizar un pedido por '+ paymentData.cant +' UN de '+paymentData.nameArt +'. PULSA ACÁ PARA COMUNICARTE DIRECTAMENTE CON EL VENDEDOR al whatsapp '+ paymentData.providerWhatsapp +'. El código del pedido es ' + ref.id
         $('#shopConfirmation').classList.remove('hide')
         if(paymentData.paymentMethod=='cash'){
-            /* $('#shopConfirmation').href= */
-            window.open('https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!.%20Desde%20SoySanjuanero%20te%20hice%20un%20pedido%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank')
-        }else if(paymentMethod=='card'){
-            window.open('https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!.%20Desde%20SoySanjuanero%20te%20hice%20una%20compra%20con%20tarjeta%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank') 
+            $('#shopConfirmation').dataText= 'https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!%20Desde%20SoySanjuanero%20te%20hice%20un%20pedido%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank'
+        }else if(paymentData.paymentMethod=='card'){
+            $('#shopConfirmation').dataText= 'https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!%20Desde%20SoySanjuanero%20te%20hice%20una%20compra%20con%20tarjeta%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank' 
         }
       });
 }
