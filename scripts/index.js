@@ -455,7 +455,6 @@ function playStopMusic(){
         $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
         $('#player').pause()
     }
-
     
 }
 
