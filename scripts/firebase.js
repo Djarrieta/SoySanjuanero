@@ -39,7 +39,8 @@ function readData(){
             $('#piezaImg5').src=PIEZAS[4]
             $('#piezaImg6').src=PIEZAS[5]
         })
-    })
+    })  
+
 }
 //CLICKS REPORT TO DATABASE
 function sumarClick(id,type){

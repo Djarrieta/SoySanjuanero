@@ -85,7 +85,7 @@ main{
     height: 100%;
     min-height: 500px;
     overflow: hidden scroll;
-    background-color: rgb(240, 239, 239);
+    background-color: rgb(209, 207, 207);
 }
 .card{
     width: 100vw;
@@ -96,7 +96,7 @@ main{
     flex-direction: column;
     background-color: white;
     border-radius: 7px;
-    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    box-shadow: 1px 1px 2px 1px rgba(36, 36, 36, 0.3);
     overflow: hidden ;
     transition: 500ms;
 }
