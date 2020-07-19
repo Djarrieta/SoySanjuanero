@@ -446,15 +446,29 @@ function scrollToTop(){
     $('#main').scrollTop= 0
 }
 //MUSIC
+let playlist=[
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SOY%20SANJUANERO%20-%20JORGE%20LAMBIS%20JR.mp3?alt=media&token=f9022d5f-0a7d-4ab8-9414-957cf070f4f2',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/IMAGENES.mp3?alt=media&token=966329bb-b79d-4571-ad64-69f778cdeafd',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/LA%20PUYA%20DEL%20DIABLO.mp3?alt=media&token=e31913c1-c528-413a-a4a7-0cbda7c6ef9c',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/LOS%20SABANALES.mp3?alt=media&token=d6c7d3b6-37fc-44dd-9cfd-e708519b4f0e',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/NOCHE%20SIN%20LUCEROS.mp3?alt=media&token=804695a2-6474-42aa-b369-1b36bcad1096',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SANJUANERA%20-%20HERMANOS%20ZULETA.mp3?alt=media&token=31213278-6e6a-4b87-b0f9-38b10ca9aba0',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SOY%20SANJUANERO%20-%20JORGE%20LAMBIS%20JR.mp3?alt=media&token=f9022d5f-0a7d-4ab8-9414-957cf070f4f2'
+]
 function playStopMusic(){
+    
     const icon=$('#headerPlayPauseMusic').src
     if(icon.includes('musical_notes_64px.png')){
         $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
-        $('#player').play()
+        nextSong()
     }else if(icon.includes('pause_64px.png')){
         $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
         $('#player').pause()
     }
-    
+}
+function nextSong(){
+    const n= Math.floor(Math.random()*playlist.length)
+    $('#player').src=playlist[n]
+    $('#player').play()
 }
 
