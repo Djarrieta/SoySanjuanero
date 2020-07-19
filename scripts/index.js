@@ -446,14 +446,21 @@ function scrollToTop(){
     $('#main').scrollTop= 0
 }
 //MUSIC
+const timesPlayed=0
 let playlist=[
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SOY%20SANJUANERO%20-%20JORGE%20LAMBIS%20JR.mp3?alt=media&token=f9022d5f-0a7d-4ab8-9414-957cf070f4f2',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/IMAGENES.mp3?alt=media&token=966329bb-b79d-4571-ad64-69f778cdeafd',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/LA%20PUYA%20DEL%20DIABLO.mp3?alt=media&token=e31913c1-c528-413a-a4a7-0cbda7c6ef9c',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/LOS%20SABANALES.mp3?alt=media&token=d6c7d3b6-37fc-44dd-9cfd-e708519b4f0e',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/NOCHE%20SIN%20LUCEROS.mp3?alt=media&token=804695a2-6474-42aa-b369-1b36bcad1096',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SANJUANERA%20-%20HERMANOS%20ZULETA.mp3?alt=media&token=31213278-6e6a-4b87-b0f9-38b10ca9aba0',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/SOY%20SANJUANERO%20-%20JORGE%20LAMBIS%20JR.mp3?alt=media&token=f9022d5f-0a7d-4ab8-9414-957cf070f4f2'
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fal%20pie%20de%20la%20monta%C3%B1a%20listo.mp3?alt=media&token=e27781b1-9960-49cb-b6d5-332000bbd48c',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fcerro%20verde%20listo.mp3?alt=media&token=acc7d490-a2ec-48f4-be06-cc56d4c9d9d6',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fel%20playonero%20listo.mp3?alt=media&token=0b23b7af-2d1a-495e-9fc8-ec167ad2f898',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fimagenes%20listo.mp3?alt=media&token=4d93b4c5-b310-49de-a55c-6c41b9ad823f',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20morroya%20listo.mp3?alt=media&token=f30363b6-e51d-4dcf-b37a-91210788d161',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20puya%20del%20diablo%20lista.mp3?alt=media&token=d9b4fb13-15d4-4c02-9637-79675bbcb6a1',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20quincea%C3%B1era%20lista.mp3?alt=media&token=3bb7e1ea-0805-4c3e-8049-1907f770ae68',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Flos%20sabanales%20listo.mp3?alt=media&token=e2946113-b7f3-4147-8888-21764cb27851',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fnoche%20sin%20lucero%20listo.mp3?alt=media&token=4ce80e4c-4a16-4445-93e8-d823909af659',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsan%20juan%20de%20mis%20amores%20listo.mp3?alt=media&token=42a7f7af-ba3f-4374-b58b-4b282a4bef23',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsanjuanera%20listo.mp3?alt=media&token=9b59596a-7683-4454-93fc-58a8f985bb09',
+    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsoy%20sanjuanero%20listo.mp3?alt=media&token=47936ab1-8478-4395-83f0-999aa0140ccd'
+
 ]
 function playStopMusic(){
     
