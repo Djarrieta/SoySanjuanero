@@ -351,14 +351,7 @@ main{
     height: 3em;
     margin: 0 3px;
 }
-/* .datosMallPagos{
-    flex-direction: row;
-    justify-content: center;
-    width: 100vw;
-    max-width: 700px;
-    min-width: 350px;
-    
-} */
+
 .botonPagos span{
     background-color: rgb(167, 167, 167);
     height: 70px;
@@ -378,9 +371,6 @@ main{
 }
 .campoMall select,.campoMall input{
     width: 100%;
-}
-.campoMall select{
-    opacity: 0.5; /* ESTO HAY QUE ELIMINARLO CUANDO SE HABILITE EL COBRO NACIONAL */
 }
 
 #shopConfirmation{

@@ -320,12 +320,11 @@ function openShoppingMall(obj){
     const id=obj.id.split('-')[1]
     const cant=$('#cant-'+id).value
     const story=STORIES.filter(x=>id===x[0])[0][1]
-    const total=cant*parseInt(story.price) + parseInt(story.shippingCostTown)
+    const total=cant*parseInt(story.price)
 
     $('#resumenMallCant').innerHTML='Cant(un):__ <strong>' + cant +'</strong>'
     $('#resumenMallName').innerHTML='Nombre:___ <strong>' + story.nameStore +'</strong>'
     $('#resumenMallPrice').innerHTML='Precio:_____ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.price)) +'</strong>'
-    $('#resumenMallShipping').innerHTML='Envio:______ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.shippingCostTown)) +'</strong>'
     $('#resumenMallTotal').innerHTML='Total:______ <strong>' + formatCurrency("es-CO", "COP", 2, total)   +'</strong>'
     $('#socialWhatsapp').innerHTML=story.socialWhatsapp
     
