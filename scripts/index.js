@@ -360,28 +360,50 @@ function formatCurrency (locales, currency, fractionDigits, number) {
 function closeShoppingMall(){
     $('#shoppingMall').classList.add('hide')
 }
+function en_disableCash(){
+    if($('#selectCity').value=='San Juan Nepomuceno'){
+        $('#shoppingMallContraentrega').style.pointerEvents = "auto"
+        $('#shoppingMallContraentrega').style.cursor='pointer'
+        $('#shoppingMallContraentrega').style.background='#A7A7A7'
+    }else{
+        $('#shoppingMallContraentrega').style.pointerEvents = "none"
+        $('#shoppingMallContraentrega').style.cursor='not-allowed'
+        $('#shoppingMallContraentrega').style.background='#373737'
+    }
+}
 
 //CASH BUTTON
 async function payWithCash(){
-    if(verifyInputs()){
-        await reportPay({
-            cant:paymentData.cant,
-            nameArt:paymentData.nameArt,
-            price:paymentData.price,
-            shippingCost:paymentData.shippingCost,
-            total:paymentData.total,
-            costumerName:$('#shoppingMallName').value,
-            costumerNumber:$('#shoppingMallNumber').value,
-            costumerYear:$('#shoppingMallBirthYear').value,
-            costumerRegion:$('#selectRegion').value,
-            costumerCity:$('#selectCity').value,
-            costumerAddress:$('#shoppingMallAddress').value,
-            date:firebase.firestore.FieldValue.serverTimestamp(),
-            paymentMethod:'cash',
-            providerWhatsapp:paymentData.providerWhatsapp
-        })
-        closeShoppingMall()
-    }
+    swal({
+        title: "¿Estás segur@ que quieres hacer este pedido?",
+        text: "Una vez realizado tu pedido, empezaremos a hacer nuestro mejor esfuerzo para hacerte llegar cualquier artículo que hayas ordenado!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then(res=>{
+          if(res){
+            if(verifyInputs()){
+                reportPay({
+                    cant:paymentData.cant,
+                    nameArt:paymentData.nameArt,
+                    price:paymentData.price,
+                    shippingCost:paymentData.shippingCost,
+                    total:paymentData.total,
+                    costumerName:$('#shoppingMallName').value,
+                    costumerNumber:$('#shoppingMallNumber').value,
+                    costumerYear:$('#shoppingMallBirthYear').value,
+                    costumerRegion:$('#selectRegion').value,
+                    costumerCity:$('#selectCity').value,
+                    costumerAddress:$('#shoppingMallAddress').value,
+                    date:firebase.firestore.FieldValue.serverTimestamp(),
+                    paymentMethod:'cash',
+                    providerWhatsapp:paymentData.providerWhatsapp
+                })
+                closeShoppingMall()
+            }
+          }
+      })
 }
 
 //WOMPY BUTTON

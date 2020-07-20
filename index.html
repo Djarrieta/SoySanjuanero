@@ -15,6 +15,8 @@
         <!-- firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>    
         <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+        <!-- sweetalert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
 
@@ -124,7 +126,7 @@
                     </span>
                     <span class="campoMall">
                         <img src="./icons/user_location_64px.png">
-                        <select name="Ciudad" id="selectCity" class="campoMallInput"> </select>
+                        <select name="Ciudad" id="selectCity" class="campoMallInput" onchange="en_disableCash()"> </select>
                     </span>
                     <span class="campoMall">
                         <img src="./icons/user_location_64px.png">
