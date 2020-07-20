@@ -20,15 +20,17 @@ var db = firebase.firestore();
 //READ DATA
 let STORIES=[]
 let NEWID=false
+let orderSTORIES=[]
+let numberOfStories=0
 function readData(){
     STORIES=[]
     this.db.collection('stories').onSnapshot(query=>{
-        $('#main').innerHTML=""
         query.forEach(story=>{
-            createOneCard(story.data(),story.id)
             STORIES.push([story.id,story.data()])
+            createOneCard(story.data(),story.id)
         })
     })
+    
     this.db.collection('pieces').onSnapshot(query=>{
         query.forEach(doc=>{
             var PIEZAS=doc.data().img
