@@ -208,7 +208,8 @@ function ShowMenuSocialDetail(cont){
 // SEARCH HISTORIES
 function buscarHistoria(){
     const c=document.querySelectorAll('.card')
-    const menuFilterInput=$('#filterInput')
+    let menuFilterInput=$('#filterInput')
+    menuFilterInput.value=menuFilterInput.value.substring(0,menuFilterInput.value.length-1)
 
     c.forEach(x=>x.classList.remove('hide'))
 

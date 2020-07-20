@@ -23,7 +23,9 @@ let NEWID=false
 let orderSTORIES=[]
 let numberOfStories=0
 function readData(){
+    
     STORIES=[]
+    document.getElementById('main').innerHTML=''
     this.db.collection('stories').onSnapshot(query=>{
         query.forEach(story=>{
             STORIES.push([story.id,story.data()])
