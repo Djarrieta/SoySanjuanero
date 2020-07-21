@@ -278,7 +278,7 @@ function showSanJuanNepo(){
     //Image
     const detailImg=document.createElement('img');
     detailImg.setAttribute('class','detailImg')
-    detailImg.setAttribute('src','https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/s960x960/103790826_1136393816744606_8841400399473692648_o.jpg?_nc_cat=103&_nc_sid=2d5d41&_nc_eui2=AeHaosbFPsdElITSE9j57BZ8_1YxKiDJ1Qb_VjEqIMnVBj23nGqekTMLFeG__5DEywo&_nc_ohc=FmQpzeXXfusAX8hAwdh&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=7&oh=f6ae356fec4f2ab4940006dfdc2af1a3&oe=5F1C094E')
+    detailImg.setAttribute('src','https://i.imgur.com/62c5vfr.jpg')
     containerDetail.appendChild(detailImg);
     
     //Title
@@ -365,45 +365,35 @@ function en_disableCash(){
         $('#shoppingMallContraentrega').style.pointerEvents = "auto"
         $('#shoppingMallContraentrega').style.cursor='pointer'
         $('#shoppingMallContraentrega').style.background='#A7A7A7'
+        $('#shoppingMallContraentrega').style.color='#4b4a4a'
     }else{
         $('#shoppingMallContraentrega').style.pointerEvents = "none"
         $('#shoppingMallContraentrega').style.cursor='not-allowed'
-        $('#shoppingMallContraentrega').style.background='#373737'
+        $('#shoppingMallContraentrega').style.background='#dddcdc'
+        $('#shoppingMallContraentrega').style.color='#d3d1d1'
     }
 }
 
 //CASH BUTTON
 async function payWithCash(){
-    swal({
-        title: "¿Estás segur@ que quieres hacer este pedido?",
-        text: "Una vez realizado tu pedido, empezaremos a hacer nuestro mejor esfuerzo para hacerte llegar cualquier artículo que hayas ordenado!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then(res=>{
-          if(res){
-            if(verifyInputs()){
-                reportPay({
-                    cant:paymentData.cant,
-                    nameArt:paymentData.nameArt,
-                    price:paymentData.price,
-                    shippingCost:paymentData.shippingCost,
-                    total:paymentData.total,
-                    costumerName:$('#shoppingMallName').value,
-                    costumerNumber:$('#shoppingMallNumber').value,
-                    costumerYear:$('#shoppingMallBirthYear').value,
-                    costumerRegion:$('#selectRegion').value,
-                    costumerCity:$('#selectCity').value,
-                    costumerAddress:$('#shoppingMallAddress').value,
-                    date:firebase.firestore.FieldValue.serverTimestamp(),
-                    paymentMethod:'cash',
-                    providerWhatsapp:paymentData.providerWhatsapp
-                })
-                closeShoppingMall()
-            }
-          }
-      })
+    if(verifyInputs()){
+        await reportPay({
+            cant:paymentData.cant,
+            nameArt:paymentData.nameArt,
+            price:paymentData.price,
+            shippingCost:paymentData.shippingCost,
+            total:paymentData.total,
+            costumerName:$('#shoppingMallName').value,
+            costumerNumber:$('#shoppingMallNumber').value,
+            costumerYear:$('#shoppingMallBirthYear').value,
+            costumerRegion:$('#selectRegion').value,
+            costumerCity:$('#selectCity').value,
+            costumerAddress:$('#shoppingMallAddress').value,
+            date:firebase.firestore.FieldValue.serverTimestamp(),
+            paymentMethod:'cash'
+        })
+        closeShoppingMall()
+    }
 }
 
 //WOMPY BUTTON

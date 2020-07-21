@@ -351,6 +351,11 @@ main{
     height: 3em;
     margin: 0 3px;
 }
+#shoppingMallWompi{
+    color: #d3d1d1;
+    pointer-events: none;
+    background-color: #dddcdc;   /* QUITAR AL HABILITAR PAGOS CON TARJETA POR FUERA DE SAN JUAN */
+}
 
 .botonPagos span{
     background-color: rgb(167, 167, 167);

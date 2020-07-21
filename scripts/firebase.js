@@ -62,12 +62,12 @@ async function reportPay(paymentData){
       .collection('sells')
       .add(paymentData)
       .then(ref=>{
-        $('#shopConfirmation p').innerText='Señor(a) '+ paymentData.costumerName +' Acabas de realizar un pedido por '+ paymentData.cant +' UN de '+paymentData.nameArt +'. PULSA ACÁ PARA COMUNICARTE DIRECTAMENTE CON EL VENDEDOR al whatsapp '+ paymentData.providerWhatsapp +'. El código del pedido es ' + ref.id
+        $('#shopConfirmation p').innerText='Señor(a) '+ paymentData.costumerName +' Acabas de realizar un pedido por '+ paymentData.cant +' UN de '+paymentData.nameArt +'. PULSA ACÁ PARA COMUNICARTE DIRECTAMENTE CON EL VENDEDOR al whatsapp 317 812 3065. El código del pedido es ' + ref.id
         $('#shopConfirmation').classList.remove('hide')
         if(paymentData.paymentMethod=='cash'){
-            $('#shopConfirmation').dataText= 'https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!%20Desde%20SoySanjuanero%20te%20hice%20un%20pedido%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank'
+            $('#shopConfirmation').dataText= 'https://wa.me/573178123065?text=Hola!%20Desde%20SoySanjuanero.Online%20te%20hice%20un%20pedido%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen%20en%20'+paymentData.costumerAddress+',%20'+paymentData.costumerCity+',%20'+paymentData.costumerRegion+'%20.Mi%20nombre%20es%20'+paymentData.costumerName+'%20El%20código%20del%20pedido%20es%20' + ref.id +'%20y%20el%20total%20fue%20de%20'+paymentData.total,'_blank'
         }else if(paymentData.paymentMethod=='card'){
-            $('#shopConfirmation').dataText= 'https://wa.me/57'+paymentData.providerWhatsapp+'?text=Hola!%20Desde%20SoySanjuanero%20te%20hice%20una%20compra%20con%20tarjeta%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank' 
+            $('#shopConfirmation').dataText= 'https://wa.me/573178123065?text=Hola!%20Desde%20SoySanjuanero%20te%20hice%20una%20compra%20con%20tarjeta%20de%20'+paymentData.cant+'%20UN%20de%20'+paymentData.nameArt +'%20para%20pagar%20cuando%20me%20lo%20entreguen.%20El%20código%20del%20pedido%20es%20' + ref.id,'_blank' 
         }
       });
 }
