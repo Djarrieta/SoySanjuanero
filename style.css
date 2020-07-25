@@ -356,6 +356,31 @@ main{
     margin: 0 auto 20px auto;
 }
 
+/* PIEZAS */
+.pieza{
+    position: absolute;
+    width: 190px;
+    top: 70px;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
+    padding: 10px;
+    background-color: white;
+    z-index: 4;
+}
+.pieza img{
+    width: 100%;
+}
+#pieza1{
+    right: 20px; 
+}
+#pieza2{
+    right: 240px; 
+}
+.lastPieza{
+    display: none;
+}
+
 .hide{
     display: none;
 }
