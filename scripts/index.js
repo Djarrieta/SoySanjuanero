@@ -91,6 +91,8 @@ function ShowOnlyStore(){
         $('#menuBotonStoreIcon').src='./icons/store.png'
     }
     searchAll()
+    showHideMenu()
+
 }  
 
 //SHOPPING MALL

@@ -18,6 +18,20 @@
 */
 
 const STORIES=[
+    {
+        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109683544_1159474044436583_3596289926067765905_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeEEH9Yl2OWts7B7Xa6x3bXKgyDF4LaQxpSDIMXgtpDGlEVnPYPBQzv3PK10ztoOezw&_nc_ohc=2E-CVwXE7-UAX9gQuY4&_nc_ht=scontent.fbaq5-1.fna&oh=154efa67b64131441829e568a412936c&oe=5F3FB505'],
+        Texto:'Para muchos un simple ají, para otros un manjar. Comenta cómo lo has comido, en machucao, asao, en vinagre, picao en el suero, en fin comparte y comenta. #ajíchivato #EnamorateDeSanJuanNepo 😍',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+    },
+
+    {
+        ArtImg:['https://i.imgur.com/aYO2wxy.jpg'],
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/542281423121644',
+        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
+    },
     
     {
         ArtImg:['https://i.imgur.com/bOjS5xq.jpg'],
@@ -27,19 +41,7 @@ const STORIES=[
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
         Texto:'El equipo de SoySanjuanero ha estado en importantes eventos de la region.'
     },
-    
-    {
-        ArtImg:['https://i.imgur.com/FeaIMLu.jpg'],
-        socialWhatsapp:'3012063053',
-        socialFacebook:'https://www.facebook.com/luisalberto.castillocamargo',
-        socialTel:'3012063053',
-        PalabraClave:'luis alberto castillo voluntario musico parranda serenata regalo'
-    },
-    {
-        ArtImg:['https://i.imgur.com/aYO2wxy.jpg'],
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/542281423121644',
-        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
-    },
+
     {
         ArtImg:['https://i.imgur.com/o6SOf5E.jpg'],
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/478448249726192',
@@ -94,6 +96,13 @@ const STORIES=[
     {
         ArtImg:['https://i.imgur.com/YRsdy23.jpg'],
         PalabraClave:'fabrica artesanal de percusion tambores tambor'
+    },
+    {
+        ArtImg:['https://i.imgur.com/FeaIMLu.jpg'],
+        socialWhatsapp:'3012063053',
+        socialFacebook:'https://www.facebook.com/luisalberto.castillocamargo',
+        socialTel:'3012063053',
+        PalabraClave:'luis alberto castillo voluntario musico parranda serenata regalo'
     },
     {
         ArtImg:['https://i.imgur.com/QNVXTfD.jpg'],
