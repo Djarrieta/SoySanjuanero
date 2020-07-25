@@ -2,191 +2,25 @@
 function $(selector){
     return document.querySelector(selector)
 }
-//CREATE SINGLE CARD
-function createOneCard(story,id){
-    //card
-    const newCard=document.createElement('div');
-    newCard.setAttribute('class','card');
-    newCard.setAttribute('id','card-'+id);
-    $('#main').appendChild(newCard);
-        //cardContainerImg
-        const cardContainerImg=document.createElement('div')
-        cardContainerImg.setAttribute('class','cardContainerImg')
-        cardContainerImg.setAttribute('id','cardContainerImg-' + id)
-        newCard.appendChild(cardContainerImg);
-            //cardImgElement img 
-            let cardImgElement
-            let j=0
-            for(let img of story.img){
-                cardImgElement=document.createElement('img')
-                cardImgElement.setAttribute('class','cardImgElement')
-                cardImgElement.setAttribute('src',img)
-                cardImgElement.setAttribute('id','img-'+ id)
-                cardImgElement.setAttribute('onclick','nextCardImgElement(this)')
-                cardContainerImg.appendChild(cardImgElement)
-                j++
-            }
-        //cardContainerImgNav
-        if(story.img.length>1){
-            const cardContainerImgNav=document.createElement('div')
-            cardContainerImgNav.setAttribute('class','cardContainerImgNav')
-            newCard.appendChild(cardContainerImgNav);
-                //cardContainerImgNav button prev
-                cardImgElement=document.createElement('img')
-                cardImgElement.setAttribute('src','./icons/prev_24px.png')
-                cardImgElement.setAttribute('id','prev-'+id)
-                cardImgElement.setAttribute('onclick','prevCardImgElement(this)')
-                cardContainerImgNav.appendChild(cardImgElement)
-                //cardContainerImgNav button next
-                cardImgElement=document.createElement('img')
-                cardImgElement.setAttribute('src','./icons/right_button_24px.png')
-                cardImgElement.setAttribute('id','next-'+id)
-                cardImgElement.setAttribute('onclick','nextCardImgElement(this)')
-                cardContainerImgNav.appendChild(cardImgElement)
-        }
-        //cardContainerSocial
-        const cardContainerSocial=document.createElement('div')
-        cardContainerSocial.setAttribute('class','cardContainerSocial')
-        cardContainerSocial.setAttribute('id','cardContainerSocial-'+id)
-        newCard.appendChild(cardContainerSocial);
-            //cardSocial
-            createSocialElement('WhatsApp',story.socialWhatsapp,cardContainerSocial)
-            createSocialElement('Facebook',story.socialFacebook,cardContainerSocial)
-            createSocialElement('Instagram',story.socialInstagram,cardContainerSocial)
-            createSocialElement('YouTube',story.socialYoutube,cardContainerSocial)
-            createSocialElement('WebSite',story.socialWeb,cardContainerSocial)
-            createSocialElement('Email',story.socialEmail,cardContainerSocial)
-            createSocialElement('Phone',story.socialTel,cardContainerSocial)
-            //quantity selection
-            if(story.nameStore){
-                const quantitySelection=document.createElement('select')
-                quantitySelection.setAttribute('name','Selecciona')
-                quantitySelection.setAttribute('class','cardContainerSocialList')
-                quantitySelection.setAttribute('id','cant-'+id)
-                cardContainerSocial.appendChild(quantitySelection)
-                    //quantity selection value
-                    for(let j=1;j<=5;j++){
-                        const quantitySelectionValue=document.createElement('option')
-                        quantitySelectionValue.setAttribute('value-',j)
-                        quantitySelectionValue.innerHTML=j
-                        quantitySelection.appendChild(quantitySelectionValue)
-                    }
-                //crea icono de compra
-                const cardSocial=document.createElement('div')
-                cardSocial.setAttribute('class','cardSocial')
-                cardSocial.setAttribute('onclick','openShoppingMall(this)')
-                cardSocial.setAttribute('id','add-'+id)
-                cardContainerSocial.appendChild(cardSocial)
-                    //cardSocial img
-                    const cardSocialImg=document.createElement('img')
-                    cardSocialImg.setAttribute('src','./icons/add_shopping_cart_64px.png')
-                    cardSocial.appendChild(cardSocialImg)
-            }
-        //cardText
-        if(story.text){
-            const cardText=document.createElement('div')
-            cardText.setAttribute('class','cardText')
-            cardText.innerHTML=story.text
-            newCard.appendChild(cardText);
-        }
-}
 
-//CREATE SOCIAL ELEMENT
-function createSocialElement(type,SocialElement,cardContainerSocial){
-    const id =cardContainerSocial.id.split('-')[1]
-    if(SocialElement && SocialElement!=''){
-        //cardSocial
-        let icon=''
-        let addText=''
-        let endText=''
-        switch(type){
-            case 'WhatsApp':
-                icon='./icons/whatsapp_64px.png';
-                addText='https://wa.me/57'
-                endText='?text=Hola!%20Vi%20tu%20anuncio%20en%20SoySanjuanero%20y%20me%20gustaría%20saber%20más%20de%20tus%20servicios!'
-                break;
-            case 'Facebook':
-                icon='./icons/facebook_circled_64px.png';
-                addText=''
-                break;
-            case 'Instagram':
-                icon='./icons/instagram_old_64px.png';
-                addText=''
-                break;
-            case 'YouTube':
-                icon='./icons/youtube_64px.png';
-                addText='';
-                break;
-            case 'WebSite':
-                icon='./icons/website_64px.png';
-                addText=''
-                break;
-            case 'Email':
-                icon='./icons/email_64px.png';
-                addText='mailto:'
-                break;
-            case 'Phone':
-                icon='./icons/cell_phone_64px.png';
-                addText='tel:'
-                break;
-        }
-        const cardSocial=document.createElement('a')
-        cardSocial.setAttribute('class','cardSocial')
-        cardSocial.setAttribute('onclick',"sumarClick('"+ id +"','" + type + "')")
-        cardSocial.setAttribute('target','blank()')
-        cardSocial.setAttribute('href',addText+SocialElement+endText)
-        cardContainerSocial.appendChild(cardSocial)
-            //cardSocial img
-            const cardSocialImg=document.createElement('img')
-            cardSocialImg.setAttribute('src',icon)
-            cardSocial.appendChild(cardSocialImg)
-    }
-}
+//FIREBASE
+var config = {
+    apiKey: "AIzaSyAnxXJlQC9mOyNnSYzV4utnjYXF29fWoC8",
+    authDomain: "soysanjuanero-a5c1c.firebaseapp.com",
+    databaseURL: "https://soysanjuanero-a5c1c.firebaseio.com",
+    projectId: "soysanjuanero-a5c1c",
+    storageBucket: "soysanjuanero-a5c1c.appspot.com",
+    messagingSenderId: "344513006950",
+    appId: "1:344513006950:web:10250cd62d0e7236d20ca7",
+    measurementId: "G-5DX7T59E32"
+};
+firebase.initializeApp(config);
+const firestore = firebase.firestore();
+const settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+var db = firebase.firestore();
 
-//NEXT IMG
-function nextCardImgElement(obj){
-    const id=obj.id.split('-')[1]
-    const story=STORIES.filter(x=>x[0]===id)
-    const imgCant=story[0][1].img.length
-    
-    if(imgCant>1) {
-        const c= $('#cardContainerImg-' + id)
-        const w=parseInt($('#card-'+ id).offsetWidth) 
-        if(c.style.marginLeft==''){
-            c.style.marginLeft="-"+w+"px"
-        }else{
-            const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-            const leftMax=(imgCant-1)*-w
-            if(leftMax==leftIni){   
-                c.style.marginLeft='0px'
-            }else{
-                const leftFin=leftIni-w
-                c.style.marginLeft=leftFin+'px'
-            }
-        } 
-    }
-}
-
-//PREV IMG
-function prevCardImgElement(obj){
-    const id=obj.id.split('-')[1]
-    const c= $('#cardContainerImg-' + id)
-    const w=parseInt($('#card-'+ id).offsetWidth)
-    const story=STORIES.filter(x=>x[0]===id)
-    const imgCant=story[0][1].img.length
-    const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
-    const leftMax=(imgCant-1)*-w
-    let leftFin;
-    if(c.style.marginLeft=='' ||c.style.marginLeft=='0px'){
-        leftFin=leftMax+'px'
-        c.style.marginLeft=leftFin
-    }else{
-        leftFin=w+parseInt(leftIni) 
-        c.style.marginLeft=leftFin+'px'
-    }
-}
-
-//SHOW OR HIDE LATERAL MENU
+//LATERAL MENU
 function showHideMenu(){
     const menu=$('.menu')
     const overlay=$('#menuOverlay')
@@ -199,111 +33,110 @@ function showHideMenu(){
         overlay.classList.remove('showOverlay')
     }
 }
-
-//MOSTRAR DETALLES DE REDES SOCIALES
 function ShowMenuSocialDetail(cont){
     $('#menuSocialDetail').innerHTML=cont.dataset.text
 }
 
 // SEARCH HISTORIES
-function buscarHistoria(){
+function searchAll(){
     const c=document.querySelectorAll('.card')
     let menuFilterInput=$('#filterInput')
-    menuFilterInput.value=menuFilterInput.value.substring(0,menuFilterInput.value.length-1)
+    if(menuFilterInput.value.substring(menuFilterInput.value.length-1,menuFilterInput.value.length).toUpperCase()=='S'){
+        menuFilterInput.value=menuFilterInput.value.substring(0,menuFilterInput.value.length-1)
+    }
 
     c.forEach(x=>x.classList.remove('hide'))
-
-    if(menuFilterInput.value.length>2){
+    
+    if(menuFilterInput.value.length>2 || onlyStore){
+        let i=0
         STORIES.forEach(item=>{
-            if(!item[1].text && !item[1].hiddenText){
-                $('#card-'+item[0]).classList.add('hide');
+            if(!item.Texto && !item.PalabraClave){
+                $('#card-'+i).classList.add('hide');
             }
-            if(item[1].text){
-                const t=item[1].text.toUpperCase()
+            if(item.Texto){
+                const t=item.Texto.toUpperCase()
                 const m=menuFilterInput.value.toUpperCase()
                 if(!t.includes(m)){
-                    $('#card-'+item[0]).classList.add('hide')
+                    $('#card-'+i).classList.add('hide')
                 }
             }
-            if(item[1].hiddenText){
-                const ht=item[1].hiddenText.toUpperCase()
+            if(item.PalabraClave){
+                const ht=item.PalabraClave.toUpperCase()
                 const m=menuFilterInput.value.toUpperCase()
                 if(!ht.includes(m)){
-                    $('#card-'+item[0]).classList.add('hide')
+                    $('#card-'+i).classList.add('hide')
                 }else{
-                    $('#card-'+item[0]).classList.remove('hide')
+                    $('#card-'+i).classList.remove('hide')
                 }
             };
+            if(onlyStore && !item.Tienda){
+                $('#card-'+i).classList.add('hide')
+            }
+            i++
         })
     }
 }
-function seleccionarTodoInput(t){
-    t.select()
+function selectFilterText(obj){
+    obj.select()
 }
+let onlyStore=false
+function ShowOnlyStore(){
+    if($('#storeSearchIcon').classList.contains('hide')){
+        onlyStore=true
+        $('#storeSearchIcon').classList.remove('hide')
+        $('#menuBotonStoreIcon').src='./icons/store2.png'
+    }else{
+        onlyStore=false
+        $('#storeSearchIcon').classList.add('hide')
+        $('#menuBotonStoreIcon').src='./icons/store.png'
+    }
+    searchAll()
+}  
 
-//SHOW ABOUT
-function hideAbout(){
-    $('.aboutDetail').classList.add('hide')
-    $('.containerDetail').innerHTML=''
-}
-function showSoySanjuanero(){
-    //About Detail
-    const aboutDetail=$('#aboutDetail')
-    aboutDetail.classList.remove('hide')
-    //Container
-    const containerDetail=$('.containerDetail');
-    //Image
-    const detailImg=document.createElement('img');
-    detailImg.setAttribute('class','detailImg')
-    detailImg.setAttribute('src','https://i.imgur.com/iAsv8NK.jpg')
-    containerDetail.appendChild(detailImg);
-    
-    //Title
-    const detailTitle=document.createElement('div');
-    detailTitle.setAttribute('class','detailTitle');
-    detailTitle.innerHTML='SOY SANJUANERO'
-    containerDetail.appendChild(detailTitle);
-    //Text
-    const detailText=document.createElement('div');
-    detailText.setAttribute('class','detailText');
-    detailText.innerHTML='San Juan Nepomuceno es un municipio ubicado en la parte norte del departamento de Bolívar.  Rico en cultura, gastronomía e historia. Éste municipio  además pertenece a la región de Los Montes De María, es reconocido por el Santuario de Flora y Fauna Los Colorados.  #SoySanjuanero inicia sus labores en el año 2.017, cuando un grupo de amigos locales identifican que dentro de cada  ámbito cultural presente en este municipio, siempre existe una historia que contar, por lo tanto, se conforma un grupo de trabajo colectivo que se da a la tarea de investigar,  documentar y difundir a través de escritos, imágenes y videos las vivencias que resaltan lo que es ser sanjuanero.  <br><br> #SoySanjuanero no tiene color político, su trabajo es netamente independiente, fuera de cualquier tipo de  intervención pública o privada. Sin embargo, su raíz  principal se sostiene gracias al valor que cada uno de ustedes como sociedad nos brinda para seguir avanzando en este hermoso proyecto.'
-    containerDetail.appendChild(detailText);
-}
-function showSanJuanNepo(){
-    //About Detail
-    const aboutDetail=$('#aboutDetail')
-    aboutDetail.classList.remove('hide')
-    //Container
-    const containerDetail=$('.containerDetail');
-    //Image
-    const detailImg=document.createElement('img');
-    detailImg.setAttribute('class','detailImg')
-    detailImg.setAttribute('src','https://i.imgur.com/62c5vfr.jpg')
-    containerDetail.appendChild(detailImg);
-    
-    //Title
-    const detailTitle=document.createElement('div');
-    detailTitle.setAttribute('class','detailTitle');
-    detailTitle.innerHTML='SAN JUAN NEPOMUCENO'
-    containerDetail.appendChild(detailTitle);
-    //Text
-    const detailText=document.createElement('div');
-    detailText.setAttribute('class','detailText');
-    detailText.innerHTML='San Juan Nepomuceno es la tierra donde se puya bastante ñame y yuca harinosa con suero atollabuey, queso finquero y machucao de ají chivato. Aquí te embarrutas el bigote de merengue y dulce de leche saboreando una galleta maria luisa y además somos la tierra donde suena la abarca tres puntá del campesino y rebuzna el burro avisando que llegó el bastimento. Somos la tierra donde la cultura y la inteligencia es peste y se riega como la verdolaga en playón, estamos repletos de gente servicial, ponedera de sebo y con berraquera pa echá pa lante cualquier situación. <br><br> Fue fundado durante la época de la Colonia, el  10 de agosto  de  1776 , por Antonio de la Torre y Miranda, cuando llegó al valle de los Carretos trayendo consigo las primeras familias provenientes de Pileta (hoy Corozal) y de San Benito de Abad; estas familias estuvieron constituidas por 120 personas. El 11 de mayo de 1779 se protocolizaron los límites y las actas de posesión de los ejidos y distritos de San Juan y San Cayetano ante el escribano del Carmen, fue declarado municipio en el año de 1870. Luego se organiza la población convirtiéndose en un centro de mercadeo regional. <br><br> Según los restos arqueológicos encontramos en la región que este sitio estuvo habitado durante épocas muy remotas por grupos indígenas de la cultura denominada Malibues que pertenecían a la gran familia Caribe, estos nos dejaron como legado cultural el uso del bejuco Malibú, utilizaron la construcción de casas y corrales. Vivían en una etapa conocida en la arqueología americana Colombiana como Paleóindio Arcaico, cuyas principales características son: recolección de frutas y raíces, fabricación de una cerámica rústica con grabaciones zoomorfas. Estos restos señalan los primeros asentamientos indígenas de Colombia y se localizan en la costa norte del país, remontándose a una antigüedad de 400 a 1000 años a. C. En la época federal colombiana perteneció a la Provincia del Carmen en el Estado Soberano de Bolívar.'
-    containerDetail.appendChild(detailText);
-
-    const detailMap=document.createElement('div')
-    detailMap.setAttribute('class','detailImg');
-    detailMap.innerHTML="<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15719.173627315484!2d-75.09258272264908!3d9.951139836153866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e58b6685173d38b%3A0xa300e510d5fcb0a!2sSan%20Ju%C3%A1n%20Nepomuceno%2C%20Bol%C3%ADvar!5e0!3m2!1ses-419!2sco!4v1593204763930!5m2!1ses-419!2sco' width='100%' height='400' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false' tabindex='0'></iframe>"
-    containerDetail.appendChild(detailMap);
-}
-
-//SHOW SHOPPING MALL
+//SHOPPING MALL
 let paymentData={}
 function openShoppingMall(obj){
+    const id=obj.id.split('-')[1]
+    const objNombre=$('#'+'nombre-'+id)
+    let t=parseInt($('#'+'cant-'+id).value)*parseInt(STORIES[id].ArtPrecio[objNombre.value])
+
+    paymentData={
+        cant:parseInt($('#'+'cant-'+id).value) ,
+        artNombre:STORIES[id].ArtNombre[objNombre.value],
+        artPrecio:STORIES[id].ArtPrecio[objNombre.value],
+        nacional:STORIES[id].Nacional,
+        total:t
+    }
+
+    //valores por defecto
+    loadRegion()
+    $('#selectRegion').value="Bol\u00edvar"
+    loadCitys()
+    $('#selectCity').value="San Juan Nepomuceno"
+    //habilitar region
+    dis_enableRegion(paymentData.nacional)
+    en_disableCash()
+
+    $('#resumenMallCant').innerHTML=paymentData.cant
+    $('#resumenMallName').innerHTML=paymentData.artNombre
+    $('#resumenMallPrice').innerHTML=formatCurrency("es-CO", "COP", 2, parseInt(paymentData.artPrecio))
+    $('#resumenMallTotal').innerHTML=formatCurrency("es-CO", "COP", 2, paymentData.total)
+
     //Lo pone visible
     $('#shoppingMall').classList.remove('hide')
-    //lista cuidades y departamentos
+}
+function closeShoppingMall(){
+    $('#shoppingMall').classList.add('hide')
+}
+function formatCurrency (locales, currency, fractionDigits, number) {
+    var formatted = new Intl.NumberFormat(locales, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: fractionDigits
+    }).format(number);
+    return formatted;
+}
+function loadRegion(){
     $('#selectRegion').innerHTML=''
     const region =listarCiudades()
     region.forEach(c=>{
@@ -312,30 +145,6 @@ function openShoppingMall(obj){
         newRegion.innerText=c.departamento
         $('#selectRegion').appendChild(newRegion)
     })
-    //ciudad y departamento por defecto
-    $('#selectRegion').value='Bolívar'
-    loadCitys()
-    $('#selectCity').value='San Juan Nepomuceno'
-    //resumen de compra
-    const id=obj.id.split('-')[1]
-    const cant=$('#cant-'+id).value
-    const story=STORIES.filter(x=>id===x[0])[0][1]
-    const total=cant*parseInt(story.price)
-
-    $('#resumenMallCant').innerHTML='Cant(un):__ <strong>' + cant +'</strong>'
-    $('#resumenMallName').innerHTML='Nombre:___ <strong>' + story.nameStore +'</strong>'
-    $('#resumenMallPrice').innerHTML='Precio:_____ <strong>' + formatCurrency("es-CO", "COP", 2, parseInt(story.price)) +'</strong>'
-    $('#resumenMallTotal').innerHTML='Total:______ <strong>' + formatCurrency("es-CO", "COP", 2, total)   +'</strong>'
-    $('#socialWhatsapp').innerHTML=story.socialWhatsapp
-    
-    paymentData={
-        cant:cant,
-        nameArt:story.nameStore,
-        price:story.price,
-        shippingCost:story.shippingCostTown,
-        total:total,
-        providerWhatsapp:story.socialWhatsapp
-    }
 }
 function loadCitys(){
     $('#selectCity').innerHTML=''
@@ -348,17 +157,22 @@ function loadCitys(){
         newCity.innerText=c
         $('#selectCity').appendChild(newCity)
     }) 
+    en_disableCash()
 }
-function formatCurrency (locales, currency, fractionDigits, number) {
-    var formatted = new Intl.NumberFormat(locales, {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: fractionDigits
-    }).format(number);
-    return formatted;
-  }
-function closeShoppingMall(){
-    $('#shoppingMall').classList.add('hide')
+function dis_enableRegion(nacional){
+    if(nacional){
+        $('#selectRegion').style.pointerEvents = "auto"
+        $('#selectRegion').style.background='#ffffff'
+
+        $('#selectCity').style.pointerEvents = "auto"
+        $('#selectCity').style.background='#ffffff'
+    }else{
+        $('#selectRegion').style.pointerEvents = "none"
+        $('#selectRegion').style.background='#dddcdc'
+
+        $('#selectCity').style.pointerEvents = "none"
+        $('#selectCity').style.background='#dddcdc'
+    }
 }
 function en_disableCash(){
     if($('#selectCity').value=='San Juan Nepomuceno'){
@@ -374,112 +188,394 @@ function en_disableCash(){
     }
 }
 
-//CASH BUTTON
-async function payWithCash(){
-    if(verifyInputs()){
-        await reportPay({
-            cant:paymentData.cant,
-            nameArt:paymentData.nameArt,
-            price:paymentData.price,
-            shippingCost:paymentData.shippingCost,
-            total:paymentData.total,
-            costumerName:$('#shoppingMallName').value,
-            costumerNumber:$('#shoppingMallNumber').value,
-            costumerYear:$('#shoppingMallBirthYear').value,
-            costumerRegion:$('#selectRegion').value,
-            costumerCity:$('#selectCity').value,
-            costumerAddress:$('#shoppingMallAddress').value,
-            date:firebase.firestore.FieldValue.serverTimestamp(),
-            paymentMethod:'cash'
-        })
-        closeShoppingMall()
-    }
-}
-
-//WOMPY BUTTON
-function payWithWompi(){
-    if(verifyInputs()){
-        let now=Date.now()
-        //mando aca la informacion a la base de datos
-        reportPay({
-            cant:paymentData.cant,
-            nameArt:paymentData.nameArt,
-            price:paymentData.price,
-            shippingCost:paymentData.shippingCost,
-            total:paymentData.total,
-            costumerName:$('#shoppingMallName').value,
-            costumerNumber:$('#shoppingMallNumber').value,
-            costumerYear:$('#shoppingMallBirthYear').value,
-            costumerRegion:$('#selectRegion').value,
-            costumerCity:$('#selectCity').value,
-            costumerAddress:$('#shoppingMallAddress').value,
-            date:firebase.firestore.FieldValue.serverTimestamp(),
-            paymentMethod:'card',
-            providerWhatsapp:paymentData.providerWhatsapp
-        })
-        var checkout = new WidgetCheckout({
-            currency: 'COP',
-            amountInCents: paymentData.total*100,
-            reference:'Ref'+now,
-            publicKey: 'pub_test_3jwUCFdgoY1Y316dFrtIpjCvVTaZrS63',
-            redirectUrl:'http://127.0.0.1:5501/pages/pago.html'
-        })
-        checkout.open(function ( result ) {
-           var transaction=result.transaction
-/*            fetch('https://production.wompi.co/v1/transactions/'+transaction.id)
-           .then(response=>console.log('para el id'+transaction.id+' hubo una respuesta de '+response)) */
-        })
-    }
-}
-
-//CONTACT COSTUMER - PROVIDER
-function cerrarConfirmacion(obj){
-    window.open(obj.dataText)
-    $('#shopConfirmation').classList.add('hide')
-}
-//VERIFY INPUT DATA
+//PAY BUTTONS
 function verifyInputs(){
     let ok=true
-    const inputs=document.querySelectorAll('.campoMallInput')
-    inputs.forEach(input=>{
-        if(!input.value){ 
-            input.style.border = "1px solid #FF0000"
+    //nombre
+    if(
+        !$('#shoppingMallName').value.includes(' ') || 
+        $('#shoppingMallName').value==' ' ||
+        $('#shoppingMallName').value=='  '
+        ){
+            $('#shoppingMallName').style.border = "1px solid #FF0000"
             ok=false
-        }else{
-            input.style.border = "1px solid #c3c3c3"
-        }
-    })
+    }else{
+        $('#shoppingMallName').style.border = "1px solid #c3c3c3"
+    }
+    //whatsapp
+    if(
+        $('#shoppingMallNumber').value.length!=10
+        ){
+            $('#shoppingMallNumber').style.border = "1px solid #FF0000"
+            ok=false
+    }else{
+        $('#shoppingMallNumber').style.border = "1px solid #c3c3c3"
+    }
+    //ano de nacimiento
+    if(
+        $('#shoppingMallBirthYear').value.length!=4
+        ){
+            $('#shoppingMallBirthYear').style.border = "1px solid #FF0000"
+            ok=false
+    }else{
+        $('#shoppingMallBirthYear').style.border = "1px solid #c3c3c3"
+    }
+    //direccion
+    if(
+        $('#shoppingMallAddress').value=='' ||
+        $('#shoppingMallAddress').value.length<8 ||
+        !$('#shoppingMallAddress').value.includes(' ')
+        ){
+            $('#shoppingMallAddress').style.border = "1px solid #FF0000"
+            ok=false
+    }else{
+        $('#shoppingMallAddress').style.border = "1px solid #c3c3c3"
+    }
+
     return ok
 }
+function payWithCash(){
+    const ok=verifyInputs()
+    let now=Date.now()
+    if(ok){
+        swal({
+            title: "¿ESTÁS SEGUR@?",
+            text: "Una vez realizado el PEDIDO, todo nuestro equipo se PONDRÁ EN MARCHA para hacerte llegar tu producto lo más RÁPIDO POSIBLE. Se abrirá WHATSAPP para notificarnos.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(
+        r=>{
+        if(r){
+                paymentData={
+                    medio:'cash',
+                    cliNombre:$('#shoppingMallName').value.toUpperCase(),
+                    whatsapp:$('#shoppingMallNumber').value,
+                    anio:$('#shoppingMallBirthYear').value,
+                    region:$('#selectRegion').value,
+                    city:$('#selectCity').value,
+                    dir:$('#shoppingMallAddress').value,
+                    cant:paymentData.cant,
+                    artNombre:paymentData.artNombre,
+                    artPrecio:paymentData.artPrecio,
+                    nacional:paymentData.nacional,
+                    total:paymentData.total,
+                    fecha:firebase.firestore.FieldValue.serverTimestamp(),
+                    ref:'Ref'+now
+                }
+                //REPORTA A BASE DE DATOS
+                this.db.collection('ventas').add(paymentData)
+                //NOTIFICA A WHATSAPP
+                let text=`https://wa.me/573178123065?text=Hola!+%f0%9f%98%83%0d%0aQuiero+comprar+lo+siguiente+de+SoySanjuanero.Online%0d%0a%0d%0a`
+                text+=`Para+pagar+CONTRAENTREGA%0d%0a%0d%0a`
+                text+=`%f0%9f%8e%81+${paymentData.cant}+${paymentData.artNombre}++%f0%9f%92%b0${paymentData.artPrecio}%0d%0a`
+                text+=`TOTAL%3a+${paymentData.total}%0d%0a%0d%0a`
+                text+=`${paymentData.cliNombre}%0d%0a${paymentData.whatsapp}%0d%0a${paymentData.anio}%0d%0a${paymentData.dir}%0d%0a${paymentData.city}%0d%0a${paymentData.region}`
 
-//SCROLL MAIN TO TOP
-function scrollToTop(){
-    $('#main').scrollTop= 0
+                window.open(text,'_blank')
+            }
+        })   
+    }
 }
+function payWithWompi(){
+    const ok=verifyInputs()
+    let now=Date.now()
+    swal({
+        title:"IMPORTANTE!",
+        text:"Al FINALIZAR el pago, PULSA el botón REGRESAR AL COMERCIO o FINALIZAR para contactarte con el vendedor por WHATSAPP.",
+        icon:"warning",
+        button:"Entendí!"
+    })
+    .then(x=>{
+        if(ok){
+            paymentData={
+                medio:'card',
+                cliNombre:$('#shoppingMallName').value.toUpperCase(),
+                whatsapp:$('#shoppingMallNumber').value,
+                anio:$('#shoppingMallBirthYear').value,
+                region:$('#selectRegion').value,
+                city:$('#selectCity').value,
+                dir:$('#shoppingMallAddress').value,
+                cant:paymentData.cant,
+                artNombre:paymentData.artNombre,
+                artPrecio:paymentData.artPrecio,
+                nacional:paymentData.nacional,
+                total:paymentData.total,
+                fecha:firebase.firestore.FieldValue.serverTimestamp(),
+                ref:'Ref'+now,
+                status:'PENDING'
+            }
+            this.db.collection('ventas').add(paymentData)
+            var checkout = new WidgetCheckout({
+                currency: 'COP',
+                amountInCents:paymentData.total*100,
+                reference:'Ref'+now,
+                publicKey: 'pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh',
+                redirectUrl:'https://soysanjuanero.online/pago.html' 
+            })
+            checkout.open(x=>{
+                window.open('https://soysanjuanero.online/pago.html?id='+x.transaction.id,'blank()')
+            })
+        }  
+    })
+}
+
+//SHOW STORIES
+showStories()
+function showStories(){
+    let hmtlText=''
+    let id=0
+    STORIES.forEach(story => {
+        /* IMAGE */
+        hmtlText+=
+        `<div class="card" id="card-${id}">
+            <div class="containerImgFull" id="containerImgFull-${id}">`
+                let r=0
+                story.ArtImg.forEach(img=>{
+                    hmtlText+=`
+                        <div class="containerImg">
+                            <img
+                                src="${img}" 
+                                alt="imgsStory" 
+                                class="cardImgElement" 
+                                id="cardImgElement-${r}-${id}">
+                        </div>
+                    `
+                    r++ 
+                })
+            hmtlText+=`</div>`
+            /* NAV IMAGE */
+            if(story.ArtImg.length>1){
+                hmtlText+=`
+                <div class="cardContainerImgNav">
+                    <img 
+                        src="./icons/prev_24px.png" 
+                        alt="prev" 
+                        onclick="prevCardImgElement(this)"
+                        id="prev-${id}">
+                    <img 
+                        src="./icons/right_button_24px.png" 
+                        alt="prev" 
+                        onclick="nextCardImgElement(this)"
+                        id="next-${id}">
+                </div>
+                `
+            }
+            /* SOCIAL ELEMENTS */
+            hmtlText+=`<div class="cardContainerSocial" id="cardContainerSocial-${id}">`
+                if(story.socialFacebook && story.socialFacebook!=''){
+                    hmtlText+=`
+                    <a 
+                        href="${story.socialFacebook}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/facebook_circled_64px.png">
+                    </a>`
+                }
+                if(story.socialInstagram && story.socialInstagram!=''){
+                    hmtlText+=`
+                    <a 
+                        href="${story.socialInstagram}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/instagram_old_64px.png">
+                    </a>`
+                }
+                if(story.socialYoutube && story.socialYoutube!=''){
+                    hmtlText+=`
+                    <a 
+                        href="${story.socialYoutube}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/youtube_64px.png">
+                    </a>`
+                }
+                if(story.socialWhatsapp && story.socialWhatsapp!=''){
+                    hmtlText+=`
+                    <a 
+                        href=https://wa.me/57${story.socialWhatsapp}
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/whatsapp_64px.png">
+                    </a>`
+                }
+                if(story.socialTwitter && story.socialTwitter!=''){
+                    hmtlText+=`
+                    <a 
+                        href="${story.socialTwitter}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/twitter_64px.png">
+                    </a>`
+                }
+                if(story.socialTel && story.socialTel!=''){
+                    hmtlText+=`
+                    <a 
+                        href="Tel:${story.socialTel}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/cell_phone_64px.png">
+                    </a>`
+                }
+                if(story.socialWeb && story.socialWeb!=''){
+                    hmtlText+=`
+                    <a 
+                        href="${story.socialWeb}" 
+                        class="cardSocialElement"
+                        target="blank()">
+                            <img src="./icons/website_64px.png">
+                    </a>`
+                }
+            hmtlText+=`</div>`
+            if(story.Tienda){
+                hmtlText+=`
+                <div class="cardContainerStore" id="cardContainerStore-${id}">
+                    <select 
+                        name="Selecciona" 
+                        id="cant-${id}"
+                        class="cant">`
+                        for(let i=1;i<=5;i++){
+                            hmtlText+=`<option value="${i}">${i}</option>`
+                        }
+                    hmtlText+=`</select>`
+                    hmtlText+=`
+                    <select 
+                        name="Selecciona" 
+                        id="nombre-${id}"
+                        class="nombre">`
+                        let i=0
+                        story.ArtNombre.forEach(n=>{
+                            hmtlText+=`<option value="${i}">${n}</option>`
+                            i++
+                        }) 
+                    hmtlText+=`</select>`
+                    hmtlText+=`<div 
+                        class="cardSocialElement"
+                        id="cardSocialElement-${id}"
+                        onclick="openShoppingMall(this)">
+                            <img src="./icons/storeBuy.png" alt="">
+                    </div>`
+                hmtlText+=`</div>`
+            }
+            if(story.Texto){
+                hmtlText+=`<div class="cardText">`
+                    hmtlText+=story.Texto
+                hmtlText+=`</div>`
+            } 
+        hmtlText+=`</div>`
+        id++
+    });
+    $('#main').innerHTML=hmtlText
+}
+
+//NEXT PREV IMAGE
+function prevCardImgElement(obj){
+    const id=obj.id.split('-')[1]
+    const c= $('#containerImgFull-' + id)
+    const w=parseInt($('#card-'+ id).offsetWidth)
+    const story=STORIES[id]
+    const imgCant=story.ArtImg.length
+    const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
+    const leftMax=(imgCant-1)*-w
+    let leftFin;
+    let numImg=0
+    if(c.style.marginLeft=='' ||c.style.marginLeft=='0px'){
+        leftFin=leftMax+'px'
+        c.style.marginLeft=leftFin
+        $('#nombre-'+id).value=imgCant-1
+    }else{
+        leftFin=w+parseInt(leftIni) 
+        c.style.marginLeft=leftFin+'px'
+        $('#nombre-'+id).value--
+    }
+}
+function nextCardImgElement(obj){
+
+    const id=obj.id.split('-')[1]
+    const story=STORIES[id]
+    const imgCant=story.ArtImg.length
+    
+    if(imgCant>1) {
+        const c= $('#containerImgFull-' + id)
+        const w=parseInt($('#card-'+ id).offsetWidth) 
+        let numImg=0
+        if(c.style.marginLeft==''){
+            c.style.marginLeft="-"+w+"px"
+            $('#nombre-'+id).value=1
+        }else{
+            const leftIni=c.style.marginLeft.substring(0,c.style.marginLeft.length-2)
+            const leftMax=(imgCant-1)*-w
+            if(leftMax==leftIni){   
+                c.style.marginLeft='0px'
+                $('#nombre-'+id).value=0
+            }else{
+                const leftFin=leftIni-w
+                c.style.marginLeft=leftFin+'px'
+                $('#nombre-'+id).value++
+            }
+        } 
+    } 
+}
+
+//SHOW ABOUT
+function ShowAbout(r){
+    let texto=''
+    $('.aboutDetail').classList.remove('hide')
+    $('.containerDetail').innerHTML=''
+    if(r=='SoySanjuanero'){
+        texto=
+        `
+            <i   class="material-icons aboutDetailClose" onclick="ShowAbout('close')">close</i>
+            <img class="detailImg" src="https://i.imgur.com/iAsv8NK.jpg" alt="SoySanjuanerologo">
+            <span>SOY SANJUANERO</span>
+            <p class="detailP">
+              #SoySanjuanero inicia sus labores en el año 2.017, cuando un grupo de amigos locales identifican que dentro de cada  ámbito cultural presente en este municipio, siempre existe una historia que contar, por lo tanto, se conforma un grupo de trabajo colectivo que se da a la tarea de investigar,  documentar y difundir a través de escritos, imágenes y videos las vivencias que resaltan lo que es ser sanjuanero.  <br><br> #SoySanjuanero no tiene color político, su trabajo es netamente independiente, fuera de cualquier tipo de  intervención pública o privada. Sin embargo, su raíz  principal se sostiene gracias al valor que cada uno de ustedes como sociedad nos brinda para seguir avanzando en este hermoso proyecto.
+            </p>
+            <img class="detailImg" src="https://i.imgur.com/hUj1dZu.jpg" alt="entrevista">
+            <br><br><br><br><br><br>
+        `
+    }else if(r=='SanJuanNepo'){
+        texto=
+        `
+            <i   class="material-icons aboutDetailClose" onclick="ShowAbout('close')">close</i>
+            <img class="detailImg" src="https://i.imgur.com/62c5vfr.jpg" alt="SanJuanNepo">
+            <span class="detailSpan">SAN JUAN NEPOMUCENO</span>
+            <p class="detailP">
+            San Juan Nepomuceno es la tierra donde se puya bastante ñame y yuca harinosa con suero atollabuey, queso finquero y machucao de ají chivato. Aquí te embarrutas el bigote de merengue y dulce de leche saboreando una galleta maria luisa y además somos la tierra donde suena la abarca tres puntá del campesino y rebuzna el burro avisando que llegó el bastimento. Somos la tierra donde la cultura y la inteligencia es peste y se riega como la verdolaga en playón, estamos repletos de gente servicial, ponedera de sebo y con berraquera pa echá pa lante cualquier situación. <br><br> Fue fundado durante la época de la Colonia, el  10 de agosto  de  1776 , por Antonio de la Torre y Miranda, cuando llegó al valle de los Carretos trayendo consigo las primeras familias provenientes de Pileta (hoy Corozal) y de San Benito de Abad; estas familias estuvieron constituidas por 120 personas. El 11 de mayo de 1779 se protocolizaron los límites y las actas de posesión de los ejidos y distritos de San Juan y San Cayetano ante el escribano del Carmen, fue declarado municipio en el año de 1870. Luego se organiza la población convirtiéndose en un centro de mercadeo regional. <br><br> Según los restos arqueológicos encontramos en la región que este sitio estuvo habitado durante épocas muy remotas por grupos indígenas de la cultura denominada Malibues que pertenecían a la gran familia Caribe, estos nos dejaron como legado cultural el uso del bejuco Malibú, utilizaron la construcción de casas y corrales. Vivían en una etapa conocida en la arqueología americana Colombiana como Paleóindio Arcaico, cuyas principales características son: recolección de frutas y raíces, fabricación de una cerámica rústica con grabaciones zoomorfas. Estos restos señalan los primeros asentamientos indígenas de Colombia y se localizan en la costa norte del país, remontándose a una antigüedad de 400 a 1000 años a. C. En la época federal colombiana perteneció a la Provincia del Carmen en el Estado Soberano de Bolívar.
+            </p>
+            <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15719.173627315484!2d-75.09258272264908!3d9.951139836153866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e58b6685173d38b%3A0xa300e510d5fcb0a!2sSan%20Ju%C3%A1n%20Nepomuceno%2C%20Bol%C3%ADvar!5e0!3m2!1ses-419!2sco!4v1593204763930!5m2!1ses-419!2sco' width='100%' height='400' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false' tabindex='0'></iframe>
+            <br><br><br><br><br><br>
+        `
+    }else if(r=='donations'){
+        texto=
+        `
+            <i   class="material-icons aboutDetailClose" onclick="ShowAbout('close')">close</i>
+            <p>
+                Con tu donación estás APOYANDO el proyecto SOY SANJUANERO,  de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA y la CORRUPCIÓN. 
+            <br><br>
+                Este proyecto busca resaltar la idiosincrasia sanjuanera, artistas, artesanos, costumbres, el Santuario de Flora y Fauna Los Colorados y todo lo que lo rodea. 
+            <br><br>
+                Por otro lado SoySanjuanero busca apoyar los  productos y servicios de los sanjuaneros a nivel nacional. 
+            <br><br>
+                Es así como favorecer este proyecto es poner un granito de arena para la cultura y la economía de la región.
+            </p>
+        `
+    }else if(r=='close'){
+        $('.aboutDetail').classList.add('hide')
+    }
+    $('.containerDetail').innerHTML=texto
+}
+
 //MUSIC
 let currentSong=0
-const playlist=[
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fal%20pie%20de%20la%20monta%C3%B1a%20listo.mp3?alt=media&token=e27781b1-9960-49cb-b6d5-332000bbd48c',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fcerro%20verde%20listo.mp3?alt=media&token=acc7d490-a2ec-48f4-be06-cc56d4c9d9d6',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fel%20playonero%20listo.mp3?alt=media&token=0b23b7af-2d1a-495e-9fc8-ec167ad2f898',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fimagenes%20listo.mp3?alt=media&token=4d93b4c5-b310-49de-a55c-6c41b9ad823f',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20morroya%20listo.mp3?alt=media&token=f30363b6-e51d-4dcf-b37a-91210788d161',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20puya%20del%20diablo%20lista.mp3?alt=media&token=d9b4fb13-15d4-4c02-9637-79675bbcb6a1',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fla%20quincea%C3%B1era%20lista.mp3?alt=media&token=3bb7e1ea-0805-4c3e-8049-1907f770ae68',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Flos%20sabanales%20listo.mp3?alt=media&token=e2946113-b7f3-4147-8888-21764cb27851',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fnoche%20sin%20lucero%20listo.mp3?alt=media&token=4ce80e4c-4a16-4445-93e8-d823909af659',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsan%20juan%20de%20mis%20amores%20listo.mp3?alt=media&token=42a7f7af-ba3f-4374-b58b-4b282a4bef23',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsanjuanera%20listo.mp3?alt=media&token=9b59596a-7683-4454-93fc-58a8f985bb09',
-    'https://firebasestorage.googleapis.com/v0/b/soysanjuanero-a5c1c.appspot.com/o/PlaylistSoySanjuanero%2Fsoy%20sanjuanero%20listo.mp3?alt=media&token=47936ab1-8478-4395-83f0-999aa0140ccd'
-
-]
 let playlistOrder=[]
 do{
-    const n=Math.floor(Math.random()*playlist.length)
+    const n=Math.floor(Math.random()*PLAYLIST.length)
     if(!playlistOrder.includes(n)){
         playlistOrder.push(n)
     }
-}while (playlistOrder.length!=playlist.length) 
+}while (playlistOrder.length!=PLAYLIST.length) 
 
 function playStopMusic(){
     const icon=$('#headerPlayPauseMusic').src
@@ -492,10 +588,10 @@ function playStopMusic(){
     }
 }
 function nextSong(){
-    $('#player').src=playlist[playlistOrder[currentSong]]
+    $('#player').src=PLAYLIST[playlistOrder[currentSong]]
     $('#player').play()
     currentSong++
-    if(currentSong===playlist.length){
+    if(currentSong===PLAYLIST.length){
         currentSong=0
     }
 }

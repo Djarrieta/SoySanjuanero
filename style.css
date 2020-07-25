@@ -17,39 +17,47 @@ header{
     width: 100%;
     min-width: 320px;
     height: 65px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-bottom: solid 1px rgb(218, 215, 214);
     box-shadow: 0px 2px 5px 0px rgba(48,48,48,0.2);
     z-index:4;
+    text-align: center;
+    
 }
-
-header img{
-    height: 90%;
+.container{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+header .container img{
+    height: 60px;
     margin: 0 5px;
     cursor: pointer;
 }
-header img:nth-child(3){
-    height: 60%;
+header .container img:nth-child(3){
+    height: 35px;
 }
-
-header span{
+header .container img:nth-child(4){
+    height: 35px;
+}
+header .container span{
     box-shadow: 1px 1px 2px 1px rgba(138, 137, 137, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
-header span:hover{
+header .container span:hover{
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     border: solid gray 1px;
 }
-header span input{
+header .container span input{
     border: none;
     height: 1.5em;
 }
-header span input:hover, header span input:focus{
+header .container span input:hover, header span input:focus{
     outline: none;
     border: none;
 }
@@ -77,9 +85,7 @@ header span input:hover, header span input:focus{
     border: none;
     outline: none;
 }
-
 /* CARDS */
-
 main{
     width: 100%;
     height: 100%;
@@ -91,7 +97,7 @@ main{
     width: 100vw;
     max-width: 500px;
     min-width: 350px;
-    margin: 10px auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -103,7 +109,7 @@ main{
 .card:hover{
     box-shadow: 1px 1px 6px 4px rgba(48,48,48,0.2);
 }
-.cardContainerImg{
+.containerImgFull{
     display: flex;
     overflow:hidden;
     align-items: center;
@@ -126,7 +132,7 @@ main{
     margin: 0 5px;
     height: 25px;
 }
-.cardContainerSocial{
+.cardContainerSocial ,.cardContainerStore{
     background-color: white;
     display: flex;  
     align-items: center;
@@ -135,37 +141,116 @@ main{
     margin: 5px 0;
     cursor: pointer;
 }
-.cardContainerSocialList{
-    margin-left: 20px;
-}
-.cardContainerSocialList:focus{
-    outline: none;
-}
-.cardSocial{
-    height: inherit;
-}
-.cardSocial img {
-    height: inherit;
+
+.cardSocialElement img{
+    height: 20px;
     transition: 200ms;
 }
-.cardSocial img:hover{
+.cardSocialElement img:hover{
     transform: scale(1.2);
 }
-#cardCant{
-    margin-left: 20px;
-    font-size: 15px;
+.cant:focus{
     outline: none;
-    color: rgb(75, 74, 74);
-    border: none;
-    text-align: center;
-}
-#cardCant option{
-    font-size: 15px;
 }
 .cardText{
     background-color: white;
     width: 90%;
     margin: 10px auto 30px auto;
+}
+.nombre{
+    width: 200px;
+}
+
+/* SHOPPING MALL */
+.aboutDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(36, 36, 36, 0.85);
+    z-index: 5;
+}
+.aboutDetailClose{
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    text-align: right;
+
+}
+.containerDetail{
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
+    background-color: white;
+    overflow: hidden scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#shoppingMall .containerDetail div{
+    background-color: white;
+    width: 100vw;
+    max-width: 700px;
+    min-width: 350px;
+}
+.datosMall{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 ;
+
+}
+.datosMall span{
+    display: flex;
+}
+.datosMall span img{
+    height: 3em;
+    margin: 0 3px;
+}
+
+.botonPagos span{
+    background-color: rgb(167, 167, 167);
+    height: 70px;
+    width: 250px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 5px auto;
+}
+
+.campoMall{
+    width: 250px;
+    margin: 3px 0;
+}
+.campoMall span{
+    font-weight: 900;
+}
+.campoMall select,.campoMall input{
+    width: 100%;
+}
+
+#shopConfirmation{
+    position: absolute;
+    width: 100vw;
+    height: 150px;
+    top: calc(100vh - 150px);
+    left: 0;
+    background-color: red;
+    color: white;
+    z-index: 5;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 50px;
+    cursor: pointer;
 }
 
 /* MENU */
@@ -174,7 +259,7 @@ main{
     height: 100vh;
     min-height: 500px;
     position: absolute;
-    top: 45px;
+    top: 50px;
     left: 0;/* -100vw; */
     z-index: 2;
     transition: 800ms;
@@ -243,7 +328,7 @@ main{
 
 #menuOverlay {
     position: absolute;
-    top: 60px;
+    top: 65px;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -256,178 +341,27 @@ main{
    display: block !important;
 }
 
-/* PIEZAS */
-.pieza{
-    position: absolute;
-    width: 190px;
-    top: 70px;
-    display: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
-    padding: 10px;
-    background-color: white;
-    z-index: 4;
-}
-.pieza img{
-    width: 100%;
-}
-#pieza1{
-    right: 20px; 
-}
-#pieza2{
-    right: 240px; 
-}
-.lastPieza{
-    display: none;
-}
 
 /* ABOUT */
-.aboutDetail{
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(36, 36, 36, 0.85);
-    z-index: 5;
-}
-.aboutDetailClose{
-    width: 100vw;
-    max-width: 700px;
-    min-width: 350px;
-    height: 30px;
-    color: white;
-    cursor: pointer;
-    text-align: right;
-
-}
-.containerDetail{
-    width: 100vw;
-    max-width: 700px;
-    min-width: 350px;
-    background-color: white;
-    overflow: hidden scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.detailImg{
+.containerDetail .detailImg{
     width: 100%;
 }
-.detailTitle{
-    font-weight: 900;
+.containerDetail .detailSpan{
+    margin: 10px 0;
     font-size: 30px;
+    font-weight: bold;
 }
-.detailText{
+.containerDetail .detailP{
     width: 90%;
-    margin:10px auto 50px auto;
-
+    margin: 0 auto 20px auto;
 }
+
 .hide{
-    display: none !important;
+    display: none;
 }
-
-/* SHOPPING MALL */
-
-#shoppingMall .containerDetail div{
-    background-color: white;
-    width: 100vw;
-    max-width: 700px;
-    min-width: 350px;
+@media screen and (min-width: 600px){
+    .container{
+        width: 80%;
+    } 
+    
 }
-.datosMall{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0 ;
-
-}
-.datosMall span{
-    display: flex;
-}
-.datosMall span img{
-    height: 3em;
-    margin: 0 3px;
-}
-#shoppingMallWompi{
-    color: #d3d1d1;
-    pointer-events: none;
-    background-color: #dddcdc;   /* QUITAR AL HABILITAR PAGOS CON TARJETA POR FUERA DE SAN JUAN */
-}
-
-.botonPagos span{
-    background-color: rgb(167, 167, 167);
-    height: 70px;
-    width: 250px;
-    font-size: 20px;
-    border-radius: 5px;
-    text-align: center;
-    align-items: center;
-    font-weight: 700;
-    cursor: pointer;
-    margin: 5px auto;
-}
-
-.campoMall{
-    width: 250px;
-    margin: 3px 0;
-}
-.campoMall select,.campoMall input{
-    width: 100%;
-}
-
-#shopConfirmation{
-    position: absolute;
-    width: 100vw;
-    height: 150px;
-    top: calc(100vh - 150px);
-    left: 0;
-    background-color: red;
-    color: white;
-    z-index: 5;
-    text-align: center;
-    text-decoration: none;
-    margin-bottom: 50px;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 1170px){
-    #pieza1{
-        display: block;
-    }
-    .headerSection{
-        margin: 0 40px;
-    }
-    .headerSection:first-child{
-        display: none;
-    }
-    .menu{
-        left: 0;
-    }
-
-}
-@media screen and (min-width: 1650px){
-    #pieza2{
-        display:block;
-    }
-    .lastPieza{
-        display:block;
-    }
-    .menu{
-        width: 220px;
-        padding: 0 40;
-    }
-    .menuSocial{
-        padding-right: 40px;
-    }
-
-}
-
-
-
-
-
-
-

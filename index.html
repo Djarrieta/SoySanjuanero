@@ -6,54 +6,128 @@
         <title>SoySanjuanero</title>
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="./icons/logoSoySanjuanero.png" type="image/x-icon">
-        <!-- Google Icons -->
+        <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
         <!-- wompi -->
         <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+        <!-- sweet Alert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>    
         <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
-        <!-- sweetalert -->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
-
         <!-- HEADER -->
         <header>
-            <img 
-                onclick="showHideMenu()"
-                src="./icons/logoSoySanjuanero.png" 
-                alt="logoSoySanjuanero">
-            <span>
-                <i class="material-icons">search</i>
-                <input 
-                    type="text"
-                    name="filtro"
-                    id="filterInput"
-                    onfocus="seleccionarTodoInput(this)" 
-                    onchange="buscarHistoria()"
-                    placeholder="Buscar...">
-            </span>
-            <img
-                id="headerPlayPauseMusic"
-                onclick="playStopMusic()"
-                src="./icons/musical_notes_64px.png" 
-                alt="Carrito">
+            <div class="container">
+                <img 
+                    onclick="showHideMenu()"
+                    src="./icons/logoSoySanjuanero.png" 
+                    alt="logoSoySanjuanero">
+                <span>
+                    <i class="material-icons">search</i>
+                    <p class="hide" id="storeSearchIcon">Tienda:</p>
+                    <input 
+                        type="text"
+                        name="filtro"
+                        id="filterInput"
+                        onfocus="selectFilterText(this)" 
+                        onchange="searchAll()"
+                        placeholder="Buscar...">
+                </span>
+
+                <img
+                    id="headerPlayPauseMusic"
+                    onclick="playStopMusic()"
+                    src="./icons/musical_notes_64px.png" 
+                    alt="Carrito">
+            </div> 
         </header>
+
+        <!-- MAIN -->
+        <main id="main">
+        </main>
+
+        <!-- SHOPPING MALL -->
+        <div id="shoppingMall" class="aboutDetail hide">
+            <i   class="material-icons aboutDetailClose" onclick="closeShoppingMall()">close</i>
+            <div class='containerDetail'>
+                <div class="datosMall">
+                    <span>DATOS DE COMPRA</span>
+                    <span class="campoMall">
+                        <img src="./icons/customer_64px.png">
+                        <input type="text" placeholder="Nombre" id="shoppingMallName" class="campoMallInput" value="dario arrieta">
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/whatsapp_64px.png">
+                        <input type="number" placeholder="WhatsApp" id="shoppingMallNumber" class="campoMallInput" value="3008718217">
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/today_64px.png">
+                        <input type="number" placeholder="Año de Nacimiento (2000)" id="shoppingMallBirthYear" class="campoMallInput" value="1988">
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/user_location_64px.png">
+                        <select name="Departamento" id="selectRegion" onchange="loadCitys()" class="campoMallInput"></select>
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/user_location_64px.png">
+                        <select name="Ciudad" id="selectCity" class="campoMallInput" onchange="en_disableCash()"> </select>
+                    </span>
+                    <span class="campoMall">
+                        <img src="./icons/user_location_64px.png">
+                        <input type="text" placeholder="Cl00 #00-00 int/casa 00, barrio, frente a..." id="shoppingMallAddress" class="campoMallInput" value="cr 16 n 14-15">
+                    </span>
+                </div>
+                <div class="datosMall">
+                    <span class="datosMall" id="resumenMallTitle">RESUMEN DE COMPRA</span>
+                    <span class="campoMall" >Cant:____<span id="resumenMallCant"></span></span>
+                    <span class="campoMall" >Nombre:_<span id="resumenMallName"></span></span>
+                    <span class="campoMall">Precio:___<span id="resumenMallPrice"></span></span>
+                    <span class="campoMall">Total:_____<span id="resumenMallTotal"></span></span>
+                </div>
+                <span>**Envíos GRATIS en San Juan Nepo.</span>
+                <div class="datosMall datosMallPagos" >
+                    <div  class="botonPagos">
+                        <span 
+                            id="shoppingMallWompi"
+                            onclick="payWithWompi()">
+                                <img src="./icons/credit_control_64px.png">Pagar con tarjeta</span>
+                    </div>
+                    <div  class="botonPagos">
+                        <span 
+                            id="shoppingMallContraentrega"
+                            onclick="payWithCash()">
+                            <img src="./icons/cash_64px.png"> Pagar al recibir el producto</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+        <div id="shopConfirmation" class="hide" onclick="cerrarConfirmacion(this)">
+            <p></p>
+        </div>
 
         <!-- MENU LATERAL -->
         <menu class="menu hideMenu">
             <div class="menuBoton">
-                <a onclick="showSoySanjuanero()"><img src="./icons/logoSoySanjuanero.png" alt=""><p>SoySanjuanero</p> </a>
+                <a onclick="ShowAbout('SoySanjuanero')"><img src="./icons/logoSoySanjuanero.png" alt="soy sanjuanero"><p>SoySanjuanero</p> </a>
             </div>
             <div class="menuBoton" >
-                <a onclick="showSanJuanNepo()"><img src="https://i.imgur.com/vAGXP1z.png" alt=""><p>San Juan Nepo.</p> </a>
+                <a onclick="ShowAbout('SanJuanNepo')"><img src="https://i.imgur.com/vAGXP1z.png" alt="san juan"><p>San Juan Nepo.</p> </a>
             </div>
             <div class="menuBoton">
-                <a><img src="/icons/online_support_64px.png" alt=""><p>Contacto</p> </a>
+                <a onclick="ShowOnlyStore()"><img id="menuBotonStoreIcon" src="/icons/store.png" alt="tienda"><p>Tienda</p> </a>
             </div>
+            <div class="menuBoton">
+                <a onclick="ShowAbout('donations')"><img src="/icons/donation_64px.png" alt="donaciones"><p>Donaciones</p> </a>
+            </div>
+            <div class="menuBoton">
+                <a><img src="/icons/online_support_64px.png" alt="Tienda"><p>Contacto</p> </a>
+            </div>
+
             <div class="menuSocial">
                 <a 
                     data-text="(+57) 317 8123065" 
@@ -97,99 +171,22 @@
         </menu>
         <div id ='menuOverlay' onclick="showHideMenu()" ></div>
 
-         <!-- HISTORIAS -->
-        <main id="main">
-        </main>
-
         <!-- ABOUT -->
-        <div id="aboutDetail" class="aboutDetail hide" onclick="hideAbout()">
-            <i   class="material-icons aboutDetailClose" onclick="hideAbout()">close</i>
+        <div id="aboutDetail" class="hide" onclick="ShowAbout('close')">
             <div class="containerDetail">
                 <!-- SoySanjuanero/San Juan Nepo -->
             </div>
         </div> 
-
-        <!-- SHOPPING MALL -->
-        <div id="shoppingMall" class="aboutDetail hide">
-            <i   class="material-icons aboutDetailClose" onclick="closeShoppingMall()">close</i>
-            <div class='containerDetail'>
-                <div class="datosMall">
-                    <span>DATOS DE COMPRA</span>
-                    <span class="campoMall">
-                        <img src="./icons/customer_64px.png">
-                        <input type="text" placeholder="Nombre" id="shoppingMallName" class="campoMallInput">
-                    </span>
-                    <span class="campoMall">
-                        <img src="./icons/whatsapp_64px.png">
-                        <input type="number" placeholder="WhatsApp" id="shoppingMallNumber" class="campoMallInput">
-                    </span>
-                    <span class="campoMall">
-                        <img src="./icons/today_64px.png">
-                        <input type="number" placeholder="Año de Nacimiento" id="shoppingMallBirthYear" class="campoMallInput">
-                    </span>
-                    <span class="campoMall">
-                        <img src="./icons/user_location_64px.png">
-                        <select name="Departamento" id="selectRegion" onchange="loadCitys()" class="campoMallInput"></select>
-                    </span>
-                    <span class="campoMall">
-                        <img src="./icons/user_location_64px.png">
-                        <select name="Ciudad" id="selectCity" class="campoMallInput" onchange="en_disableCash()"> </select>
-                    </span>
-                    <span class="campoMall">
-                        <img src="./icons/user_location_64px.png">
-                        <input type="text" placeholder="Cl00 #00-00 int/casa 00, barrio, frente a..." id="shoppingMallAddress" class="campoMallInput">
-                    </span>
-                </div>
-                <div class="datosMall">
-                    <span class="datosMall" id="resumenMallTitle">RESUMEN DE COMPRA</span>
-                    <span class="campoMall" id="resumenMallCant"></span>
-                    <span class="campoMall" id="resumenMallName"></span>
-                    <span class="campoMall" id="resumenMallPrice"></span>
-                    <span class="campoMall" id="resumenMallShipping"></span>
-                    <span class="campoMall" id="resumenMallTotal"></span>
-                    <span class="campoMall hide" id="socialWhatsapp"></span>
-                </div>
-                <span>**Envíos GRATIS en San Juan Nepo.</span>
-                <div class="datosMall datosMallPagos" >
-                    <div  class="botonPagos">
-                        <span 
-                            id="shoppingMallWompi"
-                            onclick="payWithWompi()">
-                                <img src="./icons/credit_control_64px.png">Pagar con tarjeta</span>
-                    </div>
-                    <div  class="botonPagos">
-                        <span 
-                            id="shoppingMallContraentrega"
-                            onclick="payWithCash()">
-                            <img src="./icons/cash_64px.png"> Pagar al recibir el producto</span>
-                    </div>
-                </div>
-
-            </div>
-        </div> 
-        <div id="shopConfirmation" class="hide" onclick="cerrarConfirmacion(this)">
-            <p></p>
-        </div>
-
-        <!-- PIEZAS -->
-        <div id="pieza1" class="pieza">
-            <img id="piezaImg1" src="" alt="pieza">
-            <img id="piezaImg2"  src="" alt="pieza">
-            <img id="piezaImg3"  src="" alt="pieza">
-        </div>
-        <div id="pieza2" class="pieza">
-            <img id="piezaImg4"  src="" alt="pieza">
-            <img id="piezaImg5"  src="" alt="pieza">
-            <img id="piezaImg6"  src="" alt="pieza">
-        </div>
 
         <!-- MUSICA -->
         <audio id="player" controls class="hide" onended="nextSong()">
             <source src="" type="audio/mpeg">
         </audio>
 
-        <script src="./scripts/firebase.js"></script>
         <script src="./scripts/ciudades.js"></script>
+        <script src="./scripts/historias.js"></script>
+        <script src="./scripts/piezas.js"></script>
+        <script src="./scripts/playlist.js"></script>
         <script src="./scripts/index.js"></script>
     </body>
 </html>

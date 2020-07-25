@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoySanjuanero Pagos</title>
+    <link rel="shortcut icon" href="./icons/logoSoySanjuanero.png" type="image/x-icon">
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <main class="main">
+        <div>
+            <p class="element">Muchas GRACIAS por tu compra! <br><br>
+                Con ella estás APOYANDO LA ECONOMÍA LOCAL de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA y la CORRUPCIÓN. 
+                    <br><br>
+                Tu GRANITO DE ARENA servirá de SUSTENTO para un artesano, campesino o comerciante de la región.</p>
+        </div>
+        <img  class="element" src="https://i.imgur.com/YS5Nuj8.jpg" alt="campesino">
+        <input  class="element" type="button" value="CONTACTAR AL VENDEDOR" onclick="contactarAlVendedor()">       
+    </main>
+    <script>
+        let paymentData=[]
+        let text=''
+        function contactarAlVendedor(){
+            window.open(text,'_self')
+        }
+        function iniciar(){
+            //FIREBASE
+            var config = {
+                apiKey: "AIzaSyAnxXJlQC9mOyNnSYzV4utnjYXF29fWoC8",
+                authDomain: "soysanjuanero-a5c1c.firebaseapp.com",
+                databaseURL: "https://soysanjuanero-a5c1c.firebaseio.com",
+                projectId: "soysanjuanero-a5c1c",
+                storageBucket: "soysanjuanero-a5c1c.appspot.com",
+                messagingSenderId: "344513006950",
+                appId: "1:344513006950:web:10250cd62d0e7236d20ca7",
+                measurementId: "G-5DX7T59E32"
+            };
+            firebase.initializeApp(config);
+            const firestore = firebase.firestore();
+            const settings = {timestampsInSnapshots: true};
+            firestore.settings(settings);
+            var db = firebase.firestore();
+
+            //CON ID BUSCA EL STATUS Y REFERENCE EN API DE WOMPI 
+            const data=window.location
+            const id=data.search.split('id=')[1]
+            let status=''
+            fetch('https://production.wompi.co/v1/transactions/'+id) //consulta api de wompi
+            .then(x=>x.json())//lee respuesta de wompi
+            .then(x=>{status=x.data.status; return x.data.reference})//saca la referencia
+            .then(x=>db.collection('ventas').where('ref','==',x).get())//consulta firebase con la referencia
+            .then(x=>[x.docs[0].id,x.docs[0].data()])//obtiene id y objeto de la consulta
+            .then(x=>{
+                if(status=="APPROVED"){
+                    const idFirebase=x[0]
+                    console.log('notifica como approved')
+                    db.collection('ventas').doc(idFirebase).update({"status":"APPROVED"})
+
+                    paymentData=x[1]
+                    text=`https://wa.me/573178123065?text=Hola!+%f0%9f%98%83%0d%0aQuiero+comprar+lo+siguiente+de+SoySanjuanero.Online%0d%0a%0d%0a`
+                    text+=`Ya+esta+pagado+con+tarjeta%0d%0a%0d%0a`
+                    text+=`%f0%9f%8e%81+${paymentData.cant}+${paymentData.artNombre}++%f0%9f%92%b0${paymentData.artPrecio}%0d%0a`
+                    text+=`TOTAL%3a+${paymentData.total}%0d%0a%0d%0a`
+                    text+=`${paymentData.cliNombre}%0d%0a${paymentData.whatsapp}%0d%0a${paymentData.anio}%0d%0a${paymentData.dir}%0d%0a${paymentData.city}%0d%0a${paymentData.region}%0d%0a%0d%0a`
+                    text+=`PULSA ACA PARA SEGUIR EN %f0%9f%91%89 https://soysanjuanero.online/ %f0%9f%91%88`
+                    text=text.split(' ').join('%20').split('+').join('%20')
+                }else{
+                    console.log('notifica como disapproved')
+                    db.collection('ventas').doc(x[0]).update({"status":"DISAPPROVED"})
+
+                    text=`https://wa.me/573178123065?text=Hola!+%f0%9f%98%83%0d%0aQuiero comprar algunos productos de SoySanjuanero.Online%0d%0a%0d%0a`
+                    text=text.split(' ').join('%20')
+                }
+            })
+        }
+        iniciar()
+    </script>
+</body>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(209, 207, 207);
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main .element{
+        width: 100vw;
+        max-width: 500px;
+        min-width: 350px;
+        text-align: center;
+        background-color: white;
+    }
+    .main div div{
+        padding: 20px;
+    }
+    .main div{
+        background-color: white;
+    }
+    .main img{
+        border-radius: 10px;
+        box-shadow: 1px 1px 2px 1px rgba(36, 36, 36, 0.3);
+    }
+    .main input{
+        font-size: 20px;
+        margin-top: 10px;
+        height: 100px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 2px 1px rgba(36, 36, 36, 0.3);
+        cursor: pointer;
+    }
+
+
+</style>
+</html>

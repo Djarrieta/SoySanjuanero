@@ -1,0 +1,220 @@
+/*  
+    ArtImg:['',],
+    ArtNombre:['',],
+    ArtPrecio:[0,],
+    PalabraClave:'',
+    ProvNombre:'',
+    ProvTel:['','',...],
+    ProvDir:'',
+    socialFacebook:'',
+    socialInstagram:'',
+    socialYoutube:'',
+    socialWhatsapp:'',
+    socialTwitter:'',
+    socialTel:'',
+    socialWeb:'',
+    Tienda:true,
+    Nacional:false 
+*/
+
+const STORIES=[
+    
+    {
+        ArtImg:['https://i.imgur.com/bOjS5xq.jpg'],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'El equipo de SoySanjuanero ha estado en importantes eventos de la region.'
+    },
+    
+    {
+        ArtImg:['https://i.imgur.com/FeaIMLu.jpg'],
+        socialWhatsapp:'3012063053',
+        socialFacebook:'https://www.facebook.com/luisalberto.castillocamargo',
+        socialTel:'3012063053',
+        PalabraClave:'luis alberto castillo voluntario musico parranda serenata regalo'
+    },
+    {
+        ArtImg:['https://i.imgur.com/aYO2wxy.jpg'],
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/542281423121644',
+        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
+    },
+    {
+        ArtImg:['https://i.imgur.com/o6SOf5E.jpg'],
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/478448249726192',
+        Texto:'#VIDEO un poco de lo vivido en el #FestivalDelBarrilete2020 COMPARTE Y MOSTREMOS AL MUNDO QUE EN NUESTRO PUEBLO TRABAJAMOS POR NO DEJAR LAS BUENAS COSTUMBRES. . #EnamorateDeSanJuanNepo 😍 📸 @qnota_online 🌎 BARRIO LA FLORESTA'
+    },
+    {
+        ArtImg:['https://i.imgur.com/ol9QM2O.jpg'],
+        socialWhatsapp:'3178123065',
+        PalabraClave:'galleta maria luisa',
+    },
+    {
+        ArtImg:['https://i.imgur.com/BU0K59z.jpg'],
+        socialWhatsapp:'3178123065',
+        PalabraClave:'name campecino agro agricultura',
+    },
+    {
+        ArtImg:[
+            'https://i.imgur.com/eHAc9Vw.jpg',
+            'https://i.imgur.com/UTscEfN.jpg',
+            'https://i.imgur.com/EVy1Y9y.jpg',
+            'https://i.imgur.com/MSVxVSo.jpg',
+        ],
+        ArtNombre:[
+            'MUG SOY SANJUANERO',
+            'MUG YO AMO SAN PEDRO',
+            'MUG AQUI TOMA UN SANJUANERO',
+            'MUG SAN JUAN DE MIS AMORES',
+        ],
+        ArtPrecio:[
+            '17000',
+            '17000',
+            '17000',
+            '17000',
+        ],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'mug pocillo regalo detalle recuerdo',
+        Tienda:true,
+        Nacional:true
+    },
+    {
+        ArtImg:['https://i.imgur.com/ip9OuQr.jpg'],
+        PalabraClave:'tecnico en mantenimiento motores diesel bombas de agua aire acondicionado',
+        socialWhatsapp:'3178123065',
+    },
+    {
+        ArtImg:['https://i.imgur.com/wzxEwPu.jpg'],
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/2726337284095512'
+    },
+    {
+        ArtImg:['https://i.imgur.com/YRsdy23.jpg'],
+        PalabraClave:'fabrica artesanal de percusion tambores tambor'
+    },
+    {
+        ArtImg:['https://i.imgur.com/QNVXTfD.jpg'],
+        ArtNombre:['CAMISETA MUJER SOY SANJUANERO','CAMISETA HOMBRE SOY SANJUANERO'],
+        ArtPrecio:['25000','30000'],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'camiseta camisa regalo detalle recuerdo',
+        Tienda:true,
+        Nacional:true
+
+    },
+    {ArtImg:['https://i.imgur.com/NSOB7dP.jpg']},
+    {
+        ArtImg:['https://i.imgur.com/vdie9FI.jpg'],
+        PalabraClave:'',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/369905260387885',
+        Texto:'Hablar de #Corralito para muchos es signo de tristeza y dolor, sentimientos oscuros que quedaron en la mente de COLOMBIA y en mundo entero, por un episodio violento que enlutó a 15 familias y desplazó a todo un pueblo campesino y trabajador hace un poco mas de 16 años. CON ESTE PEQUEÑO VIDEO NO QUEREMOS PASAR LA PAGINA Y MUCHO MENOS OLVIDAR EL PASADO QUE MARCÓ NUESTRA MEMORIA. Solo queremos mostrar un poco de lo que hoy existe en este corregimiento sanjuanero anclado al norte del departamento de bolívar. Incluso mostrarle a ese mismo mundo la otra cara de la moneda, ya que en nuestro paso por allí solo recibimos buenas atenciones y agradecimientos por no olvidarnos que ellos existen, que ellos tienes las mismas fuerzas para renacer y seguir adelante en su tierra. #Resiliencia'
+    },
+    {
+        ArtImg:[
+            'https://i.imgur.com/eq2j2QR.jpg',
+            'https://i.imgur.com/t0SbEP4.jpg',
+            'https://i.imgur.com/sysxVRv.jpg',
+            'https://i.imgur.com/3xJQnli.jpg',
+            'https://i.imgur.com/QsEAf1K.jpg',
+            'https://i.imgur.com/u1pnRVK.jpg',
+            'https://i.imgur.com/ohDUvbH.jpg',
+            'https://i.imgur.com/BUsXbQ0.jpg',
+            'https://i.imgur.com/AY2XV6V.jpg',
+            'https://i.imgur.com/wtonOXC.jpg',
+            'https://i.imgur.com/aRtZFh0.jpg',
+            'https://i.imgur.com/NQChiwL.jpg',
+            'https://i.imgur.com/3ZspJQG.jpg'
+
+        ],
+        ArtNombre:[
+            'GORRA PERSONALIZADA',
+            'GORRA ROSA I LOVE SAN JUAN',
+            'GORRA NEGRA-VERDE I LOVE SAN JUAN',
+            'GORRA MALLA',
+            'GORRA NEGRA I LOVE SANCAYETANO',
+            'GORRA NEGRA I LOVE LA HAYA',
+            'GORRA ROSA-NEGRA SOY I LOVE SAN JUAN',
+            'GORRA VERDE I LOVE SANCAYETANO',
+            'GORRA BLANCA I LOVE SAN JUAN',
+            'GORRA NEGRA EL NEPO',
+            'GORRA NEGRA I LOVE SAN PEDRO',
+            'GORRA MILITAR I LOVE SAN JUAN',
+            'GORRA ROJA I LOVE SAN JUAN',
+        ],
+        ArtPrecio:[
+            '25000',
+            '25000',
+            '25000',
+            '15000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+            '25000',
+        ],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'gorra cachucha regalo detalle recuerdo',
+        Tienda:true,
+        Nacional:true
+    },
+    {
+        ArtImg:['https://i.imgur.com/noGkoas.jpg'],
+        ArtNombre:['SERENATA 2 GUITARRAS'],
+        ArtPrecio:[60000],
+        PalabraClave:'Los voluntarios guitarra serenata',
+        ProvNombre:'Jairo Castillo',
+        Tienda:true,
+        Nacional:false
+    },
+    {
+        PalabraClave:'virgen del carmen',
+        ArtImg:[
+            'https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/s960x960/106454052_1141392592911395_126112427756791949_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_ohc=T3OqDcKcSzsAX859fau&_nc_ht=scontent.fctg1-1.fna&_nc_tp=7&oh=05f397854675488f1c27ad96446f236c&oe=5F2E3B14',
+        ]
+    },
+    {
+        ArtImg:[
+            'https://i.imgur.com/Hz8JxqG.jpg',
+        ],
+        ArtNombre:[
+            '500cc DE TEFA MIEL',
+            '250cc DE TEFA MIEL',
+            '250cc DE TEFA MIEL'
+        ],
+        ArtPrecio:[
+            18000,
+            9000,
+            5000
+        ],
+        PalabraClave:'miel de abeja dulce ',
+        Tienda:true,
+        Nacional:true
+    },
+    {
+        ArtImg:[
+            'https://i.imgur.com/YS5Nuj8.jpg',
+        ], 
+        Texto:`El domingo es descanso para unos, continuidad laboral para otros. Lo cierto es que el campesino ama tanto su labor que no baja la guardia los 365 días del año.
+        Dios los cuide, los bendiga y le de prosperidad a sus tierras!`
+    },
+    {
+        ArtImg:[
+            'https://i.imgur.com/1xXWxRn.jpg',
+        ],
+        PalabraClave:'bollo otilia frito'
+    }
+    
+]
