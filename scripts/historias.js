@@ -20,14 +20,12 @@
 const STORIES=[
 
     {
-        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F542281423121644%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        ArtVideo:'    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F1679185072204975%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
-        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
     },
-    
     {
         ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
         ArtNombre:['VENTILADOR RECARGABLE'],
@@ -40,7 +38,15 @@ const STORIES=[
         Tienda:true,
         Nacional:true
     },
-
+    {
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F542281423121644%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
+    },
+    
     {
         ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109683544_1159474044436583_3596289926067765905_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeEEH9Yl2OWts7B7Xa6x3bXKgyDF4LaQxpSDIMXgtpDGlEVnPYPBQzv3PK10ztoOezw&_nc_ohc=2E-CVwXE7-UAX9gQuY4&_nc_ht=scontent.fbaq5-1.fna&oh=154efa67b64131441829e568a412936c&oe=5F3FB505'],
         Texto:'Para muchos un simple ají, para otros un manjar. Comenta cómo lo has comido, en machucao, asao, en vinagre, picao en el suero, en fin comparte y comenta. #ajíchivato #EnamorateDeSanJuanNepo 😍',
@@ -258,3 +264,4 @@ const STORIES=[
     }
     
 ]
+console.log(STORIES.length+' historias cargadas.')
