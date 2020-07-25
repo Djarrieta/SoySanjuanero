@@ -18,17 +18,14 @@
 */
 
 const STORIES=[
+
     {
-        ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
-        ArtNombre:['VENTILADOR RECARGABLE'],
-        ArtPrecio:['280000'],
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F542281423121644%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
-        PalabraClave:'ABANICO VENTILADOR regalo',
-        Tienda:true,
-        Nacional:true
+        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
     },
     
     {
@@ -52,12 +49,6 @@ const STORIES=[
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
     },
-
-    {
-        ArtImg:['https://i.imgur.com/aYO2wxy.jpg'],
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/542281423121644',
-        Texto:'#VIDEO Hermosa canción de la autoría de Jorge Lambis un talentoso joven sanjuanero radicado en la capital del país hijo de Jorge Lambis y Lorena Martínez, el junto a Luis Alberto Castillo Camargo Javier Rojano Pedro Rodelo hacen esta bonita obra musical, con el único fin de resaltar nuestro terruño y mantener viva la esperanza de que volveremos a disfrutar de nuestro pueblo y sus costumbres. Esperamos sea de su agrado, que lo disfruten, compartan en sus redes sociales y así seguir diciendo con orgullo #SoySanjuanero TODOS LOS DERECHOS RESERVADOS'
-    },
     
     {
         ArtImg:['https://i.imgur.com/bOjS5xq.jpg'],
@@ -67,10 +58,12 @@ const STORIES=[
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
         Texto:'El equipo de SoySanjuanero ha estado en importantes eventos de la region.'
     },
-
     {
-        ArtImg:['https://i.imgur.com/o6SOf5E.jpg'],
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/478448249726192',
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F478448249726192%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
         Texto:'#VIDEO un poco de lo vivido en el #FestivalDelBarrilete2020 COMPARTE Y MOSTREMOS AL MUNDO QUE EN NUESTRO PUEBLO TRABAJAMOS POR NO DEJAR LAS BUENAS COSTUMBRES. . #EnamorateDeSanJuanNepo 😍 📸 @qnota_online 🌎 BARRIO LA FLORESTA'
     },
     {
@@ -111,6 +104,14 @@ const STORIES=[
         Nacional:true
     },
     {
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F199937177992882%2F&show_text=0&width=560" width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'#VIDEO Con mucho cariño para todos los amigos de #SanPedroConsolado un corregimiento RESILIENTE repleto de gente buena y servicial cómo lo fué en vida #ElPrimoUniversal IVAN OSORIO que hoy descansa en la paz del señor. '
+    },
+    {
         ArtImg:['https://i.imgur.com/ip9OuQr.jpg'],
         PalabraClave:'tecnico en mantenimiento motores diesel bombas de agua aire acondicionado',
         socialWhatsapp:'3178123065',
@@ -143,13 +144,17 @@ const STORIES=[
         Nacional:true
 
     },
-    {ArtImg:['https://i.imgur.com/NSOB7dP.jpg']},
+    
     {
-        ArtImg:['https://i.imgur.com/vdie9FI.jpg'],
-        PalabraClave:'',
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/videos/369905260387885',
-        Texto:'Hablar de #Corralito para muchos es signo de tristeza y dolor, sentimientos oscuros que quedaron en la mente de COLOMBIA y en mundo entero, por un episodio violento que enlutó a 15 familias y desplazó a todo un pueblo campesino y trabajador hace un poco mas de 16 años. CON ESTE PEQUEÑO VIDEO NO QUEREMOS PASAR LA PAGINA Y MUCHO MENOS OLVIDAR EL PASADO QUE MARCÓ NUESTRA MEMORIA. Solo queremos mostrar un poco de lo que hoy existe en este corregimiento sanjuanero anclado al norte del departamento de bolívar. Incluso mostrarle a ese mismo mundo la otra cara de la moneda, ya que en nuestro paso por allí solo recibimos buenas atenciones y agradecimientos por no olvidarnos que ellos existen, que ellos tienes las mismas fuerzas para renacer y seguir adelante en su tierra. #Resiliencia'
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F369905260387885%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'#VIDEO Hablar de #Corralito para muchos es signo de tristeza y dolor, sentimientos oscuros que quedaron en la mente de COLOMBIA y en mundo entero, por un episodio violento que enlutó a 15 familias y desplazó a todo un pueblo campesino y trabajador hace un poco mas de 16 años. CON ESTE PEQUEÑO VIDEO NO QUEREMOS PASAR LA PAGINA Y MUCHO MENOS OLVIDAR EL PASADO QUE MARCÓ NUESTRA MEMORIA. Solo queremos mostrar un poco de lo que hoy existe en este corregimiento sanjuanero anclado al norte del departamento de bolívar. Incluso mostrarle a ese mismo mundo la otra cara de la moneda, ya que en nuestro paso por allí solo recibimos buenas atenciones y agradecimientos por no olvidarnos que ellos existen, que ellos tienes las mismas fuerzas para renacer y seguir adelante en su tierra. #Resiliencia'
     },
+
+    
     {
         ArtImg:[
             'https://i.imgur.com/eq2j2QR.jpg',

@@ -160,7 +160,9 @@ main{
 .nombre{
     width: 200px;
 }
-
+.containerImg{
+    width: 100vw;
+}
 /* SHOPPING MALL */
 .aboutDetail{
     display: flex;
@@ -416,7 +418,11 @@ main{
     min-width: 300px;
     margin: 10px 0;
 }
-
+iframe{
+    width: 100vw;
+    max-width: 500px;
+    min-width: 350px;
+}
 
 .hide{
     display: none;

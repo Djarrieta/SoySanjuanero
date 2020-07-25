@@ -90,9 +90,11 @@ function ShowOnlyStore(){
         $('#storeSearchIcon').classList.add('hide')
         $('#menuBotonStoreIcon').src='./icons/store.png'
     }
-    searchAll()
-    showHideMenu()
 
+    searchAll()
+    if(!$('.menu').classList.contains('hideMenu')){
+        showHideMenu()
+    }
 }  
 
 //SHOPPING MALL
@@ -354,22 +356,32 @@ function showStories(){
         hmtlText+=
         `<div class="card" id="card-${id}">
             <div class="containerImgFull" id="containerImgFull-${id}">`
-                let r=0
-                story.ArtImg.forEach(img=>{
+                if(story.ArtImg){
+                    let r=0
+                    story.ArtImg.forEach(img=>{
+                        hmtlText+=`
+                            <div class="containerImg">
+                                <img
+                                    src="${img}" 
+                                    alt="imgsStory" 
+                                    class="cardImgElement" 
+                                    id="cardImgElement-${r}-${id}">
+                            </div>
+                        `
+                        r++ 
+                    })
+                }else if(story.ArtVideo){
                     hmtlText+=`
-                        <div class="containerImg">
-                            <img
-                                src="${img}" 
-                                alt="imgsStory" 
-                                class="cardImgElement" 
-                                id="cardImgElement-${r}-${id}">
-                        </div>
-                    `
-                    r++ 
-                })
+                    <div class="containerImg">
+                        ${story.ArtVideo}
+                    </div>
+                ` 
+                }
+                
+
             hmtlText+=`</div>`
             /* NAV IMAGE */
-            if(story.ArtImg.length>1){
+            if(story.ArtImg && story.ArtImg.length>1){
                 hmtlText+=`
                 <div class="cardContainerImgNav">
                     <img 
