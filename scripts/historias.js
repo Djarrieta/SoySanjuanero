@@ -18,7 +18,38 @@
 */
 
 const STORIES=[
+    
+    {
+        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109106876_1155454358171885_2377412898740579963_o.jpg?_nc_cat=103&_nc_sid=2d5d41&_nc_eui2=AeEAlBim8J6-tH28xGC8-MoDWzbYHt9mH2hbNtge32YfaPstSQQ0_nXhOlMPHcuoFc4&_nc_ohc=AVueN5YqrJ8AX9rhHO2&_nc_ht=scontent.fbaq5-1.fna&oh=5585125cc0d39058f0530be0033aee1a&oe=5F419E74'],
+        Texto:`Nuevo día! Fin de semana! Dios todo poderoso hoy más que pedirte queremos agradecerte por tu inmenso amor y tu infinita misericordia! Gracias señor por que apesar de tan duro momento hay personas que tienen su empleo digno y un hogar íntegro, sabemos que no es fácil encargarte de cada petición que se te hace pero también tenemos fe que con tu omnipotencia logras cosas inesperadas. Te amamos DIOS!
 
+        #EnamorateDeSanJuanNepo 😍
+        📸 Rubén Téllez
+        🌎 Iglesia Central`,
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+    },
+    {
+        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/p960x960/106389092_1142416862808968_8974259376225481387_o.jpg?_nc_cat=101&_nc_sid=2d5d41&_nc_eui2=AeFykO2Rk1xNova8SolfyjQD84y3rHbC1KrzjLesdsLUqpWdSFdjHUPkzZcrvIyefHM&_nc_ohc=RsxdvS82_VQAX_S-ubH&_nc_oc=AQkyfznPaH21JOegI8-jkZsubakgg_lTRy-f6WSsyOcCUBc256Ol5gbigrSc4_GqUmLtYsuv3cijzoUlWZxcgtsf&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=6&oh=eec1ce9d520dd570e642c80db5b5cd5d&oe=5F41B158'],
+        Texto:`#Repetimos el homenaje en redes al campesino Sanjuanero, ese que no para, bajo sol o lluvia. Gracias, muchas gracias. Si tienes un amigo, familiar, vecino que se desempeña en estas labores hazle saber cuan importante son.
+
+        #EnamorateDeSanJuanNepo 😍
+        📸 Soy Sanjuanero
+        🌎 Bajo Grande`,
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+    },
+    
+    {
+        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109126306_1161100537607267_9405575145283282_o.jpg?_nc_cat=105&_nc_sid=2d5d41&_nc_eui2=AeG8kBXe7su9N-TkZD4nIvXIXGig8djZA5RcaKDx2NkDlKbWjkF4D48bs8NNtao4stQ&_nc_ohc=J9xD3xBRBa8AX9f0sN1&_nc_ht=scontent.fbaq5-1.fna&oh=d6b4d92db3c923d435673851aa475e4a&oe=5F41261F'],
+        Texto:'Un sábado de julio dónde a esta hora aún no se le ve la cara al sol. Saldrá el Mono 🌄 a secar las calles? O simplemente hoy será uno de esos días que no se sabe ni qué horas son...        #EnamorateDeSanJuanNepo 😍        📸 Soy Sanjuanero        🌎 Barrio Barranquillita',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+    },
     {
         ArtVideo:'    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F1679185072204975%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
