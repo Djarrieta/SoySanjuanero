@@ -25,6 +25,7 @@ const STORIES=[
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'Orgulloso estoy de ser Sanjuanero, su nombre lo llevo y lo canto por el mundo entero 😀📻🎷🎶🎵'
     },
     {
         ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
