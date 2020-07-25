@@ -322,6 +322,27 @@ function payWithWompi(){
         }  
     })
 }
+function donate(){
+    let now=Date.now()
+    paymentData={
+        notaDonacion:$('#donateNotes').value,
+        total:$('#donateAmount').value,
+        fecha:firebase.firestore.FieldValue.serverTimestamp(),
+        ref:'Ref'+now,
+        status:'PENDING'
+    }
+    this.db.collection('ventas').add(paymentData)
+    var checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents:paymentData.total*100,
+        reference:'Ref'+now,
+        publicKey: 'pub_prod_fjmg6rFhMISzqHrBANhPJXEQtbnmnSIh',
+        redirectUrl:'https://soysanjuanero.online/pago.html' 
+    })
+    checkout.open(x=>{
+        window.open('https://soysanjuanero.online/pago.html?id='+x.transaction.id,'blank()')
+    })
+}
 
 //SHOW STORIES
 showStories()
@@ -553,8 +574,12 @@ function ShowAbout(r){
         texto=
         `
             <i   class="material-icons aboutDetailClose" onclick="ShowAbout('close')">close</i>
-            <p>
-                Con tu donación estás APOYANDO el proyecto SOY SANJUANERO,  de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA y la CORRUPCIÓN. 
+            <img  class="detailImg" src="https://i.imgur.com/bOjS5xq.jpg">
+            <span class="detailSpan">DONACIONES</span>
+            <p class="detailP">
+                Si quieres apoyarnos por favor realiza una compra de cualquier producto o servicio. Si te encuentras fuera de Colombia y no puedes, o sencillamente no quieres adquirir nada, pero aún así quieres apoyar nuestro proyecto, puedes hacer una donación.
+            <br><br>
+                Con tu donación estás APOYANDO el proyecto SOY SANJUANERO,  de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA. 
             <br><br>
                 Este proyecto busca resaltar la idiosincrasia sanjuanera, artistas, artesanos, costumbres, el Santuario de Flora y Fauna Los Colorados y todo lo que lo rodea. 
             <br><br>
@@ -562,6 +587,13 @@ function ShowAbout(r){
             <br><br>
                 Es así como favorecer este proyecto es poner un granito de arena para la cultura y la economía de la región.
             </p>
+            
+            <textarea id="donateNotes" rows="5" cols="25" placeholder="Tus datos y lo que nos quieras decir"></textarea>
+            
+            <input id="donateAmount" type="number" value="20000">
+            <span onclick="donate()" id="donateSpan"><img src="./icons/bank_cards_64px.png"><div id="donateButton">DONAR</div> </span>
+            
+            <br><br><br><br>
         `
     }else if(r=='close'){
         $('.aboutDetail').classList.add('hide')

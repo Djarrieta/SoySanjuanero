@@ -380,6 +380,43 @@ main{
 .lastPieza{
     display: none;
 }
+#seccionDonaciones{
+    display: flex;
+    justify-content: center;
+}
+#containerDonaciones{
+    width: auto !important;
+}
+#donateSpan{
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    background-color: rgb(167, 167, 167);
+    border-radius: 5px;
+    padding: 5px;
+    width: 70%;
+}
+#donateButton{
+    background-color: rgb(167, 167, 167) !important;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-width: 100px !important;
+}
+#donateAmount{
+    font-size: 30px;
+    border-radius: 5px;
+    width: 70%;
+}
+#donateNotes{
+    width: 70%;
+    min-height:100px;
+    min-width: 300px;
+    margin: 10px 0;
+}
+
 
 .hide{
     display: none;

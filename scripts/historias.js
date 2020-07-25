@@ -18,6 +18,18 @@
 */
 
 const STORIES=[
+    {
+        ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
+        ArtNombre:['VENTILADOR RECARGABLE'],
+        ArtPrecio:['280000'],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'ABANICO VENTILADOR regalo',
+        Tienda:true,
+        Nacional:true
+    },
     
     {
         ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
