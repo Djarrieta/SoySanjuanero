@@ -390,3 +390,34 @@ main{
     } 
     
 }
+@media screen and (min-width: 1170px){
+    #pieza1{
+        display: block;
+    }
+    .headerSection{
+        margin: 0 40px;
+    }
+    .headerSection:first-child{
+        display: none;
+    }
+    .menu{
+        left: 0;
+    }
+
+}
+@media screen and (min-width: 1650px){
+    #pieza2{
+        display:block;
+    }
+    .lastPieza{
+        display:block;
+    }
+    .menu{
+        width: 220px;
+        padding: 0 40;
+    }
+    .menuSocial{
+        padding-right: 40px;
+    }
+
+}

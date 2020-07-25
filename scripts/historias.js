@@ -18,6 +18,20 @@
 */
 
 const STORIES=[
+    
+    {
+        ArtImg:['https://i.imgur.com/rIb6pSp.jpg'],
+        ArtNombre:['VENTILADOR RECARGABLE'],
+        ArtPrecio:['280000'],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'ABANICO VENTILADOR regalo',
+        Tienda:true,
+        Nacional:true
+    },
+
     {
         ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109683544_1159474044436583_3596289926067765905_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeEEH9Yl2OWts7B7Xa6x3bXKgyDF4LaQxpSDIMXgtpDGlEVnPYPBQzv3PK10ztoOezw&_nc_ohc=2E-CVwXE7-UAX9gQuY4&_nc_ht=scontent.fbaq5-1.fna&oh=154efa67b64131441829e568a412936c&oe=5F3FB505'],
         Texto:'Para muchos un simple ají, para otros un manjar. Comenta cómo lo has comido, en machucao, asao, en vinagre, picao en el suero, en fin comparte y comenta. #ajíchivato #EnamorateDeSanJuanNepo 😍',
