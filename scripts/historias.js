@@ -217,6 +217,15 @@ const STORIES=[
         Nacional:true
     },
     {
+        ArtVideo:'<iframe width="560" height="315" src="https://www.youtube.com/embed/QOIZNtlnTiU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'#VIDEO El Sr. ARMANDO TAPIA ESTRADA es un artesano sanjuanero que se dedica a la fabricación de instrumentos de percusión folclórica hace 25 años. En su vivienda ubicada en el barrio Pueblo Nuevo, con formón y machete en mano moldea tambores alegres, llamadores, tamboras y maracas, (en tamaño normal y en miniaturas) instrumentos utilizados por grupos musicales del país.'
+    },
+    
+    {
         ArtImg:['https://i.imgur.com/noGkoas.jpg'],
         ArtNombre:['SERENATA 2 GUITARRAS'],
         ArtPrecio:[60000],
