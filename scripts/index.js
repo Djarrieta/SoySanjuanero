@@ -657,6 +657,8 @@ function playStopMusic(){
     if(icon.includes('musical_notes_64px.png')){
         $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
         nextSong()
+        //REPORTA A LA BASE DE DATOS
+        this.db.collection('RadioClick').add({Fecha:firebase.firestore.FieldValue.serverTimestamp()})
     }else if(icon.includes('pause_64px.png')){
         $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
         $('#player').pause()
