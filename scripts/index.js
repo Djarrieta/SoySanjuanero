@@ -377,7 +377,6 @@ function showStories(){
                     </div>
                 ` 
                 }
-                
 
             hmtlText+=`</div>`
             /* NAV IMAGE */
