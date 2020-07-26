@@ -73,7 +73,7 @@
             <i   class="material-icons aboutDetailClose" onclick="closeShoppingMall()">close</i>
             <div class='containerDetail'>
                 <div class="datosMall">
-                    <span>DATOS DE COMPRA</span>
+                    <span id="spanTitleDatosDeCompra">DATOS DE COMPRA</span>
                     <span class="campoMall">
                         <img src="./icons/customer_64px.png">
                         <input type="text" placeholder="Nombre" id="shoppingMallName" class="campoMallInput">
@@ -100,13 +100,14 @@
                     </span>
                 </div>
                 <div class="datosMall">
-                    <span class="datosMall" id="resumenMallTitle">RESUMEN DE COMPRA</span>
+                    <span class="datosMall " id="resumenMallTitle">RESUMEN DE COMPRA</span>
                     <span class="campoMall" >Cant:____<span id="resumenMallCant"></span></span>
                     <span class="campoMall" >Nombre:_<span id="resumenMallName"></span></span>
                     <span class="campoMall">Precio:___<span id="resumenMallPrice"></span></span>
                     <span class="campoMall">Total:_____<span id="resumenMallTotal"></span></span>
                 </div>
-                <span>**Envíos GRATIS en San Juan Nepo.</span>
+                <span class="notaSpanShopping">**Envíos GRATIS en San Juan Nepo.</span>
+                <span class="notaSpanShopping">**Envío nacional no incluído.</span>
                 <div class="datosMall datosMallPagos" >
                     <div  class="botonPagos">
                         <span 
@@ -120,7 +121,17 @@
                             onclick="payWithCash()">
                             <img src="./icons/cash_64px.png"> Pagar al recibir el producto</span>
                     </div>
+                    <span 
+                        id="spanPreguntasShoppingMall"
+                        onclick="questions()">
+                            Preguntas 
+                            <img 
+                                id="imgPreguntasShoppingMall" 
+                                src="./icons/whatsapp_64px.png" 
+                                alt="whatsapp">
+                    </span>
                 </div>
+
 
             </div>
         </div> 

@@ -44,6 +44,7 @@ function scrollToTop(){
 function searchAll(){
     const c=document.querySelectorAll('.card')
     let menuFilterInput=$('#filterInput')
+    //quita la s del final si la hay
     if(menuFilterInput.value.substring(menuFilterInput.value.length-1,menuFilterInput.value.length).toUpperCase()=='S'){
         menuFilterInput.value=menuFilterInput.value.substring(0,menuFilterInput.value.length-1)
     }
@@ -201,6 +202,18 @@ function en_disableCash(){
         $('#shoppingMallContraentrega').style.background='#dddcdc'
         $('#shoppingMallContraentrega').style.color='#d3d1d1'
     }
+}
+function questions(){
+    console.log('corriendo')
+    let text='https://wa.me/573178123065?text='
+    
+    text+=
+    `
+     Hola amigos de SoySanjuanero.Online!
+     Tengo dudas sobre la artículo ${paymentData.artNombre}.
+     Me podrían ayudar?
+    `
+    window.open(text,'_blank')
 }
 
 //PAY BUTTONS

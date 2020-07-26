@@ -204,6 +204,9 @@ main{
     max-width: 700px;
     min-width: 350px;
 }
+#resumenMallTitle,#spanTitleDatosDeCompra{
+    font-size: 30px;
+}
 .datosMall{
     background-color: white;
     display: flex;
@@ -257,6 +260,19 @@ main{
     text-decoration: none;
     margin-bottom: 50px;
     cursor: pointer;
+}
+.notaSpanShopping{
+    font-size: 15px;
+}
+#spanPreguntasShoppingMall{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 0;
+}
+#imgPreguntasShoppingMall{
+    height: 1em;
 }
 
 /* MENU */
