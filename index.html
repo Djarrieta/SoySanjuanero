@@ -22,27 +22,43 @@
         <!-- HEADER -->
         <header>
             <div class="container">
-                <img 
-                    onclick="showHideMenu()"
-                    src="./icons/logoSoySanjuanero.png" 
-                    alt="logoSoySanjuanero">
-                <span>
-                    <i class="material-icons">search</i>
-                    <p class="hide" id="storeSearchIcon">Tienda:</p>
-                    <input 
-                        type="text"
-                        name="filtro"
-                        id="filterInput"
-                        onfocus="selectFilterText(this)" 
-                        onchange="searchAll()"
-                        placeholder="Buscar...">
-                </span>
+                <div class="headerDiv">
+                    <img 
+                        id="headerMenuSanditch"
+                        onclick="showHideMenu()"
+                        src="./icons/menu_100px.png" 
+                        alt="menu">
+                    <img 
+                    class="headerImgLogo"
+                        onclick="showHideMenu()"
+                        src="./icons/logoSoySanjuanero.png" 
+                        alt="logoSoySanjuanero">
+                </div>
+                <div class="headerDiv">
+                    <img 
+                        onclick="showHideMenu()"
+                        src="./icons/store.png" 
+                        alt="logoSoySanjuanero">
+                    <span>
+                        <i class="material-icons">search</i>
+                        <p class="hide" id="storeSearchIcon">Tienda:</p>
+                        <input 
+                            type="text"
+                            name="filtro"
+                            id="filterInput"
+                            onfocus="selectFilterText(this)" 
+                            onchange="searchAll()"
+                            >
+                    </span>
+                </div>
+                <div class="headerDiv">
+                    <img
+                        id="headerPlayPauseMusic"
+                        onclick="playStopMusic()"
+                        src="./icons/musical_notes_64px.png" 
+                        alt="Carrito">
+                </div>
 
-                <img
-                    id="headerPlayPauseMusic"
-                    onclick="playStopMusic()"
-                    src="./icons/musical_notes_64px.png" 
-                    alt="Carrito">
             </div> 
         </header>
 

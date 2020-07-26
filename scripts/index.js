@@ -24,7 +24,6 @@ var db = firebase.firestore();
 function showHideMenu(){
     const menu=$('.menu')
     const overlay=$('#menuOverlay')
-    const sandwich=$('#sandwich')
     if(menu.classList.contains('hideMenu')){
         menu.classList.remove('hideMenu')
         overlay.classList.add('showOverlay')

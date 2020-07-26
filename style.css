@@ -32,32 +32,35 @@ header{
     margin: 0 auto;
 }
 header .container img{
-    height: 60px;
+    height: 40px;
     margin: 0 5px;
     cursor: pointer;
 }
-header .container img:nth-child(3){
-    height: 35px;
+.headerImgLogo{
+    height: 60px !important;
 }
-header .container img:nth-child(4){
-    height: 35px;
+.headerDiv{
+    display: flex;
+    align-items: center;
 }
-header .container span{
+
+header .container .headerDiv span{
     box-shadow: 1px 1px 2px 1px rgba(138, 137, 137, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
-header .container span:hover{
+header .container .headerDiv span:hover{
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     border: solid gray 1px;
 }
-header .container span input{
+header .container .headerDiv span input{
+    width: 10px;
     border: none;
-    height: 1.5em;
+    height: 2.5em;
 }
-header .container span input:hover, header span input:focus{
+header .container .headerDiv span input:hover, header .headerDiv span input:focus{
     outline: none;
     border: none;
 }
@@ -446,7 +449,9 @@ iframe{
     .menu{
         left: 0;
     }
-
+    #headerMenuSanditch{
+        display: none;
+    }
 }
 @media screen and (min-width: 1650px){
     #pieza2{
