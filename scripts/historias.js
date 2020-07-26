@@ -17,7 +17,7 @@
     Nacional:false 
 */
 
-const STORIES=[
+const storiesPrev=[
     {
         ArtImg:[
             'https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/116434204_2069805209817357_2654074068078854012_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_eui2=AeG_7Uva4ci2moPFZ7yOhRlEewC7MaWr2VZ7ALsxpavZVh1aUaVGRekbEeu69O6D2LU&_nc_ohc=CMkYpZjRTDgAX_b5i31&_nc_oc=AQnpmmu-7iDzNTUUeZTILjX1ibPtKhqjiQkl9rZ5eHEka1YPi8TM-Bq8-zrgE6u2KvtXAC1ZslsbXb1mTCNTDPqO&_nc_ht=scontent.fbaq5-1.fna&oh=7c6951bd6906622bc60cef462fe5f1d2&oe=5F43904C',
@@ -345,4 +345,15 @@ const STORIES=[
     }
     
 ]
+let storiesOrder=[]
+do{
+    const n=Math.floor(Math.random()*storiesPrev.length)
+    if(!storiesOrder.includes(n)){
+        storiesOrder.push(n)
+    }
+}while (storiesOrder.length!=storiesPrev.length) 
+let STORIES=[]
+
+storiesOrder.map(x=>STORIES.push(storiesPrev[x]))
+
 /* console.log(STORIES.length+' historias cargadas.') */
