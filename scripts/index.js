@@ -35,6 +35,10 @@ function showHideMenu(){
 function ShowMenuSocialDetail(cont){
     $('#menuSocialDetail').innerHTML=cont.dataset.text
 }
+//SCROLL TO TOP
+function scrollToTop(){
+    $('#main').scrollTop=0
+}
 
 // SEARCH HISTORIES
 function searchAll(){
@@ -76,18 +80,26 @@ function searchAll(){
     }
 }
 function selectFilterText(obj){
+    $("#filterInput").style.width='200px'
+    $("#headerDiv1").classList.add('hide')
+    $("#headerDiv3").classList.add('hide')
     obj.select()
+}
+function exitFilterText(){
+    $("#headerDiv1").classList.remove('hide')
+    $("#headerDiv3").classList.remove('hide')
+    $("#filterInput").style.width='10px'
 }
 let onlyStore=false
 function ShowOnlyStore(){
     if($('#storeSearchIcon').classList.contains('hide')){
         onlyStore=true
         $('#storeSearchIcon').classList.remove('hide')
-        $('#menuBotonStoreIcon').src='./icons/store2.png'
+        $('#headerStoreIcon').src='./icons/store2.png'
     }else{
         onlyStore=false
         $('#storeSearchIcon').classList.add('hide')
-        $('#menuBotonStoreIcon').src='./icons/store.png'
+        $('#headerStoreIcon').src='./icons/store.png'
     }
 
     searchAll()
@@ -476,7 +488,8 @@ function showStories(){
                     <select 
                         name="Selecciona" 
                         id="nombre-${id}"
-                        class="nombre">`
+                        class="nombre"
+                        disabled=true>`
                         let i=0
                         story.ArtNombre.forEach(n=>{
                             hmtlText+=`<option value="${i}">${n}</option>`

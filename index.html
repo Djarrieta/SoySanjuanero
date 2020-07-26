@@ -22,7 +22,7 @@
         <!-- HEADER -->
         <header>
             <div class="container">
-                <div class="headerDiv">
+                <div class="headerDiv" id="headerDiv1">
                     <img 
                         id="headerMenuSanditch"
                         onclick="showHideMenu()"
@@ -30,13 +30,14 @@
                         alt="menu">
                     <img 
                     class="headerImgLogo"
-                        onclick="showHideMenu()"
+                        onclick="scrollToTop()"
                         src="./icons/logoSoySanjuanero.png" 
                         alt="logoSoySanjuanero">
                 </div>
-                <div class="headerDiv">
+                <div class="headerDiv" id="headerDiv2">
                     <img 
-                        onclick="showHideMenu()"
+                        id="headerStoreIcon"
+                        onclick="ShowOnlyStore()"
                         src="./icons/store.png" 
                         alt="logoSoySanjuanero">
                     <span>
@@ -47,11 +48,12 @@
                             name="filtro"
                             id="filterInput"
                             onfocus="selectFilterText(this)" 
+                            onblur="exitFilterText()"
                             onchange="searchAll()"
                             >
                     </span>
                 </div>
-                <div class="headerDiv">
+                <div class="headerDiv" id="headerDiv3">
                     <img
                         id="headerPlayPauseMusic"
                         onclick="playStopMusic()"
@@ -133,9 +135,6 @@
             </div>
             <div class="menuBoton" >
                 <a onclick="ShowAbout('SanJuanNepo')"><img src="https://i.imgur.com/vAGXP1z.png" alt="san juan"><p>San Juan Nepo.</p> </a>
-            </div>
-            <div class="menuBoton">
-                <a onclick="ShowOnlyStore()"><img id="menuBotonStoreIcon" src="/icons/store.png" alt="tienda"><p>Tienda</p> </a>
             </div>
             <div class="menuBoton">
                 <a onclick="ShowAbout('donations')"><img src="/icons/donation_64px.png" alt="donaciones"><p>Donaciones</p> </a>

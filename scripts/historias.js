@@ -305,4 +305,4 @@ const STORIES=[
     }
     
 ]
-console.log(STORIES.length+' historias cargadas.')
+/* console.log(STORIES.length+' historias cargadas.') */

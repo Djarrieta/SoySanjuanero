@@ -55,10 +55,11 @@ header .container .headerDiv span:hover{
     box-shadow: 1px 1px 2px 1px rgba(48,48,48,0.2);
     border: solid gray 1px;
 }
-header .container .headerDiv span input{
+#filterInput{
     width: 10px;
     border: none;
     height: 2.5em;
+    transition: 300ms;
 }
 header .container .headerDiv span input:hover, header .headerDiv span input:focus{
     outline: none;
