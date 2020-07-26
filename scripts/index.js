@@ -53,6 +53,11 @@ function searchAll(){
     
     if(menuFilterInput.value.length>2 || onlyStore){
         let i=0
+        //REPORTA A BASE DE DATOS
+        this.db.collection('Busquedas').add({
+            busqueda:$("#filterInput").value,
+            fecha:firebase.firestore.FieldValue.serverTimestamp()
+        })
         STORIES.forEach(item=>{
             if(!item.Texto && !item.PalabraClave){
                 $('#card-'+i).classList.add('hide');
