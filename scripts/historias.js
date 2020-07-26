@@ -19,6 +19,18 @@
 
 const STORIES=[
     {
+        ArtImg:['https://i.imgur.com/ILEIl1D.jpg','https://i.imgur.com/hFyPgMK.jpg'],
+        ArtNombre:['200.000 EN EFECTIVO','100.000 EN EFECTIVO'],
+        ArtPrecio:['210000','105000'],
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        PalabraClave:'CAJERO EFECTIVO DINERO DOMICILIO',
+        Tienda:true
+    },
+    
+    {
         ArtVideo:'    <iframe width="560" height="315" src="https://www.youtube.com/embed/LzGHKKZFH54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         socialWhatsapp:'3178123065',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
