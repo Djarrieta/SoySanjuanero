@@ -95,7 +95,10 @@ function ShowOnlyStore(){
     if(!$('.menu').classList.contains('hideMenu')){
         showHideMenu()
     }
-}  
+} 
+function selectFilterInput(){
+    $("#filterInput").select()
+} 
 
 //SHOPPING MALL
 let paymentData={}
