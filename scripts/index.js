@@ -3,8 +3,6 @@ function $(selector){
     return document.querySelector(selector)
 }
 
-
-
 //LATERAL MENU
 function showHideMenu(){
     const menu=$('.menu')
@@ -605,7 +603,7 @@ function ShowAbout(r){
             <p class="detailP">
                 Si quieres apoyarnos por favor realiza una compra de cualquier producto o servicio. Si te encuentras fuera de Colombia y no puedes, o sencillamente no quieres adquirir nada, pero aún así quieres apoyar nuestro proyecto, puedes hacer una donación.
             <br><br>
-                Con tu donación estás APOYANDO el proyecto SOY SANJUANERO,  de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA. 
+                Con tu donación estás APOYANDO el proyecto SOY SANJUANERO,  de San Juan Nepomuceno, un pueblo de gente PUJANTE Y HERMOSA que ha sido golpeada durante muchos años por la GUERRA, pero que ha sabido salir adelante con la RESILIENCIA que nos caracteriza. 
             <br><br>
                 Este proyecto busca resaltar la idiosincrasia sanjuanera, artistas, artesanos, costumbres, el Santuario de Flora y Fauna Los Colorados y todo lo que lo rodea. 
             <br><br>
