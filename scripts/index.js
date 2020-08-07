@@ -3,22 +3,7 @@ function $(selector){
     return document.querySelector(selector)
 }
 
-//FIREBASE
-var config = {
-    apiKey: "AIzaSyAnxXJlQC9mOyNnSYzV4utnjYXF29fWoC8",
-    authDomain: "soysanjuanero-a5c1c.firebaseapp.com",
-    databaseURL: "https://soysanjuanero-a5c1c.firebaseio.com",
-    projectId: "soysanjuanero-a5c1c",
-    storageBucket: "soysanjuanero-a5c1c.appspot.com",
-    messagingSenderId: "344513006950",
-    appId: "1:344513006950:web:10250cd62d0e7236d20ca7",
-    measurementId: "G-5DX7T59E32"
-};
-firebase.initializeApp(config);
-const firestore = firebase.firestore();
-const settings = {timestampsInSnapshots: true};
-firestore.settings(settings);
-var db = firebase.firestore();
+
 
 //LATERAL MENU
 function showHideMenu(){
@@ -643,25 +628,45 @@ function ShowAbout(r){
 }
 
 //MUSIC
-let currentSong=0
+let PLAYLIST=[]
 let playlistOrder=[]
-do{
-    const n=Math.floor(Math.random()*PLAYLIST.length)
-    if(!playlistOrder.includes(n)){
-        playlistOrder.push(n)
-    }
-}while (playlistOrder.length!=PLAYLIST.length) 
-
+let currentSong=0
 function playStopMusic(){
-    const icon=$('#headerPlayPauseMusic').src
-    if(icon.includes('musical_notes_64px.png')){
-        $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
-        nextSong()
-        //REPORTA A LA BASE DE DATOS
-        this.db.collection('RadioClick').add({Fecha:firebase.firestore.FieldValue.serverTimestamp()})
-    }else if(icon.includes('pause_64px.png')){
-        $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
-        $('#player').pause()
+    if(PLAYLIST.length==0){
+        const storage = firebase.storage().ref();
+        var listRef = storage.child('PlaylistSoySanjuanero');
+        var promises=[]
+        listRef.listAll()
+        .then(res=>{
+            const items=res.items
+            items.forEach(item=>promises.push(item.getDownloadURL()));
+        }).then(x=>
+            Promise.all(promises).then(x=>{
+                PLAYLIST=x
+                playlistOrder=[]
+                PLAYLIST.forEach(x=>{
+                    while(PLAYLIST.length>playlistOrder.length){
+                        const n=Math.floor(Math.random()*PLAYLIST.length)
+                        if(!playlistOrder.includes(n)){playlistOrder.push(n)}
+                    }
+                })
+                $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
+                this.db.collection('RadioClick').add({Fecha:firebase.firestore.FieldValue.serverTimestamp()})
+                nextSong()
+            }
+            )
+        )
+    }else{
+        const icon=$('#headerPlayPauseMusic').src
+        if(icon.includes('musical_notes_64px.png')){
+            $('#headerPlayPauseMusic').src='./icons/pause_64px.png'
+            nextSong()
+            //REPORTA A LA BASE DE DATOS
+            this.db.collection('RadioClick').add({Fecha:firebase.firestore.FieldValue.serverTimestamp()})
+        }else if(icon.includes('pause_64px.png')){
+            $('#headerPlayPauseMusic').src='./icons/musical_notes_64px.png'
+            $('#player').pause()
+        } 
     }
 }
 function nextSong(){
@@ -672,4 +677,3 @@ function nextSong(){
         currentSong=0
     }
 }
-

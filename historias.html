@@ -1,23 +1,44 @@
-/*  
-    ArtImg:['',],
-    ArtNombre:['',],
-    ArtPrecio:[0,],
-    PalabraClave:'',
-    ProvNombre:'',
-    ProvTel:['','',...],
-    ProvDir:'',
-    socialFacebook:'',
-    socialInstagram:'',
-    socialYoutube:'',
-    socialWhatsapp:'',
-    socialTwitter:'',
-    socialTel:'',
-    socialWeb:'',
-    Tienda:true,
-    Nacional:false 
-*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoySanjuanero Historias</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./icons/logoSoySanjuanero.png" type="image/x-icon">
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <table>
+    </table>
+    <script>
 
-const storiesPrev=[
+        //FIREBASE
+        var config = {
+            apiKey: "AIzaSyAnxXJlQC9mOyNnSYzV4utnjYXF29fWoC8",
+            authDomain: "soysanjuanero-a5c1c.firebaseapp.com",
+            databaseURL: "https://soysanjuanero-a5c1c.firebaseio.com",
+            projectId: "soysanjuanero-a5c1c",
+            storageBucket: "soysanjuanero-a5c1c.appspot.com",
+            messagingSenderId: "344513006950",
+            appId: "1:344513006950:web:10250cd62d0e7236d20ca7",
+            measurementId: "G-5DX7T59E32"
+        };
+        firebase.initializeApp(config);
+        const firestore = firebase.firestore();
+        const settings = {timestampsInSnapshots: true};
+        firestore.settings(settings);
+        var db = firebase.firestore();
+
+        //SELECTOR 
+        function $(selector){
+            return document.querySelector(selector)
+        }
+/*
+         const text=`
+        [
     {
         ArtImg:[
             'https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/116434204_2069805209817357_2654074068078854012_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_eui2=AeG_7Uva4ci2moPFZ7yOhRlEewC7MaWr2VZ7ALsxpavZVh1aUaVGRekbEeu69O6D2LU&_nc_ohc=CMkYpZjRTDgAX_b5i31&_nc_oc=AQnpmmu-7iDzNTUUeZTILjX1ibPtKhqjiQkl9rZ5eHEka1YPi8TM-Bq8-zrgE6u2KvtXAC1ZslsbXb1mTCNTDPqO&_nc_ht=scontent.fbaq5-1.fna&oh=7c6951bd6906622bc60cef462fe5f1d2&oe=5F43904C',
@@ -74,22 +95,22 @@ const storiesPrev=[
 
     {
         ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109106876_1155454358171885_2377412898740579963_o.jpg?_nc_cat=103&_nc_sid=2d5d41&_nc_eui2=AeEAlBim8J6-tH28xGC8-MoDWzbYHt9mH2hbNtge32YfaPstSQQ0_nXhOlMPHcuoFc4&_nc_ohc=AVueN5YqrJ8AX9rhHO2&_nc_ht=scontent.fbaq5-1.fna&oh=5585125cc0d39058f0530be0033aee1a&oe=5F419E74'],
-        Texto:`Nuevo día! Fin de semana! Dios todo poderoso hoy más que pedirte queremos agradecerte por tu inmenso amor y tu infinita misericordia! Gracias señor por que apesar de tan duro momento hay personas que tienen su empleo digno y un hogar íntegro, sabemos que no es fácil encargarte de cada petición que se te hace pero también tenemos fe que con tu omnipotencia logras cosas inesperadas. Te amamos DIOS!
+        Texto:'Nuevo día! Fin de semana! Dios todo poderoso hoy más que pedirte queremos agradecerte por tu inmenso amor y tu infinita misericordia! Gracias señor por que apesar de tan duro momento hay personas que tienen su empleo digno y un hogar íntegro, sabemos que no es fácil encargarte de cada petición que se te hace pero también tenemos fe que con tu omnipotencia logras cosas inesperadas. Te amamos DIOS!
 
         #EnamorateDeSanJuanNepo 😍
         📸 Rubén Téllez
-        🌎 Iglesia Central`,
+        🌎 Iglesia Central',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
     },
     {
         ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/p960x960/106389092_1142416862808968_8974259376225481387_o.jpg?_nc_cat=101&_nc_sid=2d5d41&_nc_eui2=AeFykO2Rk1xNova8SolfyjQD84y3rHbC1KrzjLesdsLUqpWdSFdjHUPkzZcrvIyefHM&_nc_ohc=RsxdvS82_VQAX_S-ubH&_nc_oc=AQkyfznPaH21JOegI8-jkZsubakgg_lTRy-f6WSsyOcCUBc256Ol5gbigrSc4_GqUmLtYsuv3cijzoUlWZxcgtsf&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=6&oh=eec1ce9d520dd570e642c80db5b5cd5d&oe=5F41B158'],
-        Texto:`#Repetimos el homenaje en redes al campesino Sanjuanero, ese que no para, bajo sol o lluvia. Gracias, muchas gracias. Si tienes un amigo, familiar, vecino que se desempeña en estas labores hazle saber cuan importante son.
+        Texto:'#Repetimos el homenaje en redes al campesino Sanjuanero, ese que no para, bajo sol o lluvia. Gracias, muchas gracias. Si tienes un amigo, familiar, vecino que se desempeña en estas labores hazle saber cuan importante son.
 
         #EnamorateDeSanJuanNepo 😍
         📸 Soy Sanjuanero
-        🌎 Bajo Grande`,
+        🌎 Bajo Grande',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
@@ -161,6 +182,11 @@ const storiesPrev=[
         ArtImg:['https://i.imgur.com/ol9QM2O.jpg'],
         socialWhatsapp:'3178123065',
         PalabraClave:'galleta maria luisa',
+    },
+    {
+        ArtImg:['https://i.imgur.com/BU0K59z.jpg'],
+        socialWhatsapp:'3178123065',
+        PalabraClave:'name campecino agro agricultura',
     },
     {
         ArtImg:[
@@ -329,8 +355,8 @@ const storiesPrev=[
         ArtImg:[
             'https://i.imgur.com/YS5Nuj8.jpg',
         ], 
-        Texto:`El domingo es descanso para unos, continuidad laboral para otros. Lo cierto es que el campesino ama tanto su labor que no baja la guardia los 365 días del año.
-        Dios los cuide, los bendiga y le de prosperidad a sus tierras!`
+        Texto:'El domingo es descanso para unos, continuidad laboral para otros. Lo cierto es que el campesino ama tanto su labor que no baja la guardia los 365 días del año.
+        Dios los cuide, los bendiga y le de prosperidad a sus tierras!'
     },
     {
         ArtImg:[
@@ -339,16 +365,31 @@ const storiesPrev=[
         PalabraClave:'bollo otilia frito'
     }
     
-]
-let storiesOrder=[]
-do{
-    const n=Math.floor(Math.random()*storiesPrev.length)
-    if(!storiesOrder.includes(n)){
-        storiesOrder.push(n)
+]`
+
+        db.collection('db_histories').add({db:text}) */
+
+
+
+        const texto=db.collection('db_histories').get()
+        console.log(texto)
+/*         let text=`
+        <tr><th>                       </th><th>        Img                        </th><th>Activo                     </th></tr>
+        <tr><td><input type="checkbox"></td><td><img src="./icons/store.png" alt=""></td><td>    <input type="checkbox"></td></tr>
+        `
+        $('table').innerHTML=text  */
+    </script>
+</body>
+</html>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
     }
-}while (storiesOrder.length!=storiesPrev.length) 
-let STORIES=[]
-
-storiesOrder.map(x=>STORIES.push(storiesPrev[x]))
-
-/* console.log(STORIES.length+' historias cargadas.') */
+    table th, table td {
+        text-align: center;
+    }
+    table img{
+        height: 50px;
+    }
+</style>

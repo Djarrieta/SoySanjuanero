@@ -15,8 +15,9 @@
         <!-- sweet Alert -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- firebase -->
-        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>    
-        <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>  
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
     </head>
     <body>
         <!-- HEADER -->
@@ -41,7 +42,7 @@
                         src="./icons/store.png" 
                         alt="logoSoySanjuanero">
                     <span>
-                        <i class="material-icons">search</i>
+                        <i enabled=false class="material-icons">search</i>
                         <p class="hide" id="storeSearchIcon">Tienda:</p>
                         <input 
                             type="text"
@@ -220,7 +221,7 @@
             <img id="piezaImg5"  src="https://i.imgur.com/ip9OuQr.jpg" alt="pieza">
             <img id="piezaImg6"  src="https://i.imgur.com/ySNBLTr.jpg" alt="pieza">
         </div>
-
+        <script src="./scripts/firebase.js"></script>
         <script src="./scripts/ciudades.js"></script>
         <script src="./scripts/historias.js"></script>
         <script src="./scripts/piezas.js"></script>
