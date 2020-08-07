@@ -189,6 +189,15 @@ const storiesPrev=[
         Tienda:true,
         Nacional:true
     },
+    
+    {
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F693662924518711%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'#VIDEO #7DeAgosto 🇨🇴 El corregimiento de #SanCayetano celebra el día de su Santo patrono. Nosotros le rendimos un pequeño homenaje a su gente pujante y emprendedora a través del siguiente video donde tuvimos la oportunidad de mirar más de cerca un proyecto innovador que no solo crea productos a base de Ñame si no que promete mejorar el mercado del mismo. RESPETO Y ADMINISTRACIÓN por este grupo de mujeres que sueñan con un mercado sostenible a base de sus productos elaborados 100% de ñame. MIRA EL VÍDEO Y COMPÁRTELO ayudemos juntos a qué los sueños de la Sra Denis y sus compañeras se den. Ellas son mujeres RESILIENTES decididas a marcar la diferencia. #SanJuanNepoSomosTodos'
+    },
     {
         ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F199937177992882%2F&show_text=0&width=560" width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
