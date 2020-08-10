@@ -71,7 +71,16 @@ const storiesPrev=[
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
         Texto:'Coloca el acceso directo de SoySanjuanero.Online en tu celular, para que busques y compres lo que necesitas!'
     },
-
+    {
+        ArtImg:['https://i.imgur.com/L8dcLfE.jpg'],
+        socialTel:'3024635265',
+        PalabraClave:'Omar andrade coordinador de trabajo en alturas '
+    },
+    {
+        ArtImg:['https://i.imgur.com/F2UXsiz.jpg'],
+        PalabraClave:'clases de educacion musical cultural y en valores pedro rodelo',
+        socialTel:'3208842225',
+    },
     {
         ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109106876_1155454358171885_2377412898740579963_o.jpg?_nc_cat=103&_nc_sid=2d5d41&_nc_eui2=AeEAlBim8J6-tH28xGC8-MoDWzbYHt9mH2hbNtge32YfaPstSQQ0_nXhOlMPHcuoFc4&_nc_ohc=AVueN5YqrJ8AX9rhHO2&_nc_ht=scontent.fbaq5-1.fna&oh=5585125cc0d39058f0530be0033aee1a&oe=5F419E74'],
         Texto:`Nuevo día! Fin de semana! Dios todo poderoso hoy más que pedirte queremos agradecerte por tu inmenso amor y tu infinita misericordia! Gracias señor por que apesar de tan duro momento hay personas que tienen su empleo digno y un hogar íntegro, sabemos que no es fácil encargarte de cada petición que se te hace pero también tenemos fe que con tu omnipotencia logras cosas inesperadas. Te amamos DIOS!
