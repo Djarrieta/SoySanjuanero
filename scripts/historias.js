@@ -25,7 +25,7 @@ const storiesPrev=[
             'https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/116154987_2069805233150688_5235326664879015597_o.jpg?_nc_cat=109&_nc_sid=8024bb&_nc_eui2=AeEAv1bGMVHsbkRDG9g9_rUQLVdRbKLssvUtV1Fsouyy9ZUsb8NTiG2I5dDQ7dds-3Q&_nc_ohc=bzBaxJyK6NUAX8WbO26&_nc_ht=scontent.fbaq5-1.fna&oh=f7481a64e0cefefa21a395d2d3e8828f&oe=5F42E9BF',
             'https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/116338670_2069806769817201_8046824308558666695_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_eui2=AeGrQbC0KcHw5I5Y_k-oTsv_lhL96H0hRGiWEv3ofSFEaAN0VuUQfd0o7hGi4p1xZqs&_nc_ohc=L1Tax6dYhbIAX9nRXO3&_nc_ht=scontent.fbaq5-1.fna&oh=1aae0f2c069b176f819d28b8bb4c8ec9&oe=5F43B65F',
             'https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/115911428_2069806973150514_5263024896261502107_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_eui2=AeHq3EvyuKRpp0aUjkR2xil21qgANY_WyF7WqAA1j9bIXl_K7msU-7KXoFily5hfNUU&_nc_ohc=3R6HwgVRlq0AX_rXLH_&_nc_oc=AQn3ikUwppFBox4JzJ6IyDfJrftP4_ib5EAF2DQeg_evEN8UOyzZLk4Ss3EYQC5xH7dTRpy3tmr55nptbrPVmePt&_nc_ht=scontent.fbaq5-1.fna&oh=4a10844ef35500a3f95180f8ec40b54e&oe=5F4187B3',
-            'https://i.imgur.com/QNVXTfD.jpg'
+            'https://i.imgur.com/TUaL6eU.jpg'
         ],
         ArtNombre:[
             'CAMISETA DIOS',
