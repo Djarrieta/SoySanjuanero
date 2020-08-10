@@ -62,7 +62,14 @@ const storiesPrev=[
         PalabraClave:'CAJERO EFECTIVO DINERO DOMICILIO',
         Tienda:true
     },
-    
+    {
+        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F941393469675715%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
+        socialWhatsapp:'3178123065',
+        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
+        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
+        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
+        Texto:'Este es el homenaje para nuestro amado pueblo en sus #244Años. No es una celebración como de costumbre, pero desde casa podemos hacer sentir ese orgullo que es ser SANJUANERO. Feliz cumpleaños SAN JUAN NEPO!!! #SanJuanNepoSomosTodos'
+    },
     {
         ArtVideo:'    <iframe width="560" height="315" src="https://www.youtube.com/embed/LzGHKKZFH54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         socialWhatsapp:'3178123065',
