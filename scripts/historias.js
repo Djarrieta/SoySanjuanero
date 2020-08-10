@@ -47,7 +47,7 @@ const storiesPrev=[
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
         socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
-        PalabraClave:'mug pocillo regalo detalle recuerdo',
+        PalabraClave:'camiseta camisa  regalo detalle recuerdo',
         Tienda:true,
         Nacional:true
     },
@@ -240,9 +240,8 @@ const storiesPrev=[
         socialWhatsapp:'3012063053',
         socialFacebook:'https://www.facebook.com/luisalberto.castillocamargo',
         socialTel:'3012063053',
-        PalabraClave:'luis alberto castillo voluntario musico parranda serenata regalo'
+        PalabraClave:'luis alberto castillo voluntarios musico parranda serenata regalo musica'
     },
-    
     {
         ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F369905260387885%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
