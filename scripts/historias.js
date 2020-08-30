@@ -28,19 +28,9 @@ const storiesPrev=[
             'https://i.imgur.com/TUaL6eU.jpg'
         ],
         ArtNombre:[
-            'CAMISETA DIOS',
-            'CAMISETA ELEFANTE',
-            'CAMISETA ABUELO',
-            'CAMISETA BELLA',
-            'CAMISETA MERECES',
             'CAMISETA SOY SANJUANERO',
         ],
         ArtPrecio:[
-            '30000',
-            '30000',
-            '30000',
-            '30000',
-            '30000',
             '30000',
         ],
         socialWhatsapp:'3178123065',
@@ -63,13 +53,12 @@ const storiesPrev=[
         Tienda:true
     },
     {
-        ArtVideo:'<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F941393469675715%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
-        socialWhatsapp:'3178123065',
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
-        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
-        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
-        Texto:'Este es el homenaje para nuestro amado pueblo en sus #244Años. No es una celebración como de costumbre, pero desde casa podemos hacer sentir ese orgullo que es ser SANJUANERO. Feliz cumpleaños SAN JUAN NEPO!!! #SanJuanNepoSomosTodos'
+        ArtImg:['https://i.imgur.com/CnTQ0Fl.jpgg'],
+        socialWhatsapp:'3006870692',
+        socialFacebook:'https://www.facebook.com/javier.rojano.5243',
+        PalabraClave:'producción de audio digital grabacion de audio en vivo alquiler de sonido para eventos',
     },
+
     {
         ArtVideo:'    <iframe width="560" height="315" src="https://www.youtube.com/embed/LzGHKKZFH54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         socialWhatsapp:'3178123065',
@@ -100,7 +89,7 @@ const storiesPrev=[
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
     },
     {
-        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/p960x960/106389092_1142416862808968_8974259376225481387_o.jpg?_nc_cat=101&_nc_sid=2d5d41&_nc_eui2=AeFykO2Rk1xNova8SolfyjQD84y3rHbC1KrzjLesdsLUqpWdSFdjHUPkzZcrvIyefHM&_nc_ohc=RsxdvS82_VQAX_S-ubH&_nc_oc=AQkyfznPaH21JOegI8-jkZsubakgg_lTRy-f6WSsyOcCUBc256Ol5gbigrSc4_GqUmLtYsuv3cijzoUlWZxcgtsf&_nc_ht=scontent.fbaq5-1.fna&_nc_tp=6&oh=eec1ce9d520dd570e642c80db5b5cd5d&oe=5F41B158'],
+        ArtImg:['https://i.imgur.com/70aGoZ1.jpg'],
         Texto:`#Repetimos el homenaje en redes al campesino Sanjuanero, ese que no para, bajo sol o lluvia. Gracias, muchas gracias. Si tienes un amigo, familiar, vecino que se desempeña en estas labores hazle saber cuan importante son.
 
         #EnamorateDeSanJuanNepo 😍
@@ -111,14 +100,6 @@ const storiesPrev=[
         socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
     },
     
-    {
-        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109126306_1161100537607267_9405575145283282_o.jpg?_nc_cat=105&_nc_sid=2d5d41&_nc_eui2=AeG8kBXe7su9N-TkZD4nIvXIXGig8djZA5RcaKDx2NkDlKbWjkF4D48bs8NNtao4stQ&_nc_ohc=J9xD3xBRBa8AX9f0sN1&_nc_ht=scontent.fbaq5-1.fna&oh=d6b4d92db3c923d435673851aa475e4a&oe=5F41261F'],
-        Texto:'Un sábado de julio dónde a esta hora aún no se le ve la cara al sol. Saldrá el Mono 🌄 a secar las calles? O simplemente hoy será uno de esos días que no se sabe ni qué horas son...        #EnamorateDeSanJuanNepo 😍        📸 Soy Sanjuanero        🌎 Barrio Barranquillita',
-        socialWhatsapp:'3178123065',
-        socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
-        socialInstagram:'https://www.instagram.com/soy.sanjuanero/',
-        socialYoutube:'https://www.youtube.com/channel/UC_7DKkDdyHq3DQuytX1Q4mg',
-    },
     {
         ArtVideo:'    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyosoysanjuanero%2Fvideos%2F1679185072204975%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="false"></iframe>',
         socialWhatsapp:'3178123065',
@@ -149,7 +130,7 @@ const storiesPrev=[
     },
     
     {
-        ArtImg:['https://scontent.fbaq5-1.fna.fbcdn.net/v/t1.0-9/109683544_1159474044436583_3596289926067765905_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_eui2=AeEEH9Yl2OWts7B7Xa6x3bXKgyDF4LaQxpSDIMXgtpDGlEVnPYPBQzv3PK10ztoOezw&_nc_ohc=2E-CVwXE7-UAX9gQuY4&_nc_ht=scontent.fbaq5-1.fna&oh=154efa67b64131441829e568a412936c&oe=5F3FB505'],
+        ArtImg:['https://i.imgur.com/SA3l61M.jpg'],
         Texto:'Para muchos un simple ají, para otros un manjar. Comenta cómo lo has comido, en machucao, asao, en vinagre, picao en el suero, en fin comparte y comenta. #ajíchivato #EnamorateDeSanJuanNepo 😍',
         socialWhatsapp:'3178123065',
         socialFacebook:'https://www.facebook.com/yosoysanjuanero/',
@@ -324,12 +305,6 @@ const storiesPrev=[
         ProvNombre:'Jairo Castillo',
         Tienda:true,
         Nacional:false
-    },
-    {
-        PalabraClave:'virgen del carmen',
-        ArtImg:[
-            'https://scontent.fctg1-1.fna.fbcdn.net/v/t1.0-9/s960x960/106454052_1141392592911395_126112427756791949_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_ohc=T3OqDcKcSzsAX859fau&_nc_ht=scontent.fctg1-1.fna&_nc_tp=7&oh=05f397854675488f1c27ad96446f236c&oe=5F2E3B14',
-        ]
     },
     {
         ArtImg:[
